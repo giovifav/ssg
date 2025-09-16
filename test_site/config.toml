@@ -1,6 +1,0 @@
-site_name = "Test Site"
-author = "Site Author"
-footer = "Copyright 2025"
-output = "output"
-base_theme = "assets/theme.html"
-theme_css = "assets/theme.css"
