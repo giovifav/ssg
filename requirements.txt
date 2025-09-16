@@ -1,0 +1,7 @@
+textual[syntax]
+python-frontmatter
+markdown
+jinja2
+toml
+Pillow
+

@@ -1,0 +1,135 @@
+/* Minimal UI theme: typography + 2-column menu grid + minimal spacing + editor 30/70 split */
+
+/* Typography */
+.text-header {
+  text-style: bold;
+  text-align: center;
+}
+
+.text-subheader {
+  text-style: bold;
+}
+
+.text-muted {
+  color: #888888;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-label {
+  text-style: bold;
+}
+
+/* Menu: simple 2-column grid */
+.grid-2x2 {
+  grid-size: 2;       /* 2 columns in Textual CSS */
+  grid-gutter: 1;     /* small gap between tiles */
+}
+
+/* Ensure body uses available space and log has a small fixed height */
+#app-body {
+  height: 1fr; /* occupy remaining vertical space */
+}
+
+#log-container {
+  height: 6; /* small fixed height to leave room for the body */
+}
+
+/* Minimal spacing for menu tiles */
+.menu-card {
+  margin: 1;
+}
+
+/* Menu card border to match wizard card */
+#menu-card {
+  border: tall $panel;
+  padding: 1;
+  margin: 1;
+}
+
+/* Make buttons fill the tile width */
+.menu-button {
+  width: 100%;
+}
+
+/* Editor layout */
+#editor-layout { height: 1fr; }
+
+/* Bordered card for editor screen */
+#editor-card {
+  border: tall $panel;
+  padding: 1;
+  margin: 1;
+  height: 1fr; /* allow tree and content to expand fully */
+}
+
+/* Generator form layout */
+#generator-layout { height: 1fr; }
+
+/* Bordered card for generator screen */
+#generator-card {
+  border: tall $panel;
+  padding: 1;
+  margin: 1;
+}
+
+#editor-tree {
+  height: 1fr;        /* tree fills sidebar */
+}
+
+/* #editor-preview no longer used for buttons; use #md-preview-pane for preview area height */
+#md-preview-pane {
+  height: 1fr;
+}
+
+/* Wizard layout */
+#wizard-layout { height: 1fr; }
+#wizard-content { height: 1fr; }
+
+/* Wizard card: simple bordered container */
+#wizard-card {
+  border: tall $panel; /* use panel color for border */
+  padding: 1;
+  margin: 1;
+}
+
+/* Markdown editor modal */
+#modal-dialog { height: 1fr; }
+#md-editor-card { border: tall $panel; padding: 1; margin: 1; height: 1fr; }
+#md-two-pane { height: 1fr; }
+#md-editor-pane { height: 1fr; }
+#md-preview-pane { height: 1fr; }
+#md-editor-textarea { height: 1fr; }
+
+/* Markdown preview modal: match editor card border */
+#preview-card { border: tall $panel; padding: 1; margin: 1; height: 1fr; }
+#preview-pane { height: 1fr; }
+
+/* Generic file editor modal */
+#modal-dialog { height: 1fr; }
+#file-editor-card {
+  border: tall $panel;
+  padding: 1;
+  margin: 1;
+  height: 1fr; /* allow textarea to take remaining space */
+}
+#file-name-field { margin-bottom: 1; }
+#file-editor-pane { height: 1fr; }
+#file-editor-textarea { height: 100%; }
+
+/* New Page modal */
+#new-page-card { border: tall $panel; padding: 1; margin: 1; }
+
+/* Text input modal */
+#text-input-card { border: tall $panel; padding: 1; margin: 1; }
+
+/* Folder picker modal */
+#folder-picker-layout { height: 1fr; }
+#folder-picker-card { height: 1fr; border: tall $panel; padding: 1; margin: 1; }
+#tree { height: 1fr; } /* make directory tree expand to fill card */
+
+/* Wizard: ensure input shrinks to leave room for Browse button */
+.wizard-input { width: 1fr; }
+#browse_base { width: auto; min-width: 12; margin-left: 1; }

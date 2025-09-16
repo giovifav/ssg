@@ -1,0 +1,188 @@
+# Gio's Static Site Generator
+
+A simple yet powerful static site generator written in Python with a modern Textual-based terminal user interface (TUI).
+
+## Description
+
+This project allows you to create and manage static websites using Markdown content. It provides both a command-line interface and a user-friendly graphical interface for initializing new sites, editing content, and generating HTML output. The generator supports themes, frontmatter, navigation trees, breadcrumbs, and asset management.
+
+## Features
+
+- **Site Initialization**: Quickly create new site projects with predefined structure
+- **Markdown Processing**: Convert Markdown files to HTML with frontmatter support (title, date)
+- **Template Engine**: Uses Jinja2 for flexible templating with customizable themes
+- **Navigation**: Automatic generation of sidebar navigation and breadcrumbs
+- **Asset Management**: Copy static assets to the output directory
+- **Search Index**: Generate a JSON search index for the generated site
+- **GUI Interface**: Rich terminal UI for managing sites, editing content, and generating output
+- **Themes**: Multiple UI themes (gruvbox, nord, tokyo-night, etc.)
+- **Internationalization**: Support for English and Italian languages
+- **Export**: Clean HTML output ready for hosting
+
+## Requirements
+
+- Python 3.8 or higher
+- Dependencies (automatically installed via requirements.txt):
+  - `textual[syntax]`: For the terminal interface
+  - `python-frontmatter`: For parsing Markdown frontmatter
+  - `markdown`: For Markdown to HTML conversion
+  - `jinja2`: For template rendering
+  - `toml`: For configuration file handling
+
+## Installation
+
+1. Clone or download this repository to your local machine
+2. Navigate to the project directory
+3. Run `python run.py`
+
+The run.py script will:
+- Create a virtual environment (if not exists)
+- Install/update Python dependencies
+- Launch the application
+
+Alternatively, if you prefer manual setup:
+1. Create a Python virtual environment: `python -m venv .venv`
+2. Activate the virtual environment: (Windows) `.venv\Scripts\activate`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Run the app: `python main.py`
+
+## Usage
+
+### Starting the Application
+
+Use `python run.py` for automatic setup and launch, or `python main.py` if you've set up the environment manually.
+
+### Main Interface
+
+The application provides a menu with three main options:
+
+1. **Initialize New Site**
+   - Choose a base directory
+   - Enter site folder name
+   - Set site name and author
+   - Creates the basic site structure
+
+2. **Open Existing Site**
+   - Browse and select an existing site project directory
+   - Access editing and generation tools
+
+3. **Settings**
+   - Change UI theme
+   - Switch language (English/Italian)
+
+### Creating Content
+
+Site projects have this structure:
+- `content/`: Place your Markdown files here
+- `assets/`: Static files (images, CSS, etc.)
+- `config.toml`: Site configuration
+- `theme.html` and `theme.css`: Template files
+
+Create Markdown files in the `content/` directory using frontmatter:
+
+```markdown
+---
+title: "My Page Title"
+date: "2024-01-01"
+---
+
+# Heading
+
+Content goes here...
+```
+
+### Generating the Site
+
+From the site editor screen:
+1. Select "Generate Site"
+2. The generator will:
+   - Parse all Markdown files in `content/`
+   - Apply templates to create HTML
+   - Build navigation and breadcrumbs
+   - Copy assets
+   - Generate search index
+   - Output everything to the configured output directory
+
+## Project Structure
+
+```
+.
+├── assets/              # Default theme assets
+├── languages/           # UI translation files
+├── site/                # Example site project
+├── ui/                  # Textual UI components
+├── config_manager.py    # UI configuration management
+├── initialization.py    # Site creation logic
+├── main.py              # Application entry point
+├── nav_builder.py       # Navigation generation
+├── requirements.txt     # Python dependencies
+├── run.py               # Auto-setup script
+├── site_generator.py    # Core generation engine
+└── ... (other files)
+```
+
+## Configuration
+
+### Site Configuration (config.toml)
+
+Located in each site's root directory:
+
+```toml
+site_name = "My Site"
+author = "Your Name"
+output = "output"
+base_theme = "theme.html"
+theme_css = "theme.css"
+footer = "© 2024 My Site"
+```
+
+### UI Configuration
+
+Settings are stored in `config.json`:
+- Preferred language
+- UI theme
+- Last used directories
+
+## Example Workflow
+
+1. Start the application: `python run.py`
+2. Click "Initialize New Site"
+3. Fill in project details and create
+4. Add Markdown files to `site/content/`
+5. Add images/assets to `site/assets/`
+6. Use the editor to modify content
+7. Generate the site to create HTML output
+8. Serve the `output/` directory on your web server
+
+## Advanced Usage
+
+### Custom Themes
+
+1. Copy theme files from `assets/`
+2. Modify `theme.html` and `theme.css` in your site directory
+3. Update `config.toml` to reference your custom files
+
+### Multiple Languages
+
+- The UI supports English and Italian
+- Edit translation files in `languages/`
+- Language is persisted across sessions
+
+### Integration
+
+The generated sites are completely static and can be served by any web server (Apache, Nginx, GitHub Pages, Netlify, etc.).
+
+## Development
+
+This project uses:
+- Textual for the TUI framework
+- Poetry (optional) for dependency management
+- Standard Python packaging
+
+## License
+
+This project is open-source. Check the source code for license details.
+
+---
+
+For more information or to report issues, please check the project repository.

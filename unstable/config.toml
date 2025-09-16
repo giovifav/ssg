@@ -1,0 +1,6 @@
+site_name = "unstable"
+author = "ndskjdskd"
+footer = "Copyright 2025"
+output = "output"
+base_theme = "assets/theme.html"
+theme_css = "assets/theme.css"

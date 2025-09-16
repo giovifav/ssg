@@ -1,0 +1,38 @@
+[
+  {
+    "title": "unstable",
+    "url": "index.html",
+    "date": "2025-01-01",
+    "content": "Welcome This is your new site. Edit content/index.md to get started."
+  },
+  {
+    "title": "la mia foto gallery",
+    "url": "foto/index.html",
+    "date": "2025-09-15",
+    "content": "la mia foto gallery ×"
+  },
+  {
+    "title": "blog",
+    "url": "news/index.html",
+    "date": "2025-09-15",
+    "content": "blog"
+  },
+  {
+    "title": "blog",
+    "url": "news/_blog/index.html",
+    "date": null,
+    "content": "gio'snews notizia 1 2025-09-15 gdf,gòld,gf gdgdfg d gdf gdf g dfg df g dfg df g df g dg fd g fdg gfgdgdf g gdfgdfg gdfgfdgdfg notizia 2 2025-09-15 notizia 2"
+  },
+  {
+    "title": "notizia 1",
+    "url": "news/_blog/index.html",
+    "date": "2025-09-15",
+    "content": "gdf,gòld,gf gdgdfg d gdf gdf g dfg df g dfg df g df g dg fd g fdg gfgdgdf g gdfgdfg gdfgfdgdfg"
+  },
+  {
+    "title": "notizia 2",
+    "url": "news/_blog/index.html",
+    "date": "2025-09-15",
+    "content": "notizia 2"
+  }
+]
