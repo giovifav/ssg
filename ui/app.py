@@ -60,7 +60,8 @@ class SSGApp(App):
         self.config_manager = ConfigManager()
         try:
             self.theme = self.config_manager.get_theme()
-        except Exception:
+        except Exception as e:
+            self.ui_log.write(f"Warning: Failed to load theme, using default (gruvbox): {e}")
             self.theme = "gruvbox"
 
         # Initialize i18n with saved language
@@ -68,9 +69,9 @@ class SSGApp(App):
             language = self.config_manager.get_language()
             from i18n import set_global_language
             set_global_language(language)
-        except Exception:
+        except Exception as e:
             # Fall back to default language (English) if there's any error
-            pass
+            self.ui_log.write(f"Warning: Failed to load language, using default (English): {e}")
 
         # Responsive logic disabled to test base layout
         self.show_main_menu()
@@ -146,8 +147,8 @@ class SSGApp(App):
             try:
                 self.config_manager.set_last_site_path(site_root)
                 self.config_manager.set_last_base_dir(base_path)
-            except Exception:
-                pass
+            except Exception as e:
+                self.ui_log.write(f"Warning: Failed to save site preferences: {e}")
         except Exception as e:  # pragma: no cover - UI error path
             self.ui_log.write(f"Error: {e}")
 

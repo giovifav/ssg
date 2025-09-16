@@ -68,8 +68,15 @@ class ConfigManager:
                 # Ensure parent exists for later writes
                 self.config_path.parent.mkdir(parents=True, exist_ok=True)
                 self._data = dict(self.DEFAULTS)
-        except Exception:
+        except Exception as e:
             # On any error, fall back to defaults (avoid crashing the TUI)
+            # This might be called without the TUI available yet, so print to console as fallback
+            try:
+                from .ui.log import UILog  # Absolute import for internal usage
+                log = UILog()
+                log.write(f"Warning: Failed to load user config, using defaults: {e}")
+            except (ImportError, Exception):
+                print(f"Warning: Failed to load user config, using defaults: {e}")
             self._data = dict(self.DEFAULTS)
 
     def _save(self) -> None:
@@ -80,9 +87,22 @@ class ConfigManager:
         try:
             self.config_path.parent.mkdir(parents=True, exist_ok=True)
             self.config_path.write_text(json.dumps(self._data, indent=2), encoding="utf-8")
-        except Exception:
+        except Exception as e:
             # Silently ignore to not disturb the UI; logging can be added by caller if needed
-            pass
+            # This might be called without the TUI available yet, so print to console as fallback
+            try:
+                import sys
+                # Try to find and use the current UILog if available
+                if 'ssg_app' in sys.modules:
+                    ssg_app = sys.modules['ssg_app']
+                    if hasattr(ssg_app, '_current_log'):
+                        ssg_app._current_log.write(f"Warning: Failed to save user config: {e}")
+                    elif hasattr(ssg_app, 'ui_log'):
+                        ssg_app.ui_log.write(f"Warning: Failed to save user config: {e}")
+                else:
+                    print(f"Warning: Failed to save user config: {e}")
+            except Exception:
+                print(f"Warning: Failed to save user config: {e}")
 
     # -------------------------- Theme -------------------------- #
     def get_theme(self) -> str:

@@ -4,69 +4,7 @@ Questo documento contiene un'analisi completa del codebase del progetto Gio's SS
 
 ## 1. Bug Critici
 
-### 1.1 Gestione Errori Insufficiente
-**File:** Tutto il progetto (97+ istanze)  
-**Problema:** Numerosi utilizzi di `except Exception: pass` che nascondono errori reali  
-**Impatto:** Difficile debug, errori silenziosi che possono compromettere la funzionalità  
 
-**Luoghi identificati:**
-- `ui/*.py`: Molteplici catch broad nelle UI components
-- `site_generator.py`: Gestione errori generazione site
-- `config*.py`: Parser TOML fallisce silenziosamente
-- `nav_builder.py`: Load titles si interrompe senza log
-
-**Proposta di risoluzione:**
-```python
-# Invece di:
-except Exception:
-    pass
-
-# Usa:
-except SpecificException as e:
-    logger.error(f"Error details: {e}")
-    # Gestione appropriata dell'errore
-```
-
-### 1.2 Bug nel Parsing HTML Entities
-**File:** `site_generator.py`, funzione `strip_html()` (linea 44)  
-**Problema:** `.replace("&", "&")` non è corretto - dovrebbe essere `.replace("&", "&")`  
-**Impatto:** Entità HTML non correttamente escapped nel search index e testo pulito  
-
-**Risoluzione:**
-```python
-def strip_html(html: str) -> str:
-    text = re.sub(r"<[^>]+>", " ", html)
-    text = text.replace("&nbsp;", " ")
-    text = text.replace("&", "&")  # CORRETTO
-    # ... resto del codice
-```
-
-### 1.3 Vulnerabilità Path Traversal
-**File:** Tutto il progetto  
-**Problema:** Nessuna sanitizzazione dei path inseriti dall'utente  
-**Impatto:** Potenziale accesso a file non autorizzati attraverso `../` in path locali  
-
-**Proposta di risoluzione:**
-```python
-def sanitize_path(user_path: str) -> Path:
-    path = Path(user_path).resolve()
-    if not path.is_relative_to(allowed_base_path):
-        raise ValueError("Path traversal attempt detected")
-    return path
-```
-
-### 1.4 Problemi Performance Galleries
-**File:** `site_generator.py`, funzione `_gather_gallery_items()`  
-**Problema:**
-- Nessun limite al numero di file in directory gallerie
-- Caricamento di directory grandi senza paginazione
-- Possibile DoS con migliaia di immagini
-
-**Risoluzione:**
-```python
-MAX_GALLERY_ITEMS = 1000
-gallery_files = list(sorted(gallery_dir.iterdir()))[:MAX_GALLERY_ITEMS]
-```
 
 ## 2. Implementazioni Errate
 

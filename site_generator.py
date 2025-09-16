@@ -19,7 +19,7 @@ except Exception:
     ImageOps = None  # type: ignore
 
 try:
-    from config import SiteConfig, read_config
+    from config import SiteConfig, read_config, sanitize_path
     from nav_builder import (
         NavNode,
         discover_markdown_files,
@@ -29,7 +29,7 @@ try:
         load_title_from_markdown
     )
 except ImportError:
-    from .config import SiteConfig, read_config
+    from .config import SiteConfig, read_config, sanitize_path
     from .nav_builder import (
         NavNode,
         discover_markdown_files,
@@ -54,7 +54,10 @@ def strip_html(html: str) -> str:
     # Remove tags
     text = re.sub(r"<[^>]+>", " ", html)
     # Unescape basic entities
-    text = text.replace("&nbsp;", " ").replace("&", "&").replace("<", "<").replace(">", ">")
+    text = text.replace("&nbsp;", " ")
+    text = text.replace("&", "&")
+    text = text.replace("<", "<")
+    text = text.replace(">", ">")
     # Collapse whitespace
     text = re.sub(r"\s+", " ", text).strip()
     return text
@@ -133,7 +136,9 @@ def _gather_gallery_items(
 
     warned_no_pillow = False
 
-    for src_file in sorted(gallery_dir.iterdir()):
+    MAX_GALLERY_ITEMS = 1000
+    gallery_files = list(sorted(gallery_dir.iterdir()))[:MAX_GALLERY_ITEMS]
+    for src_file in gallery_files:
         if not src_file.is_file():
             continue
         ext = src_file.suffix.lower()
@@ -336,7 +341,7 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
     if not content_root.exists():
         raise FileNotFoundError(f"content/ folder not found in: {site_root}")
 
-    output_root = site_root / cfg.output
+    output_root = sanitize_path(cfg.output, site_root, site_root)
     # Clean output directory before generation
     if output_root.exists():
         try:
@@ -348,9 +353,15 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
 
     # Load theme template. Prefer site-local theme; else fall back to repo root theme.
     REPO_ROOT = Path(__file__).resolve().parent  # Adjusted to parent for assets path
-    theme_path = site_root / cfg.base_theme
-    if not theme_path.exists():
-        theme_path = REPO_ROOT / "assets" / Path(cfg.base_theme).name  # Fallback to repo assets
+    try:
+        theme_path = sanitize_path(cfg.base_theme, site_root, site_root)
+    except ValueError:
+        # Attempt fallback to repo assets using only the filename to prevent traversal
+        fallback_name = Path(cfg.base_theme).name
+        try:
+            theme_path = sanitize_path(fallback_name, REPO_ROOT / "assets", REPO_ROOT / "assets")
+        except ValueError:
+            raise FileNotFoundError(f"Theme not found and fallback invalid: {cfg.base_theme}")
     if not theme_path.exists():
         raise FileNotFoundError(f"Theme not found: {cfg.base_theme}")
     template = load_template(theme_path)
@@ -367,9 +378,15 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
         info("[Blog] Using fallback template")
 
     # Ensure CSS copied to output root
-    css_src = site_root / cfg.theme_css
-    if not css_src.exists():
-        css_src = REPO_ROOT / "assets" / Path(cfg.theme_css).name  # Fallback to repo assets
+    try:
+        css_src = sanitize_path(cfg.theme_css, site_root, site_root)
+    except ValueError:
+        # Attempt fallback to repo assets using only the filename to prevent traversal
+        fallback_name = Path(cfg.theme_css).name
+        try:
+            css_src = sanitize_path(fallback_name, REPO_ROOT / "assets", REPO_ROOT / "assets")
+        except ValueError:
+            raise FileNotFoundError(f"Theme CSS not found and fallback invalid: {cfg.theme_css}")
     if not css_src.exists():
         raise FileNotFoundError(f"Theme CSS not found: {cfg.theme_css}")
     css_dst = output_root / css_src.name

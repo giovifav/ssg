@@ -108,8 +108,9 @@ class SiteEditorScreen(Container):
                 Binding("v", "preview_site", translate("preview")),
                 Binding("backspace", "back", translate("back")),
             ]
-        except Exception:
-            pass
+        except Exception as e:
+            self.app.ui_log.write(f"Warning: Failed to load keybinding translations, using defaults: {e}")
+            # Keep the default bindings from the class
         # Apply border title and a concise subtitle (dynamic stats)
         try:
             card = self.query_one("#editor-card")
@@ -121,8 +122,8 @@ class SiteEditorScreen(Container):
             set_card_titles(card, translate("editor_title"), subtitle)
             # Set expansion programmatically
             card.styles.height = "1fr"
-        except Exception:
-            pass
+        except Exception as e:
+            self.app.ui_log.write(f"Warning: Failed to setup editor layout, some UI features may not work: {e}")
         # Focus the tree for immediate navigation
         tree = self.query_one("#editor-tree", DirectoryTree)
         tree.focus()
