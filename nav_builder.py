@@ -9,6 +9,11 @@ import os
 
 import frontmatter  # type: ignore
 
+try:
+    from i18n import translate
+except ImportError:
+    from .i18n import translate
+
 
 @dataclass
 class NavNode:
@@ -37,25 +42,40 @@ def discover_markdown_files(content_root: Path) -> List[Path]:
     return files
 
 
-def load_title_from_markdown(md_path: Path) -> str:
-    """Extract page title from markdown frontmatter.
+def load_title_from_markdown(md_path: Path) -> tuple[str, bool]:
+    """Extract page title and draft status from markdown frontmatter.
 
     Falls back to filename stem (sanitized) if no title is present.
+    For auto-generated special pages (index.md for _files, _gallery, _blog without file),
+    returns translated title.
 
     Args:
         md_path: Markdown file path.
 
     Returns:
-        Title string.
+        Tuple of (title string, is_draft bool).
     """
+    if md_path.name == "index.md" and not md_path.exists() and md_path.parent.name in {"_files", "_gallery", "_blog"}:
+        if md_path.parent.name == "_files":
+            title = translate("files_title")
+        elif md_path.parent.name == "_gallery":
+            title = translate("gallery_title")
+        elif md_path.parent.name == "_blog":
+            title = translate("blog_title")
+        return title, False
+
     try:
         post = frontmatter.load(md_path)
         title = post.metadata.get("title")
         if isinstance(title, str) and title.strip():
-            return title.strip()
+            title = title.strip()
+        else:
+            title = md_path.stem.replace("_", " ").replace("-", " ")
+        is_draft = bool(post.metadata.get("draft"))
+        return title, is_draft
     except Exception:
-        pass
-    return md_path.stem.replace("_", " ").replace("-", " ")
+        title = md_path.stem.replace("_", " ").replace("-", " ")
+        return title, False
 
 
 def build_nav_tree(content_root: Path, output_root: Path) -> NavNode:
@@ -108,11 +128,16 @@ def build_nav_tree(content_root: Path, output_root: Path) -> NavNode:
         if "_blog" in rel_md.parts and path.name != "index.md":
             continue
 
+        # Get title and draft status, skip if draft
+        title, is_draft = load_title_from_markdown(path)
+        if is_draft:
+            continue
+
         # Get or create parent directory node
         parent_node = get_dir_node(path.parent)
         # Create file node and attach to parent
         node = NavNode(
-            name=load_title_from_markdown(path),
+            name=title,
             rel_content_path=rel_md,
             rel_output_path=out_rel,
             is_dir=False,
@@ -139,6 +164,48 @@ def build_nav_tree(content_root: Path, output_root: Path) -> NavNode:
         # Recursively sort all child nodes
         for ch in n.children:
             sort_tree(ch)
+
+    # Supported image extensions for galleries (copied from site_generator)
+    IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+
+    # Add fake md paths for generated special pages
+    special_md_paths = []
+    for special_dir in content_root.rglob("*"):
+        if special_dir.is_dir() and special_dir.name in {"_files", "_gallery", "_blog"}:
+            index_md = special_dir / "index.md"
+            if not index_md.exists():
+                has_content = False
+                if special_dir.name == "_files":
+                    has_content = any(f.is_file() and f.suffix.lower() not in {".md", ".html"} for f in special_dir.iterdir())
+                elif special_dir.name == "_gallery":
+                    has_content = any(f.is_file() and f.suffix.lower() in IMAGE_EXTS for f in special_dir.iterdir())
+                elif special_dir.name == "_blog":
+                    has_content = any(f.is_file() and f.suffix.lower() == ".md" and f.name != "index.md" for f in special_dir.iterdir())
+                if has_content:
+                    special_md_paths.append(index_md)
+
+    for fake_path in special_md_paths:
+        rel_md = fake_path.relative_to(content_root)
+        out_rel = rel_md.with_suffix(".html")
+        title, is_draft = load_title_from_markdown(fake_path)
+        if not is_draft:
+            parent_node = get_dir_node(fake_path.parent)
+            node = NavNode(
+                name=title,
+                rel_content_path=rel_md,
+                rel_output_path=out_rel,
+                is_dir=False,
+                children=[],
+            )
+            parent_node.children.append(node)
+
+    # Attach any newly created special directory nodes
+    for dpath, node in list(dir_nodes.items()):
+        if dpath == content_root:
+            continue  # Skip root node
+        parent = get_dir_node(dpath.parent)
+        if node not in parent.children:
+            parent.children.append(node)
 
     sort_tree(root_node)
     return root_node
@@ -222,12 +289,21 @@ def render_sidebar_html(
         # Use HTML details/summary for expandable directory
         open_attr = " open" if active_dir else ""
 
+        # Add classes for XP tree-view styling
+        dir_classes = ["dir"]
+        if d.children:  # If has children
+            dir_classes.append("has-children")
+            dir_classes.append("has-folder")
+        if active_dir:  # If expanded
+            dir_classes.append("expanded")
+        class_attr = " ".join(dir_classes)
+
         if href:
             key = index_child.rel_output_path.as_posix() if index_child else d.rel_output_path.as_posix()
             summary = f'<summary><a href="{href}" data-target="{key}"{(" class=\"active\"" if active_dir else "")}>{label}</a></summary>'
         else:
             summary = f"<summary><span>{label}</span></summary>"
-        return f'<li class="dir"><details{open_attr}>{summary}{inner_ul}</details></li>'
+        return f'<li class="{class_attr}"><details{open_attr}>{summary}{inner_ul}</details></li>'
 
     # Build top-level navigation list
     items: List[str] = []
@@ -279,7 +355,8 @@ def build_breadcrumbs(
             url = os.path.relpath(target, start=current_out_dir).replace(os.sep, "/")
         except Exception:
             url = "index.html"
-        home_label = load_title_from_markdown(home_index) or "Home"
+        home_title, _ = load_title_from_markdown(home_index)
+        home_label = home_title or "Home"
         crumbs.append({"label": home_label, "url": url})
     else:
         crumbs.append({"label": "Home", "url": None})
@@ -295,7 +372,8 @@ def build_breadcrumbs(
                 url = os.path.relpath(target_html, start=current_out_dir).replace(os.sep, "/")
             except Exception:
                 url = (Path(*parts[: i + 1]) / "index.html").as_posix()
-            label = load_title_from_markdown(idx)
+            label_title, _ = load_title_from_markdown(idx)
+            label = label_title
         else:
             url = None
             # Fallback to directory name if no index.md
@@ -305,7 +383,8 @@ def build_breadcrumbs(
     # Current page (no link) — use frontmatter title if available
     current_md = content_root / rel_md_path
     try:
-        label = load_title_from_markdown(current_md)
+        current_title, _ = load_title_from_markdown(current_md)
+        label = current_title
     except Exception:
         label = rel_md_path.stem.replace("_", " ").replace("-", " ")
     crumbs.append({"label": label, "url": None})

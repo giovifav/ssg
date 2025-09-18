@@ -180,6 +180,12 @@
   "current_directory": "Current Directory",
   "root_directory": "Root",
 
+  "files_title": "Downloadable Files",
+  "files_name": "Name",
+  "files_size": "Size",
+  "files_date": "Date",
+  "files_download": "Download",
+
   "file_operations": {
     "creating_file": "Creating new file...",
     "creating_folder": "Creating new folder...",

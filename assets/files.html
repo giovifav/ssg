@@ -1,0 +1,16 @@
+<!-- Files List component template (no title) -->
+<section class="files-list">
+  <table>
+    <thead>
+      <tr>
+        <th>{{ name_header|safe }}</th>
+        <th>{{ size_header|safe }}</th>
+        <th>{{ date_header|safe }}</th>
+        <th>{{ download_header|safe }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ rows|safe }}
+    </tbody>
+  </table>
+</section>

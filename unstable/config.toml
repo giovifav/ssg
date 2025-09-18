@@ -1,5 +1,5 @@
-site_name = "unstable"
-author = "ndskjdskd"
+site_name = "Gio's unstable code"
+author = "Giovanni Favaro"
 footer = "Copyright 2025"
 output = "output"
 base_theme = "assets/theme.html"

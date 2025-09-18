@@ -180,6 +180,12 @@
   "current_directory": "Directory Corrente",
   "root_directory": "Radice",
 
+  "files_title": "File Scaricabili",
+  "files_name": "Nome",
+  "files_size": "Dimensione",
+  "files_date": "Data",
+  "files_download": "Scarica",
+
   "file_operations": {
     "creating_file": "Creazione nuovo file...",
     "creating_folder": "Creazione nuova cartella...",

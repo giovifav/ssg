@@ -8,6 +8,7 @@ import json
 import os
 import re
 import shutil
+import time
 
 import frontmatter  # type: ignore
 import markdown  # type: ignore
@@ -20,6 +21,7 @@ except Exception:
 
 try:
     from config import SiteConfig, read_config, sanitize_path
+    from i18n import translate
     from nav_builder import (
         NavNode,
         discover_markdown_files,
@@ -30,6 +32,7 @@ try:
     )
 except ImportError:
     from .config import SiteConfig, read_config, sanitize_path
+    from .i18n import translate
     from .nav_builder import (
         NavNode,
         discover_markdown_files,
@@ -242,6 +245,96 @@ def _render_gallery_html(
     return html
 
 
+def _gather_files_items(
+    content_root: Path,
+    files_dir: Path,
+    log: Optional[UILog] = None,
+) -> list[dict[str, str]]:
+    """Prepare files list items.
+
+    Returns list of dicts with keys: name, size, date, href
+    """
+    def info(msg: str) -> None:
+        if log is not None:
+            log.write(msg)
+        else:
+            print(msg)
+
+    items: list[dict[str, str]] = []
+    if not files_dir.exists() or not files_dir.is_dir():
+        return items
+
+    MAX_FILES_ITEMS = 1000
+    files_list = list(sorted(files_dir.iterdir()))[:MAX_FILES_ITEMS]
+    for src_file in files_list:
+        if not src_file.is_file():
+            continue
+        ext = src_file.suffix.lower()
+        if ext in {".html", ".md"}:
+            continue
+        # Get file info
+        stat = src_file.stat()
+        size_bytes = stat.st_size
+        if size_bytes < 1024:
+            size_str = f"{size_bytes} B"
+        elif size_bytes < 1024**2:
+            size_str = f"{size_bytes / 1024:.1f} KB"
+        else:
+            size_str = f"{size_bytes / (1024**2):.1f} MB"
+        # Date
+        date_str = time.strftime("%Y-%m-%d %H:%M", time.localtime(stat.st_mtime))
+        # Href
+        try:
+            rel_from_content = src_file.relative_to(content_root)
+        except Exception:
+            continue
+        href = rel_from_content.as_posix()
+        items.append({
+            "name": src_file.name,
+            "size": size_str,
+            "date": date_str,
+            "href": href,
+        })
+
+    return items
+
+
+def _render_files_html(
+    items: list[dict[str, str]],
+    current_out_dir: Path,
+    output_root: Path,
+    files_template: Template,
+) -> str:
+    """Build files list HTML (table) using external files.html template."""
+    if not items:
+        return ""
+
+    # Compute relative URLs
+    def rel_href(p: str) -> str:
+        full_p = output_root / p
+        return os.path.relpath(full_p, start=current_out_dir).replace(os.sep, "/")
+
+    name_header = translate("files_name")
+    size_header = translate("files_size")
+    date_header = translate("files_date")
+    download_header = translate("files_download")
+
+    rows = "\n".join(
+        f'<tr><td>{it["name"]}</td><td>{it["size"]}</td><td>{it["date"]}</td><td><a href="{rel_href(it["href"])}" download>{download_header}</a></td></tr>'
+        for it in items
+    )
+
+    # Render using external template
+    html = files_template.render(
+        name_header=name_header,
+        size_header=size_header,
+        date_header=date_header,
+        download_header=download_header,
+        rows=rows,
+    )
+    return html
+
+
 def _gather_blog_posts(
     blog_dir: Path,
     log: Optional[UILog] = None,
@@ -255,6 +348,9 @@ def _gather_blog_posts(
         if md_file.is_file() and md_file.name != "index.md":  # Skip index.md as it's used for blog intro
             try:
                 post = frontmatter.load(md_file)
+                # Skip draft posts
+                if post.metadata.get("draft"):
+                    continue
                 title = post.metadata.get("title") or md_file.stem.replace("_", " ").replace("-", " ")
                 date = post.metadata.get("date")
                 body_md = post.content
@@ -367,7 +463,7 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
     template = load_template(theme_path)
 
     # Load blog template if available. Use site assets first, fallback to repo assets
-    blog_template_path = site_root / "assets" / "blog.html"
+    blog_template_path = site_root / "assets" / "blog_theme.html"
     if not blog_template_path.exists():
         blog_template_path = REPO_ROOT / "assets" / "blog.html"  # Repo fallback
     if blog_template_path.exists():
@@ -376,6 +472,15 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
     else:
         blog_template = template  # Fallback to main theme template if blog template not found
         info("[Blog] Using fallback template")
+
+    # Load gallery theme for gallery pages
+    gallery_theme_path = site_root / "assets" / "gallery_theme.html"
+    if gallery_theme_path.exists():
+        gallery_theme = load_template(gallery_theme_path)
+        info("[Gallery] Using gallery-specific template")
+    else:
+        gallery_theme = template  # Fallback to main theme template
+        info("[Gallery] Using fallback template")
 
     # Ensure CSS copied to output root
     try:
@@ -395,18 +500,147 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
     # Copy non-markdown files
     copy_non_markdown_files(content_root, output_root, log)
 
-    # Build nav tree
-    nav_root = build_nav_tree(content_root, output_root)
-
     # Collect markdown files to render
     md_files = discover_markdown_files(content_root)
-    info(f"Discovered {len(md_files)} markdown files")
+
+    # Add generated special pages to md_files for navigation
+    special_generated = []
+    for special_dir in content_root.rglob("*"):
+        if special_dir.is_dir() and special_dir.name in {"_files", "_gallery", "_blog"}:
+            if not (special_dir / "index.md").exists():
+                rel_special = special_dir.relative_to(content_root)
+                output_special_html = output_root / rel_special / "index.html"
+                if output_special_html.exists():
+                    # Create fake md path for nav
+                    fake_md = special_dir / "index.md"
+                    special_generated.append(fake_md)
+    md_files.extend(special_generated)
+    info(f"Discovered {len(md_files)} files (including generated special pages)")
 
     # Collect data for search index
     search_items: list[dict[str, Any]] = []
 
     # Track blog folders that have been processed
     processed_blog_folders = set()
+
+    # Load templates for special directories
+    files_template_path = site_root / "assets" / "files.html"
+    if not files_template_path.exists():
+        files_template_path = REPO_ROOT / "assets" / "files.html"
+    files_template = load_template(files_template_path)
+    info("[Files] Loaded files template")
+
+    gallery_template_path = site_root / "assets" / "gallery.html"
+    if not gallery_template_path.exists():
+        gallery_template_path = REPO_ROOT / "assets" / "gallery.html"
+    gallery_component_template = load_template(gallery_template_path)
+    info("[Gallery] Loaded gallery component template")
+
+    # Build nav tree
+    nav_root = build_nav_tree(content_root, output_root)
+
+    # Generate pages for special directories without index.md
+    for special_dir in content_root.rglob("*"):
+        if not special_dir.is_dir() or special_dir.name not in {"_files", "_gallery", "_blog"}:
+            continue
+
+        index_md = special_dir / "index.md"
+        if index_md.exists():
+            continue  # Skip if index.md exists
+
+        rel_special_dir = special_dir.relative_to(content_root)
+        output_dir = output_root / rel_special_dir
+        output_dir.mkdir(parents=True, exist_ok=True)
+        out_path = output_dir / "index.html"
+
+        breadcrumbs = build_breadcrumbs(content_root, output_root, Path(str(rel_special_dir) + "/index.md"), output_dir)
+        sidebar_html = render_sidebar_html(nav_root, output_dir, output_root, out_path.relative_to(output_root))
+        css_url = os.path.relpath(css_dst, start=output_dir).replace(os.sep, "/")
+        common_js_url = os.path.relpath(output_root / "common.js", start=output_dir).replace(os.sep, "/")
+
+        special_html = ""
+        title = ""
+        current_template = template
+
+        if special_dir.name == "_files":
+            # Check if has non-md/html files
+            has_files = any(
+                f.is_file() and f.suffix.lower() not in {".md", ".html"}
+                for f in special_dir.iterdir()
+            )
+            if has_files:
+                items = _gather_files_items(content_root, special_dir, log=log)
+                if items:
+                    special_html = _render_files_html(items, output_dir, output_root, files_template)
+                    title = translate("files_title")
+                else:
+                    continue
+            else:
+                continue
+        elif special_dir.name == "_gallery":
+            # Check if has images
+            has_images = any(
+                f.is_file() and f.suffix.lower() in IMAGE_EXTS
+                for f in special_dir.iterdir()
+            )
+            if has_images:
+                items = _gather_gallery_items(content_root, special_dir, output_root, thumb_max_side=400, log=log)
+                if items:
+                    special_html = _render_gallery_html(
+                        items,
+                        output_dir,
+                        output_root,
+                        gallery_id=f"gallery-{rel_special_dir.as_posix().replace('/', '-')}",
+                        gallery_template=gallery_component_template,
+                    )
+                    title = translate("gallery_title")
+                    current_template = gallery_theme if gallery_theme_path.exists() else template
+                else:
+                    continue
+            else:
+                continue
+        elif special_dir.name == "_blog":
+            # Check if has md files != index.md
+            has_posts = any(
+                f.is_file() and f.suffix.lower() == ".md" and f.name != "index.md"
+                for f in special_dir.iterdir()
+            )
+            if has_posts:
+                posts = _gather_blog_posts(special_dir, log=log)
+                if posts:
+                    special_html = _render_blog_html(posts)  # blog_intro_html empty since no index.md
+                    title = translate("blog_title")
+                    current_template = blog_template if blog_template.exists() else template
+                else:
+                    continue
+            else:
+                continue
+
+        if special_html:
+            html = current_template.render(
+                site_name=cfg.site_name,
+                author=cfg.author,
+                footer=cfg.footer,
+                page_title=title,
+                page_date=None,
+                content_html=special_html,
+                breadcrumbs=breadcrumbs,
+                sidebar_html=sidebar_html,
+                theme_css_url=css_url,
+                common_js_url=common_js_url,
+            )
+            out_path.write_text(html, encoding="utf-8")
+            info(f"[{special_dir.name[1:].capitalize()}] Generated: {out_path.relative_to(output_root)}")
+            # Add to search
+            search_items.append({
+                "title": title,
+                "url": out_path.relative_to(output_root).as_posix(),
+                "date": None,
+                "content": strip_html(special_html),
+            })
+
+    # Build nav tree
+    nav_root = build_nav_tree(content_root, output_root)
 
     for md_file in md_files:
         rel_md = md_file.relative_to(content_root)
@@ -440,10 +674,15 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
                     if index_md_path.exists():
                         try:
                             index_post = frontmatter.load(index_md_path)
-                            blog_title = index_post.metadata.get("title") or load_title_from_markdown(index_md_path) or "Blog"
-                            index_content_md = index_post.content.strip()
-                            if index_content_md:
-                                blog_intro_html = convert_markdown_to_html(index_content_md)
+                            # Skip draft blog index
+                            if index_post.metadata.get("draft"):
+                                blog_title = md_file.parent.name.replace("_", " ").replace("-", " ") or "Blog"
+                            else:
+                                blog_title_from_md, _ = load_title_from_markdown(index_md_path)
+                                blog_title = index_post.metadata.get("title") or blog_title_from_md or "Blog"
+                                index_content_md = index_post.content.strip()
+                                if index_content_md:
+                                    blog_intro_html = convert_markdown_to_html(index_content_md)
                         except Exception:
                             blog_title = md_file.parent.name.replace("_", " ").replace("-", " ") or "Blog"
                     else:
@@ -526,6 +765,9 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
 
         # Parse frontmatter and content
         post = frontmatter.load(md_file)
+        # Skip draft pages
+        if post.metadata.get("draft"):
+            continue
         title = post.metadata.get("title") or md_file.stem.replace("_", " ").replace("-", " ")
         date = post.metadata.get("date")
         body_md = post.content
@@ -585,8 +827,62 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
                 except Exception as e:
                     info(f"[Gallery] Error generating gallery for {rel_md}: {e}")
 
+        # Files rendering logic - handles different files list placement scenarios
+        # 1) If this page is _files/index.md, render the files list here (preferred)
+        if md_file.name.lower() == "index.md" and md_file.parent.name == "_files":
+            try:
+                files_dir = md_file.parent
+                items = _gather_files_items(content_root, files_dir, log=log)
+                # Load files component template (use site assets, fallback to repo assets)
+                REPO_ROOT = Path(__file__).resolve().parent
+                tpl_path = site_root / "assets" / "files.html"
+                if not tpl_path.exists():
+                    tpl_path = REPO_ROOT / "assets" / "files.html"
+                files_template = load_template(tpl_path)
+                files_html = _render_files_html(
+                    items,
+                    current_out_dir=out_path.parent,
+                    output_root=output_root,
+                    files_template=files_template,
+                )
+                # Replace the page content with files HTML for dedicated files pages
+                if files_html:
+                    body_html = files_html
+                    info(f"[Files] Files list rendered in: {rel_md}")
+            except Exception as e:
+                info(f"[Files] Error generating files for {rel_md}: {e}")
+        # 2) Otherwise, if this is a parent index.md and a sibling _files exists WITHOUT its own index.md,
+        #    append the files list to the parent page.
+        elif md_file.name.lower() == "index.md":
+            files_dir = md_file.parent / "_files"
+            if files_dir.exists() and files_dir.is_dir() and not (files_dir / "index.md").exists():
+                try:
+                    items = _gather_files_items(content_root, files_dir, log=log)
+                    # Load files component template (use site assets, fallback to repo assets)
+                    REPO_ROOT = Path(__file__).resolve().parent
+                    tpl_path = site_root / "assets" / "files.html"
+                    if not tpl_path.exists():
+                        tpl_path = REPO_ROOT / "assets" / "files.html"
+                    files_template = load_template(tpl_path)
+                    files_html = _render_files_html(
+                        items,
+                        current_out_dir=out_path.parent,
+                        output_root=output_root,
+                        files_template=files_template,
+                    )
+                    # Append files HTML after the main page content
+                    if files_html:
+                        body_html = f"{body_html}\n\n{files_html}"
+                        info(f"[Files] Files list appended to parent: {rel_md.parent or Path('.')}")
+                except Exception as e:
+                    info(f"[Files] Error generating files for {rel_md}: {e}")
+
         # Use default template
         current_template = template
+
+        # Override template for special content types
+        if "_gallery" in str(rel_md):
+            current_template = gallery_theme
 
         # Build breadcrumbs (relative to this file's directory)
         current_out_dir = out_path.parent

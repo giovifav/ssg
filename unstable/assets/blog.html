@@ -53,6 +53,7 @@
         {% endfor %}
       </nav>
 
+      {% if content_html %}
       <article>
         <h1 class="page-title">{{ page_title }}</h1>
         {% if page_date %}
@@ -61,13 +62,13 @@
         <div class="markdown-body">
           {{ content_html | safe }}
         </div>
-        <!-- Blog posts section -->
-        <div class="blog-posts">
-          <div id="blog-posts-container">
-            {{ blog_posts }}
-          </div>
-        </div>
       </article>
+      {% endif %}
+
+      <!-- Blog posts section -->
+      <div class="blog-posts">
+        {{ blog_posts }}
+      </div>
     </main>
   </div>
 
