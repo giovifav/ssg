@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LuaPyDoc - Gio's unstable code</title>
+  <link rel="stylesheet" href="../theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-text">
+          <h1 class="site-title">Gio's unstable code</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+          <div id="searchResults" class="search-results" hidden></div>
+        </div>
+        <a class="btn-primary" href="../index.html">Home</a>
+        <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <h2>Navigazione</h2>
+        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../_gallery/index.html" data-target="_gallery/index.html">Gallery</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="luapydoc/index.html" class="active">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li></ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <nav class="breadcrumbs">
+        
+          
+            <a href="../index.html">My Experimental Projects</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <a href="index.html">LuaPyDoc</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <span class="current">LuaPyDoc</span>
+          
+          
+        
+      </nav>
+
+      <article>
+        <h1 class="page-title">LuaPyDoc</h1>
+        
+        <p class="meta">2025-01-01</p>
+        
+        <div class="markdown-body">
+          <p>Luapydoc è un generatore di documentazione basato su Python per codebase Lua. Analizza commenti di documentazione in stile LDoc nei file sorgente Lua e genera un sito web di documentazione HTML completo, navigabile, con evidenziazione della sintassi, funzionalità di ricerca e molto altro.</p>
+<p><a href="https://github.com/giovifav/luapydoc">Repository</a>
+<a href="docs">Esempio output</a></p>
+<h2 id="caratteristiche">Caratteristiche</h2>
+<ul>
+<li>Analizza commenti di documentazione LDoc (@param, @return, @usage, ecc.)</li>
+<li>Supporta funzioni, variabili, tabelle e tipi</li>
+<li>Genera pagine HTML responsive con tema scuro</li>
+<li>Evidenziazione della sintassi per codice Lua usando Pygments</li>
+<li>Navigazione a barra laterale basata su albero per moduli, classi e funzioni</li>
+<li>Ricerca a testo completo con indice</li>
+<li>Design responsive per mobile e desktop</li>
+</ul>
+<h2 id="requisiti">Requisiti</h2>
+<ul>
+<li>Python 3.x</li>
+<li>jinja2</li>
+<li>pygments</li>
+</ul>
+<h2 id="installazione">Installazione</h2>
+<ol>
+<li>Clona questo repository.</li>
+<li>Installa le dipendenze: <code>pip install -r requirements.txt</code></li>
+</ol>
+<h2 id="utilizzo">Utilizzo</h2>
+<ol>
+<li>Inserisci i tuoi file sorgente Lua in una directory (es. <code>lua_src</code>), organizzati in sottodirectory se necessario.</li>
+<li>Esegui il generatore con le opzioni desiderate (vedi esempi sotto).</li>
+<li>Apri il file <code>index.html</code> nella directory di output nel tuo browser per visualizzare la documentazione.</li>
+</ol>
+<h3 id="opzioni-riga-di-comando">Opzioni riga di comando</h3>
+<pre><code class="language-bash"># Utilizzo di base con le directory di default
+python docs_generator.py
+
+# Specifica directory sorgente e output personalizzate
+python docs_generator.py --src-dir ./my_lua_code --output-dir ./my_docs
+
+# Utilizzo delle forme brevi
+python docs_generator.py -s ./src -o ./docs
+
+# Specifica solo la directory sorgente (output di default 'docs')
+python docs_generator.py --src-dir ./lua_src
+</code></pre>
+<p><strong>Parametri disponibili:</strong>
+- <code>-s, --src-dir</code>: Directory contenente i file sorgente Lua (default: <code>lua_src</code>)
+- <code>-o, --output-dir</code>: Directory dove generare la documentazione (default: <code>docs</code>)</p>
+<p><strong>Aiuto completo:</strong></p>
+<pre><code class="language-bash">python docs_generator.py --help
+</code></pre>
+<h2 id="struttura-del-progetto">Struttura del progetto</h2>
+<ul>
+<li><code>docs_generator.py</code>: Script principale che analizza i file Lua e genera documentazione</li>
+<li><code>docs_template.html</code>: Template Jinja2 per pagine HTML</li>
+<li><code>docs_style.css</code>: Stili CSS per il sito web di documentazione</li>
+<li><code>requirements.txt</code>: Dipendenze Python</li>
+<li><code>lua_src/</code>: Directory per file sorgente Lua (creala)</li>
+<li><code>docs/</code>: Directory di output per file HTML generati</li>
+</ul>
+<h2 id="come-funziona">Come funziona</h2>
+<p>Il generatore lavora in due fasi:
+1. Analizza commenti di documentazione (es. --- @param name desc)
+2. Li associa a definizioni di funzioni o assegnazioni di variabili
+3. Costruisce un albero gerarchico per la navigazione
+4. Genera pagine HTML usando template Jinja2
+5. Include codice Lua con sintassi evidenziata</p>
+<h2 id="personalizzazione">Personalizzazione</h2>
+<p>Puoi personalizzare l'aspetto modificando <code>docs_style.css</code> e il layout modificando <code>docs_template.html</code>.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      Copyright 2025
+      <p class="site-author">Giovanni Favaro</p>
+    </div>
+  </footer>
+
+  <script src="../common.js"></script>
+</body>
+</html>

@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>entity</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs_style.css">
+
+<style>
+/* Sidebar tree view styles */
+#definitions-list.tree { font-size: 0.95em; }
+#definitions-list.tree ul { list-style: none; margin-left: 0; padding-left: 0.8rem; border-left: 1px solid rgba(255,255,255,0.08); }
+#definitions-list.tree li { margin: 2px 0; position: relative; }
+#definitions-list.tree .twisty { border: none; background: none; cursor: pointer; font-size: 12px; width: 1rem; margin-right: 4px; color: #aaa; padding: 0; }
+#definitions-list.tree .label { cursor: pointer; }
+#definitions-list.tree li.leaf > .twisty { visibility: hidden; }
+#definitions-list.tree ul.collapsed { display: none; }
+#definitions-list .tree-controls { display: flex; gap: 6px; margin-bottom: 8px; }
+#definitions-list .tree-controls button { font-size: 12px; padding: 2px 6px; }
+</style>
+</head>
+
+<body>
+<div class="t-container">
+    <aside class="t-col-3">
+        <input type="text" id="searchBox" class="t-input" placeholder="Search...">
+        <div id="results"></div>
+
+        <div id="definitions-list" class="tree">
+            <div class="tree-controls">
+                <button id="expandAll" class="t-button">Expand all</button>
+                <button id="collapseAll" class="t-button">Collapse all</button>
+            </div>
+            
+<ul>
+
+    
+        <li>arrow_manager
+<ul>
+
+    
+        <li>ArrowManager
+<ul>
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getArrowDirection">getArrowDirection</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getNormalizedGroupAndBounds">getNormalizedGroupAndBounds</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getTransformedShape">getTransformedShape</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.mirrorPixels">mirrorPixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.rotatePixels">rotatePixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.rotatePixelsArbitrary">rotatePixelsArbitrary</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#checkTaperingShape">checkTaperingShape</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isDiagonalArrow">isDiagonalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isHorizontalArrow">isHorizontalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isSimpleDiagonalArrow">isSimpleDiagonalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isVerticalArrow">isVerticalArrow</a></li>
+        
+    
+
+    
+        <li>mod ArrowManager
+<ul>
+
+    
+        
+            
+            <li><a href="arrow_manager.html#Utils">Utils</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>collision_manager
+<ul>
+
+    
+        <li>CollisionManager
+<ul>
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:checkPlayerMovement">checkPlayerMovement</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:getCollisionPixels">getCollisionPixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:resolveEntityCollision">resolveEntityCollision</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod CollisionManager
+<ul>
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager">CollisionManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>constants
+<ul>
+
+    
+        
+            
+            <li><a href="constants.html#constants.Constants">Constants</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="constants.html#Constants.COLORS">Constants.COLORS</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>entity
+<ul>
+
+    
+        <li>Entity
+<ul>
+
+    
+        
+            
+            <li><a href="entity.html#Entity:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:removeFromCollisionMap">removeFromCollisionMap</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:setMoving">setMoving</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:updateCollisionMapPosition">updateCollisionMapPosition</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:updateVisualShape">updateVisualShape</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Entity
+<ul>
+
+    
+        
+            
+            <li><a href="entity.html#ArrowManager">ArrowManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>game
+<ul>
+
+    
+        <li>Game
+<ul>
+
+    
+        
+            
+            <li><a href="game.html#Game:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:reset">reset</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Game
+<ul>
+
+    
+        
+            
+            <li><a href="game.html#Level">Level</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        
+            
+            <li><a href="game.html#self.collisionManager">self.collisionManager</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#self.currentLevel">self.currentLevel</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>gameover
+<ul>
+
+    
+        <li>GameOver
+<ul>
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod GameOver
+<ul>
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver">GameOver</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>level
+<ul>
+
+    
+        <li>Level
+<ul>
+
+    
+        
+            
+            <li><a href="level.html#Level:addEntity">addEntity</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level.new">new</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Level
+<ul>
+
+    
+        
+            
+            <li><a href="level.html#Utils">Utils</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>main
+<ul>
+
+    
+        
+            
+            <li><a href="main.html#main.Game">Game</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>scene_manager
+<ul>
+
+    
+        <li>mod SceneManager
+<ul>
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager">SceneManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>SceneManager
+<ul>
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:reset_game">reset_game</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:set_scene">set_scene</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>utils
+<ul>
+
+    
+        <li>Utils
+<ul>
+
+    
+        
+            
+            <li><a href="utils.html#Utils.floodFill">floodFill</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.getAABB">getAABB</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.getAABBRounded">getAABBRounded</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.log">log</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>win
+<ul>
+
+    
+        <li>mod Win
+<ul>
+
+    
+        
+            
+            <li><a href="win.html#Win">Win</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>Win
+<ul>
+
+    
+        
+            
+            <li><a href="win.html#Win:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+</ul>
+
+        </div>
+    </aside>
+
+    <main class="t-col-9">
+        <div style="margin-bottom: 10px;">
+            <a href="index.html" class="back-link">&larr; Back to Index</a>
+        </div>
+        <h1 class="t-heading">entity</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="doc">Documentation</button>
+            <button class="tab-button" data-tab="code">View Code</button>
+        </div>
+
+        <div class="tab-content" id="doc" style="display:block;">
+            
+            
+            <div class="func t-card" id="ArrowManager">
+                <h2 class="t-heading">ArrowManager</h2>
+                <p>Defines the structure and behavior of game entities, such as players, enemies, walls, and collectibles. `floatX`, and `floatY` (precise floating-point coordinates).</p>
+                <p><em>Type: field</em></p>
+
+                
+
+                
+
+                
+                <h3>Fields</h3>
+                <ul>
+                    
+                    <li><b>string</b> (type): The type of the entity (e.g., "player", "enemy", "wall", "collectible", "trigger").</li>
+                    
+                    <li><b>table</b> (pixels): A list of pixel data for the entity. Each pixel has `x`, `y` (integer grid coordinates),</li>
+                    
+                    <li><b>table</b> (color): The RGB color of the entity.</li>
+                    
+                    <li><b>boolean</b> (isMoving): True if the entity is currently moving (e.g., an arrow), false otherwise.</li>
+                    
+                    <li><b>string</b> (direction): The current movement direction of the entity (e.g., "up", "down", "left", "right", "up-right", etc.).</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+                <p><strong>Class:</strong> mod Entity</p>
+                
+            </div>
+            
+            <div class="func t-card" id="Entity.new">
+                <h2 class="t-heading">Entity.new</h2>
+                <p>Entity.new(type, pixels, color) Creates a new Entity object. Initializes the entity's type, color, and sets up its pixels with both integer and floating-point positions.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>string</b> (type): The type of the entity.</li>
+                    
+                    <li><b>table</b> (pixels): A table of initial pixel coordinates ({x=x, y=y}).</li>
+                    
+                    <li><b>table</b> (color): The RGB color of the entity.</li>
+                    
+                    <li><b>table</b> (normalizedShape): The normalized pixel group representing the entity's shape (relative to 0,0).</li>
+                    
+                    <li><b>table</b> (bounds): The bounding box of the original pixel group.</li>
+                    
+                </ul>
+                
+
+                
+                <h3>Returns</h3>
+                <ul>
+                    
+                    <li>(Entity): A new Entity instance.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="Entity:setMoving">
+                <h2 class="t-heading">Entity:setMoving</h2>
+                <p>Entity:setMoving(direction) Sets the entity's movement state and direction.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>string</b> (direction): The movement direction (e.g., "up", "down", "left", "right").</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="Entity:updateCollisionMapPosition">
+                <h2 class="t-heading">Entity:updateCollisionMapPosition</h2>
+                <p>Entity:updateCollisionMapPosition(level, newPixelsData) Updates the entity's position in the collision map and its internal pixel coordinates.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>Level</b> (level): The current active level.</li>
+                    
+                    <li><b>table</b> (newPixelsData): A table of new pixel data, each with newFloatX, newFloatY, nextGridX, nextGridY, and original pixel reference.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="Entity:removeFromCollisionMap">
+                <h2 class="t-heading">Entity:removeFromCollisionMap</h2>
+                <p>Entity:removeFromCollisionMap(level) Removes the entity's current pixel positions from the collision map.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>Level</b> (level): The current active level.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="Entity:updateVisualShape">
+                <h2 class="t-heading">Entity:updateVisualShape</h2>
+                <p>Entity:updateVisualShape() Updates the entity's `pixels` table based on its `normalizedShape` and `direction`. This method applies transformations (mirroring/rotation) to the base shape and keeps the shape centered.</p>
+                <p><em>Type: function</em></p>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="Entity:draw">
+                <h2 class="t-heading">Entity:draw</h2>
+                <p>Entity:draw() Draws the entity on the screen using its current floating-point pixel positions, rounded to the nearest integer for rendering on the grid.</p>
+                <p><em>Type: function</em></p>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+        </div>
+
+        <div class="tab-content" id="code">
+            <div class="lua-highlight"><div class="lua-highlight"><pre><span></span><span class="c1">--- @classmod Entity</span>
+<span class="c1">-- Defines the structure and behavior of game entities, such as players, enemies, walls, and collectibles.</span>
+<span class="c1">-- @field type string The type of the entity (e.g., &quot;player&quot;, &quot;enemy&quot;, &quot;wall&quot;, &quot;collectible&quot;, &quot;trigger&quot;).</span>
+<span class="c1">-- @field pixels table A list of pixel data for the entity. Each pixel has `x`, `y` (integer grid coordinates),</span>
+<span class="c1">--   `floatX`, and `floatY` (precise floating-point coordinates).</span>
+<span class="c1">-- @field color table The RGB color of the entity.</span>
+<span class="c1">-- @field isMoving boolean True if the entity is currently moving (e.g., an arrow), false otherwise.</span>
+<span class="c1">-- @field direction string The current movement direction of the entity (e.g., &quot;up&quot;, &quot;down&quot;, &quot;left&quot;, &quot;right&quot;, &quot;up-right&quot;, etc.).</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">ArrowManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;arrow_manager&quot;</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">Entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="nv">Entity</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Entity</span>
+
+<span class="c1">--- Entity.new(type, pixels, color)</span>
+<span class="c1">-- Creates a new Entity object.</span>
+<span class="c1">-- Initializes the entity&#39;s type, color, and sets up its pixels with both integer and floating-point positions.</span>
+<span class="c1">-- @param type string The type of the entity.</span>
+<span class="c1">-- @param pixels table A table of initial pixel coordinates ({x=x, y=y}).</span>
+<span class="c1">-- @param color table The RGB color of the entity.</span>
+<span class="c1">-- @param normalizedShape table The normalized pixel group representing the entity&#39;s shape (relative to 0,0).</span>
+<span class="c1">-- @param bounds table The bounding box of the original pixel group.</span>
+<span class="c1">-- @return Entity A new Entity instance.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Entity</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span><span class="w"> </span><span class="nv">pixels</span><span class="p">,</span><span class="w"> </span><span class="nv">color</span><span class="p">,</span><span class="w"> </span><span class="nv">normalizedShape</span><span class="p">,</span><span class="w"> </span><span class="nv">bounds</span><span class="p">,</span><span class="w"> </span><span class="nv">initialDirection</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">setmetatable</span><span class="p">({},</span><span class="w"> </span><span class="nv">Entity</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">type</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">color</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">isMoving</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">initialDirection</span><span class="w"> </span><span class="c1">-- Set initial direction</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">initialDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">initialDirection</span><span class="w"> </span><span class="c1">-- Store original detected direction for shape transforms</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">initialNormalizedShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">normalizedShape</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">-- Store the initial detected shape</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">initialBounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">bounds</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{</span><span class="nv">minX</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">minY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">maxX</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">maxY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="c1">-- Store initial bounds</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">normalizedShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">normalizedShape</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">-- This will store the currently transformed shape</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">bounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">bounds</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{</span><span class="nv">minX</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">minY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">maxX</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">maxY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="c1">-- This will store the bounds of the currently transformed shape</span>
+
+<span class="w">    </span><span class="c1">-- Initialize pixels with float positions</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">y</span><span class="p">,</span><span class="w"> </span><span class="nv">floatX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">floatY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">y</span><span class="p">})</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span>
+<span class="kr">end</span>
+
+<span class="c1">--- Entity:setMoving(direction)</span>
+<span class="c1">-- Sets the entity&#39;s movement state and direction.</span>
+<span class="c1">-- @param direction string The movement direction (e.g., &quot;up&quot;, &quot;down&quot;, &quot;left&quot;, &quot;right&quot;).</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Entity</span><span class="p">:</span><span class="nf">setMoving</span><span class="p">(</span><span class="nv">direction</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">isMoving</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">direction</span>
+<span class="kr">end</span>
+
+<span class="c1">--- Entity:updateCollisionMapPosition(level, newPixelsData)</span>
+<span class="c1">-- Updates the entity&#39;s position in the collision map and its internal pixel coordinates.</span>
+<span class="c1">-- @param level Level The current active level.</span>
+<span class="c1">-- @param newPixelsData table A table of new pixel data, each with newFloatX, newFloatY, nextGridX, nextGridY, and original pixel reference.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Entity</span><span class="p">:</span><span class="nf">updateCollisionMapPosition</span><span class="p">(</span><span class="nv">level</span><span class="p">,</span><span class="w"> </span><span class="nv">newPixelsData</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- Clear old positions from collision map</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">level</span><span class="p">.</span><span class="py">collisionMap</span><span class="p">[</span><span class="nv">pixel</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Update pixel positions and add new positions to collision map</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">newPixelsData</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">p</span><span class="p">.</span><span class="py">original</span><span class="p">.</span><span class="py">floatX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">newFloatX</span>
+<span class="w">        </span><span class="nv">p</span><span class="p">.</span><span class="py">original</span><span class="p">.</span><span class="py">floatY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">newFloatY</span>
+<span class="w">        </span><span class="nv">p</span><span class="p">.</span><span class="py">original</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">nextGridX</span>
+<span class="w">        </span><span class="nv">p</span><span class="p">.</span><span class="py">original</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">nextGridY</span>
+<span class="w">        </span><span class="nv">level</span><span class="p">.</span><span class="py">collisionMap</span><span class="p">[</span><span class="nv">p</span><span class="p">.</span><span class="py">nextGridX</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">nextGridY</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="c1">--- Entity:removeFromCollisionMap(level)</span>
+<span class="c1">-- Removes the entity&#39;s current pixel positions from the collision map.</span>
+<span class="c1">-- @param level Level The current active level.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Entity</span><span class="p">:</span><span class="nf">removeFromCollisionMap</span><span class="p">(</span><span class="nv">level</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">level</span><span class="p">.</span><span class="py">collisionMap</span><span class="p">[</span><span class="nv">pixel</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="c1">--- Entity:updateVisualShape()</span>
+<span class="c1">-- Updates the entity&#39;s `pixels` table based on its `normalizedShape` and `direction`.</span>
+<span class="c1">-- This method applies transformations (mirroring/rotation) to the base shape and keeps the shape centered.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Entity</span><span class="p">:</span><span class="nf">updateVisualShape</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">isMoving</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">direction</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">initialNormalizedShape</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="o">#</span><span class="nv">self</span><span class="p">.</span><span class="py">initialNormalizedShape</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="kr">return</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Compute current bounding box center to preserve position after transform</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">minX</span><span class="p">,</span><span class="w"> </span><span class="nv">minY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.huge</span><span class="p">,</span><span class="w"> </span><span class="nb">math.huge</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">maxX</span><span class="p">,</span><span class="w"> </span><span class="nv">maxY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nb">math.huge</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nb">math.huge</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">minX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.min</span><span class="p">(</span><span class="nv">minX</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">x</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">minY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.min</span><span class="p">(</span><span class="nv">minY</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">maxX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.max</span><span class="p">(</span><span class="nv">maxX</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">x</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">maxY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.max</span><span class="p">(</span><span class="nv">maxY</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">currentCenterX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">minX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">maxX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">currentCenterY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">minY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">maxY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">transformedShape</span><span class="p">,</span><span class="w"> </span><span class="nv">transformedBounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ArrowManager</span><span class="p">.</span><span class="nf">getTransformedShape</span><span class="p">(</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">initialNormalizedShape</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">initialBounds</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">initialDirection</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">direction</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">normalizedShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">transformedShape</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">bounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">transformedBounds</span>
+
+<span class="w">    </span><span class="c1">-- Center of the transformed shape in its own coordinate system (normalizedShape is relative to 0,0)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">shapeCenterX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">bounds</span><span class="p">.</span><span class="py">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">shapeCenterY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">bounds</span><span class="p">.</span><span class="py">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Offset so that centers match</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">offsetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">currentCenterX</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">shapeCenterX</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">offsetY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">currentCenterY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">shapeCenterY</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">newPixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">normalizedShape</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">offsetX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">offsetY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">newPixels</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nx</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ny</span><span class="p">,</span><span class="w"> </span><span class="nv">floatX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nx</span><span class="p">,</span><span class="w"> </span><span class="nv">floatY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ny</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newPixels</span>
+<span class="kr">end</span>
+
+<span class="c1">--- Entity:draw()</span>
+<span class="c1">-- Draws the entity on the screen using its current floating-point pixel positions,</span>
+<span class="c1">-- rounded to the nearest integer for rendering on the grid.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Entity</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">love</span><span class="p">.</span><span class="py">graphics</span><span class="p">.</span><span class="nf">setColor</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">color</span><span class="p">.</span><span class="py">r</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">color</span><span class="p">.</span><span class="py">g</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">color</span><span class="p">.</span><span class="py">b</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">points</span><span class="p">,</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">))</span><span class="w"> </span><span class="c1">-- Round to nearest integer for drawing</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">points</span><span class="p">,</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">))</span><span class="w"> </span><span class="c1">-- Round to nearest integer for drawing</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="nv">love</span><span class="p">.</span><span class="py">graphics</span><span class="p">.</span><span class="nf">points</span><span class="p">(</span><span class="nv">points</span><span class="p">)</span>
+
+<span class="kr">end</span>
+
+<span class="kr">return</span><span class="w"> </span><span class="nv">Entity</span>
+</pre></div>
+</div>
+        </div>
+    </main>
+</div>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(tc => tc.style.display='none');
+        const targetTab = document.getElementById(btn.dataset.tab);
+        targetTab.style.display='block';
+    });
+});
+
+// Search with robust index loading (fallback to DOM if fetch fails)
+let searchIndex = [];
+const searchBox = document.getElementById("searchBox");
+const resultsDiv = document.getElementById("results");
+
+async function loadSearchIndex(){
+    try {
+        const res = await fetch("search.json", { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        searchIndex = await res.json();
+    } catch (e) {
+        // Fallback: build index from sidebar anchors (works also with file://)
+        const anchors = Array.from(document.querySelectorAll('#definitions-list a[href]'));
+        searchIndex = anchors.map(a => {
+            const href = a.getAttribute('href') || '';
+            const m = href.match(/([^\/\\]+)\.html#(.+)$/);
+            return {
+                file: m ? m[1] : '',
+                full_name: m ? m[2] : a.textContent.trim(),
+                class: null,
+                summary: a.textContent.trim(),
+                params: [],
+                returns: []
+            };
+        });
+    }
+}
+
+loadSearchIndex();
+
+function scrollHighlight(id){
+    const el=document.getElementById(id);
+    if(el){ el.scrollIntoView({behavior:"smooth", block:"center"}); el.classList.add("highlight");
+        setTimeout(()=>el.classList.remove("highlight"),2000); }
+}
+
+searchBox.addEventListener("input",async ()=>{
+    const q = searchBox.value.toLowerCase().trim();
+    resultsDiv.innerHTML="";
+    
+    const definitionsList = document.getElementById("definitions-list");
+    
+    if(q.length<2) {
+        resultsDiv.style.display = "none";
+        definitionsList.style.display = "block";
+        return;
+    }
+
+    // Ensure index is loaded
+    if (!Array.isArray(searchIndex) || searchIndex.length === 0) {
+        await loadSearchIndex();
+        if (!Array.isArray(searchIndex) || searchIndex.length === 0) {
+            resultsDiv.style.display = "block";
+            definitionsList.style.display = "none";
+            resultsDiv.innerHTML = `<div class="result t-card"><p>Loading index...</p></div>`;
+            return;
+        }
+    }
+    
+    const words = q.split(/\s+/).filter(word => word.length > 0);
+    const scoredMatches = searchIndex.map(raw => {
+        const item = {
+            file: raw.file || '',
+            full_name: (raw.full_name || '').toString(),
+            class: raw.class || null,
+            summary: raw.summary || ''
+        };
+        const itemStr = JSON.stringify(item).toLowerCase();
+        let score = 0;
+        if (item.full_name.toLowerCase().includes(q)) score += 10;
+        words.forEach(word => { if (itemStr.includes(word)) score += 1; });
+        return { item, score };
+    }).filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score);
+    
+    if (scoredMatches.length > 0) {
+        resultsDiv.style.display = "block";
+        definitionsList.style.display = "none";
+        scoredMatches.slice(0,20).forEach(({ item })=>{
+            let summary = item.summary || '';
+            if (summary && q.length > 0) {
+                const regex = new RegExp(`(${words.join('|')})`, 'gi');
+                summary = summary.replace(regex, '<mark>$1</mark>');
+            }
+            const href = `${item.file}.html#${encodeURIComponent(item.full_name)}`;
+            resultsDiv.innerHTML += `<div class="result t-card">
+                <a href="${href}">${item.full_name}</a>
+                ${item.class?`<p><b>Class:</b> ${item.class}</p>`:""}
+                <p>${summary}</p>
+            </div>`;
+        });
+    } else {
+        resultsDiv.style.display = "block";
+        definitionsList.style.display = "none";
+        resultsDiv.innerHTML = `<div class="result t-card"><p>No results found</p></div>`;
+    }
+});
+
+// Tree view enhancer for sidebar definitions
+function enhanceTree(root) {
+    if (!root) return;
+    root.classList.add('tree');
+
+    // Mark all nested ULs and insert twisty buttons
+    root.querySelectorAll(':scope > ul, :scope ul').forEach(ul => {
+        const parentLi = ul.parentElement;
+        if (!parentLi || parentLi.tagName.toLowerCase() !== 'li') return;
+
+        // Create twisty
+        const twisty = document.createElement('button');
+        twisty.className = 'twisty';
+        twisty.setAttribute('aria-label', 'toggle');
+        twisty.textContent = '▸';
+
+        // Wrap label text/link
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'label';
+
+        // Move existing contents (text and anchors) before UL into labelSpan
+        const childrenBeforeUL = [];
+        for (let n = parentLi.firstChild; n && n !== ul; n = n.nextSibling) {
+            childrenBeforeUL.push(n);
+        }
+        childrenBeforeUL.forEach(n => labelSpan.appendChild(n));
+
+        // Determine if leaf (no child UL)
+        const isLeaf = !ul || ul.children.length === 0;
+
+        // Insert twisty and label at start
+        parentLi.insertBefore(twisty, ul);
+        parentLi.insertBefore(labelSpan, ul);
+
+        if (isLeaf) {
+            parentLi.classList.add('leaf');
+        } else {
+            // Default collapsed for deeper levels; keep top level expanded
+            const depth = getDepth(parentLi, root);
+            if (depth > 1) ul.classList.add('collapsed');
+
+            const setExpanded = (expanded) => {
+                ul.classList.toggle('collapsed', !expanded);
+                twisty.textContent = expanded ? '▾' : '▸';
+            };
+
+            twisty.addEventListener('click', (e) => { e.stopPropagation(); setExpanded(ul.classList.contains('collapsed')); });
+            labelSpan.addEventListener('click', () => setExpanded(ul.classList.contains('collapsed')));
+        }
+    });
+
+    function getDepth(li, container){
+        let d = 0; let n = li;
+        while (n && n !== container) { if (n.tagName && n.tagName.toLowerCase() === 'ul') d++; n = n.parentElement; }
+        return d;
+    }
+
+    // Controls
+    const expandBtn = document.getElementById('expandAll');
+    const collapseBtn = document.getElementById('collapseAll');
+    if (expandBtn) expandBtn.addEventListener('click', () => {
+        root.querySelectorAll('#definitions-list ul').forEach(ul => ul.classList.remove('collapsed'));
+        root.querySelectorAll('#definitions-list .twisty').forEach(t => t.textContent = '▾');
+    });
+    if (collapseBtn) collapseBtn.addEventListener('click', () => {
+        // Keep the top-level list expanded
+        root.querySelectorAll('#definitions-list ul').forEach((ul, idx) => {
+            const depth = (function getUlDepth(u){ let d=0, p=u; while(p && p.id !== 'definitions-list'){ if(p.tagName && p.tagName.toLowerCase()==='ul') d++; p=p.parentElement; } return d; })(ul);
+            if (depth > 1) ul.classList.add('collapsed'); else ul.classList.remove('collapsed');
+        });
+        root.querySelectorAll('#definitions-list .twisty').forEach(t => t.textContent = '▸');
+        // Fix top-level twisties to expanded symbol
+        root.querySelectorAll('#definitions-list > ul').forEach(ul => {
+            const li = ul.parentElement;
+            const tw = li && li.querySelector(':scope > .twisty');
+            if (tw) tw.textContent = '▾';
+        });
+    });
+}
+
+// Auto-expand tree to the current page/hash
+function expandToCurrent() {
+    const defList = document.getElementById('definitions-list');
+    if (!defList) return;
+    const current = (location.pathname.split('/').pop() || '').toLowerCase();
+    const currentBase = current.replace(/\.html$/, '');
+    const hash = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+
+    const anchors = Array.from(defList.querySelectorAll('a[href]'));
+    let targetA = null;
+    if (hash) {
+        targetA = anchors.find(a => a.getAttribute('href') === `${currentBase}.html#${hash}`);
+    }
+    if (!targetA) {
+        targetA = anchors.find(a => (a.getAttribute('href') || '').startsWith(`${currentBase}.html#`)) || null;
+    }
+
+    if (targetA) {
+        // Expand all ancestor ULs and set twisties to expanded
+        let n = targetA.parentElement;
+        while (n && n.id !== 'definitions-list') {
+            if (n.tagName && n.tagName.toLowerCase() === 'ul') {
+                n.classList.remove('collapsed');
+            }
+            if (n.tagName && n.tagName.toLowerCase() === 'li') {
+                const tw = n.querySelector(':scope > .twisty');
+                if (tw) tw.textContent = '▾';
+            }
+            n = n.parentElement;
+        }
+        // Highlight and scroll into view
+        const li = targetA.closest('li');
+        if (li) {
+            li.classList.add('highlight');
+            targetA.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => li.classList.remove('highlight'), 2000);
+        }
+    }
+}
+
+ // Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    const defList = document.getElementById('definitions-list');
+    enhanceTree(defList);
+    expandToCurrent();
+});
+
+// Prism initialization handled automatically
+</script>
+</body>
+</html>

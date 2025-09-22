@@ -13,7 +13,8 @@ from pathlib import Path
 
 from textual.app import ComposeResult
 from textual.binding import Binding
-from textual.widgets import Button, Input, Label, Static
+from textual.widgets import Button, Input, Label, Static, OptionList
+from textual.widgets.option_list import Option
 from textual.containers import Vertical, Horizontal, Container
 from .utils import set_card_titles
 
@@ -86,6 +87,17 @@ class InitWizard(Container):
                         classes="wizard-input",
                     )
 
+                with Vertical(classes="field-container"):
+                    yield Label(translate("theme_selection"), classes="text-label")
+                    yield OptionList(
+                        Option("Moderno", "moderno"),
+                        Option("Semplice", "semplice"),
+                        Option("98", "98"),
+                        id="theme_selection_optionlist",
+                        classes="wizard-input",
+                        initial_index=0,
+                    )
+
                 # Actions
                 with Horizontal(classes="button-group"):
                     yield Button(translate("back_to_menu"), id="back", classes="btn-secondary")
@@ -148,6 +160,12 @@ class InitWizard(Container):
         site_name = self.query_one("#site_name", Input).value.strip()
         author = self.query_one("#author", Input).value.strip()
 
+        # Get selected theme
+        option_list = self.query_one("#theme_selection_optionlist", OptionList)
+        selected_index = option_list.highlighted_index or 0
+        selected_option = option_list.get_option(selected_index)
+        selected_theme = selected_option.value or "moderno"
+
         # Validation
         from i18n import translate
         if not folder_name:
@@ -165,10 +183,10 @@ class InitWizard(Container):
             # Initialize the site
             try:
                 from initialization import initialize_site
-                site_root = initialize_site(Path(base_path).expanduser().resolve(), folder_name, display_name, author)
+                site_root = initialize_site(Path(base_path).expanduser().resolve(), folder_name, display_name, author, selected_theme)
             except ImportError:
                 from ..initialization import initialize_site
-                site_root = initialize_site(Path(base_path).expanduser().resolve(), folder_name, display_name, author)
+                site_root = initialize_site(Path(base_path).expanduser().resolve(), folder_name, display_name, author, selected_theme)
 
             # Persist site and base dir
             try:

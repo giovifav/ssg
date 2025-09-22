@@ -35,7 +35,7 @@
     <aside class="sidebar">
       <div class="sidebar-inner">
         <h2>Navigazione</h2>
-        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="gssg/index.html" class="active">Gio's static site generator</a></summary><ul><li class="dir has-children has-folder"><details><summary><a href="_gallery/index.html" data-target="gssg/_gallery/index.html">screenshots</a></summary></details></li></ul></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li></ul>
+        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../_gallery/index.html" data-target="_gallery/index.html">Gallery</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="gssg/index.html" class="active">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li></ul>
       </div>
     </aside>
 
@@ -43,7 +43,7 @@
       <nav class="breadcrumbs">
         
           
-            <a href="../index.html">Gio's unstable code</a>
+            <a href="../index.html">My Experimental Projects</a>
           
           
             <span class="sep">&raquo;</span>
@@ -70,82 +70,33 @@
         
         <div class="markdown-body">
           <h1 id="gios-static-site-generator">Gio's Static Site Generator</h1>
-<p>Un generatore di siti statici moderno e potente scritto in Python con interfaccia terminale basata su Textual.</p>
+<p>Un generatore di siti statici moderno e intuitivo scritto in Python con interfaccia terminale basata su Textual.</p>
 <h2 id="descrizione">Descrizione</h2>
-<p>Questo progetto permette di creare e gestire siti web statici utilizzando contenuto Markdown. Fornisce sia un'interfaccia a riga di comando che un'interfaccia utente grafica intuitiva per inizializzare nuovi siti, modificare contenuti e generare output HTML. Il generatore supporta temi, frontmatter, alberi di navigazione, breadcrumbs, gestione assets, gallerie di immagini e sistemi blog avanzati.</p>
+<p>Questo strumento permette di creare siti web statici partendo da file Markdown. Offre un'interfaccia grafica semplice per gestire contenuti, applicare temi e generare siti pronti alla pubblicazione. Supporta gallerie di immagini, sistemi blog, navigazione automatica e molto altro.</p>
+<p><a href="https://github.com/giovifav/ssg">Download</a></p>
 <h2 id="caratteristiche-principali">Caratteristiche Principali</h2>
-<h3 id="generazione-sito">Generazione Sito</h3>
 <ul>
-<li><strong>Inizializzazione Sito</strong>: Creazione rapida di progetti sito con struttura predefinita</li>
-<li><strong>Processamento Markdown</strong>: Conversione da Markdown a HTML con supporto frontmatter (titolo, data, autore)</li>
-<li><strong>Template Engine</strong>: Usa Jinja2 per templating flessibile con temi personalizzabili</li>
-<li><strong>Navigazione</strong>: Generazione automatica sidebar navigazione e breadcrumbs</li>
-<li><strong>Gestione Assets</strong>: Copia asset statici nella directory di output</li>
-<li><strong>Indice di Ricerca</strong>: Generazione indice JSON per funzionalità di ricerca integrata</li>
-</ul>
-<h3 id="gallery-e-media">Gallery e Media</h3>
-<ul>
-<li><strong>Generazione Galleria</strong>: Creazione automatica di gallerie da directory <code>_gallery/</code></li>
-<li><strong>Thumbnails</strong>: Generazione automatica thumbnails con supporto EXIF</li>
-<li><strong>Modal Viewer</strong>: Visualizzatore immagini modal integrato</li>
-<li><strong>Lazy Loading</strong>: Caricamento immagini ottimizzato in base alla visibilità</li>
-</ul>
-<h3 id="sistemi-blog">Sistemi Blog</h3>
-<ul>
-<li><strong>Organizzazione Blog</strong>: Supporto cartelle <code>_blog/</code> con processamento dedicato</li>
-<li><strong>Frontmatter Avanzato</strong>: Metadata estese per post (autore, categorie, tags)</li>
-<li><strong>Ordinamento</strong>: Ordinamento cronologico automatico dei post</li>
-<li><strong>Template Dedicati</strong>: Layout specifici per pagine blog</li>
-</ul>
-<h3 id="interfaccia-utente">Interfaccia Utente</h3>
-<ul>
-<li><strong>TUI Moderna</strong>: Interfaccia terminale ricca basata su Textual</li>
-<li><strong>Editor Integrato</strong>: Modifica diretta di file Markdown e altri contenuti</li>
-<li><strong>Preview Live</strong>: Anteprima generazione sito in tempo reale</li>
-<li><strong>Themes UI</strong>: Molteplici temi (gruvbox, nord, tokyo-night, etc.)</li>
-<li><strong>Internazionalizzazione</strong>: Supporto italiano e inglese</li>
-<li><strong>Strumenti Gestione</strong>: Creazione gallerie, blog, pagine automaticamente</li>
-</ul>
-<h3 id="sicurezza-e-performance">Sicurezza e Performance</h3>
-<ul>
-<li><strong>Pulizia Path</strong>: Validazione percorsi file per evitare traversal</li>
-<li><strong>Gestione Memoria</strong>: Processing efficiente per siti grandi</li>
-<li><strong>Fallback Sicuri</strong>: Comportamenti sicuri in caso di errori</li>
-<li><strong>Ottimizzazioni</strong>: Caching, lazy loading e ottimizzazioni varie</li>
+<li><strong>Processamento Markdown</strong>: Converte file Markdown in pagine HTML utilizzando frontmatter per metadati.</li>
+<li><strong>Temi Personalizzabili</strong>: Template flessibili con Jinja2 per personalizzare l'aspetto del sito.</li>
+<li><strong>Gallerie Automatiche</strong>: Crea gallerie di immagini con thumbnails e visualizzatore integrato.</li>
+<li><strong>Sistemi Blog</strong>: Organizza contenuti in articoli con ordinamento cronologico.</li>
+<li><strong>Interfaccia Utente</strong>: TUI moderna per gestire siti senza comandi complessi.</li>
+<li><strong>Navigazione Automatica</strong>: Sidebar e breadcrumbs generati automaticamente.</li>
+<li><strong>Multilingua</strong>: Supporto italiano e inglese.</li>
 </ul>
 <h2 id="requisiti-di-sistema">Requisiti di Sistema</h2>
 <ul>
 <li>Python 3.8 o superiore</li>
-<li>Dipendenze installate automaticamente via <code>requirements.txt</code>:</li>
-<li><code>textual[syntax]</code>: Per l'interfaccia terminale</li>
-<li><code>python-frontmatter</code>: Per parsing frontmatter Markdown</li>
-<li><code>markdown</code>: Per conversione Markdown → HTML con estensioni avanzate</li>
-<li><code>jinja2</code>: Per rendering template</li>
-<li><code>toml</code>: Per gestione file configurazione</li>
-<li><code>Pillow</code>: Per processamento immagini galleire (opzionale)</li>
+<li>Dipendenze elencate in <code>requirements.txt</code></li>
 </ul>
 <h2 id="installazione">Installazione</h2>
-<h3 id="setup-automatico-raccomandato">Setup Automatico (Raccomandato)</h3>
-<pre><code class="language-bash"># Clona o scarica il repository
-git clone https://github.com/tuo-user/ssg.git
+<pre><code class="language-bash">git clone https://github.com/giovifav/ssg.git
 cd ssg
 
-# Avvia il setup automatico
-python run.py
-</code></pre>
-<p>Lo script <code>run.py</code> eseguirà:
-- Creazione ambiente virtuale (se non esistente)
-- Installazione/aggiornamento dipendenze Python
-- Lancio applicazione</p>
-<h3 id="setup-manuale">Setup Manuale</h3>
-<pre><code class="language-bash"># Crea ambiente virtuale
+# Crea ambiente virtuale
 python -m venv .venv
-
-# Attiva l'ambiente virtuale
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # macOS/Linux
 
 # Installa dipendenze
 pip install -r requirements.txt
@@ -154,350 +105,48 @@ pip install -r requirements.txt
 python main.py
 </code></pre>
 <h2 id="utilizzo">Utilizzo</h2>
-<h3 id="avvio-applicazione">Avvio Applicazione</h3>
-<p>Usa <code>python run.py</code> per setup automatico o <code>python main.py</code> per avviamento manuale.</p>
-<h3 id="menu-principale">Menu Principale</h3>
-<p>L'applicazione presenta tre opzioni principali:</p>
+<p>Avvia l'applicazione con <code>python main.py</code>.</p>
+<h3 id="passi-base">Passi Base</h3>
 <ol>
-<li>
-<p><strong>Inizializza Nuovo Sito</strong>
-   - Scegli directory base
-   - Inserisci nome cartella sito
-   - Imposta nome sito e autore
-   - Creazione struttura base automatica</p>
-</li>
-<li>
-<p><strong>Apri Sito Esistente</strong>
-   - Sfoglia e seleziona directory progetto esistente
-   - Accesso a strumenti modifica e generazione</p>
-</li>
-<li>
-<p><strong>Impostazioni</strong>
-   - Cambia tema interfaccia
-   - Cambia lingua (Italiano/Inglese)</p>
-</li>
+<li><strong>Inizializza un nuovo sito</strong>: Scegli una cartella e configura nome e autore.</li>
+<li><strong>Aggiungi contenuto</strong>: Crea file <code>.md</code> nella cartella <code>content/</code> con frontmatter per titolo, data, autore.</li>
+<li><strong>Aggiungi immagini e assets</strong>: Metti file statici nella cartella <code>assets/</code>.</li>
+<li><strong>Genera il sito</strong>: L'applicazione crea automaticamente l'output HTML nella directory configurata.</li>
 </ol>
-<h3 id="creazione-contenuto">Creazione Contenuto</h3>
-<p>I progetti sito hanno questa struttura:</p>
+<h3 id="struttura-di-base-di-un-sito">Struttura di Base di un Sito</h3>
 <pre><code>mio-sito/
-├── content/          # File Markdown qui
-├── assets/           # File statici (immagini, CSS, etc.)
-├── config.toml       # Configurazione sito
-├── assets/theme.html # Template principale
-└── assets/theme.css  # CSS sito
+├── content/
+│   └── index.md
+├── assets/
+│   ├── theme.html
+│   └── theme.css
+└── config.toml
 </code></pre>
-<h4 id="file-markdown-base">File Markdown Base</h4>
-<p>Crea file <code>.md</code> nella cartella <code>content/</code> usando frontmatter:</p>
-<pre><code class="language-markdown">---
-title: &quot;Il Mio Titolo Pagina&quot;
-date: &quot;2024-01-01&quot;
-author: &quot;Nome Autore&quot;
----
-
-# Intestazione Principale
-
-Il tuo contenuto qui... Supporta **Markdown** completo con:
-- Liste ordinate e non ordinate
-- [Link](https://esempio.com)
-- `Codice inline` e blocchi codice
-
-```python
-# Esempio blocco codice
-print(&quot;Hello, World!&quot;)
-</code></pre>
-<pre><code>
-#### Creazione Galleria
-Crea una directory `_gallery/` dentro `content/` e aggiungi immagini:
-
-</code></pre>
-<p>content/
-├── index.md
-└── foto/
-    ├── index.md          # Pagina galleria
-    └── _gallery/         # Immagini galleria
-        ├── vacanza1.jpg
-        ├── vacanza2.jpg
-        └── ...</p>
-<pre><code>
-Il generatore creerà automaticamente:
-- Pagina galleria HTML
-- Thumbnails ottimizzati
-- Modal viewer per visualizzazione ingrandita
-
-#### Sistem Blog
-Organizza contenuti blog in cartelle `_blog/`:
-
-</code></pre>
-<p>content/
-├── index.md
-└── articoli/
-    ├── index.md          # Pagina blog principale
-    └── _blog/            # Post articoli
-        ├── primo-post.md
-        ├── secondo-articolo.md
-        └── ...</p>
-<pre><code>
-I post possono includere metadata avanzate:
-```markdown
----
-title: &quot;Il Mio Primo Articolo&quot;
-date: &quot;2024-12-25&quot;
-author: &quot;Mario Rossi&quot;
-summary: &quot;Riassunto dell'articolo per anteprima&quot;
-tags: [&quot;tecnologia&quot;, &quot;python&quot;]
-draft: false
----
-</code></pre>
-<h3 id="generazione-sito_1">Generazione Sito</h3>
-<p>Dalla schermata editor sito:
-1. Seleziona "Genera Sito"
-2. Il generatore eseguirà:
-   - Parsing tutti i file Markdown in <code>content/</code>
-   - Applicazione template per creare HTML
-   - Costruzione navigazione e breadcrumbs
-   - Copia assets statici
-   - Generazione indice ricerca JSON
-   - Output nella directory configurata</p>
-<p>Il processo è completamente statico, privo di dipendenze lato server.</p>
-<h2 id="struttura-progetto">Struttura Progetto</h2>
-<pre><code>.
-├── assets/                   # Template e risorse predefinite
-│   ├── theme.html           # Template principale sito
-│   ├── theme.css            # CSS principale sito
-│   ├── gallery.html         # Template gallerie
-│   ├── gallery.css          # CSS gallerie
-│   ├── blog.html            # Template pagine blog
-│   └── 404.html             # Template errore 404
-├── ui/                      # Componenti interfaccia Textual
-│   ├── app.py              # Applicazione principale TUI
-│   ├── editor.py           # Editor file integrato
-│   ├── menu.py             # Menu di navigazione
-│   └── ...                 # Altri componenti UI
-├── languages/               # File traduzione interfaccia
-│   ├── en.json             # Traduzioni inglese
-│   └── it.json             # Traduzioni italiano
-├── test_site/               # Sito esempio funzionante
-├── unstable/                # Versione di sviluppo con esempio galleria
-├── BUGS_IMPROVEMENTS.md    # Report completo bug e migliorie
-├── site_generator.py        # Motore generazione core
-├── nav_builder.py           # Costruttore navigazione
-├── config.py               # Gestione configurazione sito
-├── config_manager.py       # Gestione configurazione UI
-├── main.py                 # Entry point applicazione
-└── run.py                  # Script setup automatico
-</code></pre>
-<h2 id="configurazione">Configurazione</h2>
-<h3 id="configurazione-sito-configtoml">Configurazione Sito (config.toml)</h3>
-<p>Localizzato in ogni root directory sito:</p>
-<pre><code class="language-toml"># Configurazione base
-site_name = &quot;Il Mio Sito&quot;
-author = &quot;Nome Autore&quot;
-footer = &quot;© 2024 Tutti i diritti riservati&quot;
-
-# Directory e temi
-output = &quot;output&quot;
-base_theme = &quot;assets/theme.html&quot;
-theme_css = &quot;assets/theme.css&quot;
-
-# Opzioni avanzate (futuro)
-# theme_js = &quot;assets/theme.js&quot;
-# gallery_template = &quot;assets/gallery.html&quot;
-# blog_template = &quot;assets/blog.html&quot;
-</code></pre>
-<h3 id="configurazione-ui">Configurazione UI</h3>
-<p>Impostazioni salvate in <code>config.json</code> nella directory script:
-- Lingua preferita dell'interfaccia
-- Tema interfaccia selezionato
-- Ultime directory utilizzate</p>
-<h2 id="api-core">API Core</h2>
-<h3 id="funzioni-principali">Funzioni Principali</h3>
-<h4 id="site_generatorgenerate_sitesite_root-path-log-uilog-none"><code>site_generator.generate_site(site_root: Path, log: UILog = None)</code></h4>
-<p>Genera sito statico dalla directory progetto.
-- <strong>Parametri:</strong>
-  - <code>site_root</code>: Path alla root del progetto sito
-  - <code>log</code>: Logger opzionale per output progresso
-- <strong>Risultato:</strong> Sito HTML completo nella directory <code>output/</code></p>
-<h4 id="nav_builderbuild_nav_treecontent_root-path-output_root-path"><code>nav_builder.build_nav_tree(content_root: Path, output_root: Path)</code></h4>
-<p>Costruisce albero navigazione da struttura content.
-- <strong>Parametri:</strong>
-  - <code>content_root</code>: Directory <code>content/</code> del sito
-  - <code>output_root</code>: Directory output per calcolo percorsi
-- <strong>Risultato:</strong> Oggetto <code>NavNode</code> root con gerarchia completa</p>
-<h4 id="configread_configsite_root-path"><code>config.read_config(site_root: Path)</code></h4>
-<p>Legge configurazione TOML del sito.
-- <strong>Parametri:</strong>
-  - <code>site_root</code>: Root directory progetto sito
-- <strong>Risultato:</strong> Oggetto <code>SiteConfig</code> con configurazione valida</p>
-<h2 id="esempi-avanzati">Esempi Avanzati</h2>
-<h3 id="workflow-completo">Workflow Completo</h3>
-<pre><code class="language-bash"># 1. Setup progetto
-python run.py
-
-# 2. Creazione nuovo sito
-# Nel TUI: Initialize New Site → Inserisci dettagli
-
-# 3. Aggiunta contenuti
-echo '---
-title: &quot;Benvenuto&quot;
-date: &quot;2024-12-25&quot;
----
-# Benvenuto nel Mio Sito
-
-Questo è un esempio di pagina MD.' &gt; mio-sito/content/index.md
-
-# 4. Aggiunta galleria
-mkdir -p mio-sito/content/foto/_gallery
-cp immagini/*.jpg mio-sito/content/foto/_gallery/
-echo '---
-title: &quot;Le Mie Foto&quot;
----
-# Galleria Personale
-
-Le mie foto preferite.' &gt; mio-sito/content/foto/index.md
-
-# 5. Generazione sito
-# Nel TUI: Apri sito → Genera Sito
-</code></pre>
-<h3 id="template-personalizzato">Template Personalizzato</h3>
-<p>Modifica <code>mio-sito/assets/theme.html</code>:</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;it&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;{{ page_title }} - {{ site_name }}&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ theme_css_url }}&quot;&gt;
-    &lt;!-- Aggiungi meta tag personalizzati --&gt;
-    &lt;meta name=&quot;description&quot; content=&quot;Il mio sito personale&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;{{ site_name }}&lt;/h1&gt;
-        &lt;nav&gt;{{ sidebar_html | safe }}&lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;div class=&quot;breadcrumbs&quot;&gt;{{ breadcrumbs | safe }}&lt;/div&gt;
-        &lt;h1&gt;{{ page_title }}&lt;/h1&gt;
-        &lt;div class=&quot;content markdown-body&quot;&gt;
-            {{ content_html | safe }}
-        &lt;/div&gt;
-    &lt;/main&gt;
-    &lt;footer&gt;{{ footer }}&lt;/footer&gt;
-    &lt;script src=&quot;{{ common_js_url }}&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h2 id="risoluzione-problemi">Risoluzione Problemi</h2>
-<h3 id="problemi-comuni">Problemi Comuni</h3>
-<h4 id="errore-no-toml-reader-available">Errore "No TOML reader available"</h4>
-<p><strong>Sintomo:</strong> Errore parsing <code>config.toml</code>
-<strong>Soluzione:</strong></p>
-<pre><code class="language-bash"># Installa libreria TOML mancante
-pip install toml
-
-# Oppure aggiorna a Python 3.11+ per tomllib built-in
-</code></pre>
-<h4 id="galleria-non-appare">Galleria non appare</h4>
-<p><strong>Sintomo:</strong> Immagini non visualizzate nella pagina galleria
-<strong>Soluzioni:</strong>
-- Verifica directory <code>_gallery/</code> con immagini <code>.jpg/.png/.webp</code>
-- Controlla permessi file lettura
-- Installa Pillow: <code>pip install Pillow</code>
-- Verifica generazione thumbnails in <code>_thumbs/</code></p>
-<h4 id="template-non-trovato">Template non trovato</h4>
-<p><strong>Sintomo:</strong> Errore "Theme not found"
-<strong>Soluzioni:</strong>
-- Verifica esistenza file in <code>config.toml</code>
-- Copia template da <code>assets/</code> del repository
-- Controlla percorsi relativi corretti</p>
-<h3 id="debug-avanzato">Debug Avanzato</h3>
-<p>Abilita logging dettagliato nel codice:</p>
-<pre><code class="language-python">import logging
-logging.basicConfig(level=logging.DEBUG)
-</code></pre>
-<p>Verifica generazione con output verboso:</p>
-<pre><code class="language-python"># In site_generator.py
-if log:
-    log.write(f&quot;[DEBUG] Processing: {md_file}&quot;)
-</code></pre>
-<h3 id="performance">Performance</h3>
-<p>Per siti grandi (&gt;1000 pagine):
-- Considera riduzione dimensione gallerie (&lt;500 immagini ciascuna)
-- Aumenta memoria RAM disponibile
-- Usa SSD per storage temporaneo
-- Monitora generazione con strumenti profiling</p>
-<h2 id="sviluppo-e-contributi">Sviluppo e Contributi</h2>
-<h3 id="setup-ambiente-sviluppo">Setup Ambiente Sviluppo</h3>
-<pre><code class="language-bash"># Fork e clone repository
-git clone https://github.com/tuo-username/ssg.git
-cd ssg
-
-# Crea branch feature
-git checkout -b feature/nome-feature
-
-# Installa dipendenze sviluppo
-pip install -r requirements.txt
-pip install pytest black mypy  # Per testing e linting
-
-# Esegui tests
-pytest
-
-# Controllo qualità codice
-black .
-mypy .
-</code></pre>
-<h3 id="contributi-welcome">Contributi Welcome</h3>
-<ul>
-<li>Aggiunta nuove funzionalità template</li>
-<li>Migliorie UX interfaccia</li>
-<li>Ottimizzazioni performance</li>
-<li>Fix di sicurezza</li>
-<li>Documentazione aggiuntiva</li>
-</ul>
-<h3 id="test-cases">Test Cases</h3>
-<p>I test coprono attualmente:
-- Generazione sito base
-- Parsing frontmatter
-- Costruzione navigazione
-- Configurazione valida/invalida</p>
-<p>Aggiungere test per:
-- Sistema gallerie
-- Sistema blog
-- Gestione errori
-- Sicurezza input</p>
-<h2 id="deployment-e-hosting">Deployment e Hosting</h2>
-<p>Il progetto genera siti completamente statici, distribuibili su:</p>
-<h3 id="github-pages">GitHub Pages</h3>
-<pre><code class="language-bash"># Configura per pubblicazione
-echo &quot;output/&quot; &gt;&gt; .gitignore  # Non committare output generato
-
-# Build automatico in GitHub Actions
-# Aggiungi .github/workflows/deploy.yml
-</code></pre>
-<h3 id="altri-provider">Altri Provider</h3>
-<ul>
-<li><strong>Netlify</strong>: Drag &amp; drop directory <code>output/</code></li>
-<li><strong>Vercel</strong>: Integrazione Git automatica</li>
-<li><strong>Surge</strong>: <code>npx surge output/</code></li>
-<li><strong>Servizi tradizionali</strong>: Upload via FTP/S3</li>
-</ul>
-<h3 id="cdn-e-performance">CDN e Performance</h3>
-<ul>
-<li>Abilita compressione GZip sui server</li>
-<li>Configura cache headers</li>
-<li>Usa CDN (Cloudflare, Fastly) per assets statici</li>
-<li>Valuta prerendering per ulteriori ottimizzazioni</li>
-</ul>
 <h2 id="licenza">Licenza</h2>
-<p>Questo progetto è open source sotto licenza MIT. Vedere il file LICENSE per dettagli completi.</p>
-<h3 id="ringraziamenti">Ringraziamenti</h3>
-<ul>
-<li><a href="https://github.com/Textualize/textual">Textual</a> per il framework TUI</li>
-<li><a href="https://jinja.palletsprojects.com/">Jinja2</a> per il template engine</li>
-<li><a href="https://python-markdown.github.io/">Python-Markdown</a> per la conversione MD→HTML</li>
-<li><a href="https://python-pillow.org/">Pillow</a> per processamento immagini</li>
-</ul>
-<hr />
-<p>Per ulteriore supporto o segnalazione bug, visitare il <a href="https://github.com/giovifav/ssg">repository GitHub</a>.</p>
+<p>Questo progetto è open source sotto licenza MIT.</p>
+<p>Per supporto o segnalazioni, visita il <a href="https://github.com/giovifav/ssg">repository GitHub</a>.</p>
+
+<!-- Gallery component template (no title, no description) -->
+<section class="gallery" id="gallery-gssg">
+  <link rel="stylesheet" href="../gallery.css" />
+  <div class="gallery-grid">
+    <a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_FWIUWwCgvV.png" data-alt="WindowsTerminal FWIUWwCgvV"><img src="_gallery/_thumbs/WindowsTerminal_FWIUWwCgvV.png" alt="WindowsTerminal FWIUWwCgvV" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_lpdG9AiwOW.png" data-alt="WindowsTerminal lpdG9AiwOW"><img src="_gallery/_thumbs/WindowsTerminal_lpdG9AiwOW.png" alt="WindowsTerminal lpdG9AiwOW" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_LWjroSo39H.png" data-alt="WindowsTerminal LWjroSo39H"><img src="_gallery/_thumbs/WindowsTerminal_LWjroSo39H.png" alt="WindowsTerminal LWjroSo39H" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_SvYEz0SzKH.png" data-alt="WindowsTerminal SvYEz0SzKH"><img src="_gallery/_thumbs/WindowsTerminal_SvYEz0SzKH.png" alt="WindowsTerminal SvYEz0SzKH" loading="lazy" /></a>
+  </div>
+  <div class="gallery-modal" hidden>
+    <div class="gallery-backdrop"></div>
+    <figure class="gallery-figure">
+      <img class="gallery-full" alt="" />
+      <figcaption class="gallery-caption"></figcaption>
+      <button type="button" class="gallery-close" aria-label="Chiudi">×</button>
+      <button type="button" class="gallery-prev" aria-label="Foto precedente">‹</button>
+      <button type="button" class="gallery-next" aria-label="Foto successiva">›</button>
+    </figure>
+  </div>
+  <script src="../gallery.js"></script>
+</section>
         </div>
       </article>
     </main>

@@ -13,6 +13,7 @@ def initialize_site(
     folder_name: str,
     site_name: str,
     author: str,
+    theme: str = "moderno",
 ) -> Path:
     """Create a new site skeleton under base_path/folder_name.
 
@@ -27,13 +28,15 @@ def initialize_site(
     # Use repository root where this file resides (not parent of parent)
     REPO_ROOT = Path(__file__).resolve().parent
 
-    # Copy default assets folder (including gallery assets) into the new site
-    assets_src = REPO_ROOT / "assets"
+    # Copy theme assets to site's assets folder
+    theme_src = REPO_ROOT / "themes" / theme
     assets_dst = site_root / "assets"
-    if assets_src.exists() and assets_src.is_dir():
+    if theme_src.exists() and theme_src.is_dir():
         if assets_dst.exists():
             shutil.rmtree(assets_dst)
-        shutil.copytree(assets_src, assets_dst)
+        shutil.copytree(theme_src, assets_dst)
+    else:
+        raise ValueError(f"Theme '{theme}' not found in themes directory.")
 
     # Write config.toml
     write_config_toml(

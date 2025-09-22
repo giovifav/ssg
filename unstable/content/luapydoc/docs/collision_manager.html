@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>collision_manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs_style.css">
+
+<style>
+/* Sidebar tree view styles */
+#definitions-list.tree { font-size: 0.95em; }
+#definitions-list.tree ul { list-style: none; margin-left: 0; padding-left: 0.8rem; border-left: 1px solid rgba(255,255,255,0.08); }
+#definitions-list.tree li { margin: 2px 0; position: relative; }
+#definitions-list.tree .twisty { border: none; background: none; cursor: pointer; font-size: 12px; width: 1rem; margin-right: 4px; color: #aaa; padding: 0; }
+#definitions-list.tree .label { cursor: pointer; }
+#definitions-list.tree li.leaf > .twisty { visibility: hidden; }
+#definitions-list.tree ul.collapsed { display: none; }
+#definitions-list .tree-controls { display: flex; gap: 6px; margin-bottom: 8px; }
+#definitions-list .tree-controls button { font-size: 12px; padding: 2px 6px; }
+</style>
+</head>
+
+<body>
+<div class="t-container">
+    <aside class="t-col-3">
+        <input type="text" id="searchBox" class="t-input" placeholder="Search...">
+        <div id="results"></div>
+
+        <div id="definitions-list" class="tree">
+            <div class="tree-controls">
+                <button id="expandAll" class="t-button">Expand all</button>
+                <button id="collapseAll" class="t-button">Collapse all</button>
+            </div>
+            
+<ul>
+
+    
+        <li>arrow_manager
+<ul>
+
+    
+        <li>ArrowManager
+<ul>
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getArrowDirection">getArrowDirection</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getNormalizedGroupAndBounds">getNormalizedGroupAndBounds</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getTransformedShape">getTransformedShape</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.mirrorPixels">mirrorPixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.rotatePixels">rotatePixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.rotatePixelsArbitrary">rotatePixelsArbitrary</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#checkTaperingShape">checkTaperingShape</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isDiagonalArrow">isDiagonalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isHorizontalArrow">isHorizontalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isSimpleDiagonalArrow">isSimpleDiagonalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isVerticalArrow">isVerticalArrow</a></li>
+        
+    
+
+    
+        <li>mod ArrowManager
+<ul>
+
+    
+        
+            
+            <li><a href="arrow_manager.html#Utils">Utils</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>collision_manager
+<ul>
+
+    
+        <li>CollisionManager
+<ul>
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:checkPlayerMovement">checkPlayerMovement</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:getCollisionPixels">getCollisionPixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:resolveEntityCollision">resolveEntityCollision</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod CollisionManager
+<ul>
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager">CollisionManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>constants
+<ul>
+
+    
+        
+            
+            <li><a href="constants.html#constants.Constants">Constants</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="constants.html#Constants.COLORS">Constants.COLORS</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>entity
+<ul>
+
+    
+        <li>Entity
+<ul>
+
+    
+        
+            
+            <li><a href="entity.html#Entity:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:removeFromCollisionMap">removeFromCollisionMap</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:setMoving">setMoving</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:updateCollisionMapPosition">updateCollisionMapPosition</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:updateVisualShape">updateVisualShape</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Entity
+<ul>
+
+    
+        
+            
+            <li><a href="entity.html#ArrowManager">ArrowManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>game
+<ul>
+
+    
+        <li>Game
+<ul>
+
+    
+        
+            
+            <li><a href="game.html#Game:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:reset">reset</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Game
+<ul>
+
+    
+        
+            
+            <li><a href="game.html#Level">Level</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        
+            
+            <li><a href="game.html#self.collisionManager">self.collisionManager</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#self.currentLevel">self.currentLevel</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>gameover
+<ul>
+
+    
+        <li>GameOver
+<ul>
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod GameOver
+<ul>
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver">GameOver</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>level
+<ul>
+
+    
+        <li>Level
+<ul>
+
+    
+        
+            
+            <li><a href="level.html#Level:addEntity">addEntity</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level.new">new</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Level
+<ul>
+
+    
+        
+            
+            <li><a href="level.html#Utils">Utils</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>main
+<ul>
+
+    
+        
+            
+            <li><a href="main.html#main.Game">Game</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>scene_manager
+<ul>
+
+    
+        <li>mod SceneManager
+<ul>
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager">SceneManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>SceneManager
+<ul>
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:reset_game">reset_game</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:set_scene">set_scene</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>utils
+<ul>
+
+    
+        <li>Utils
+<ul>
+
+    
+        
+            
+            <li><a href="utils.html#Utils.floodFill">floodFill</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.getAABB">getAABB</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.getAABBRounded">getAABBRounded</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.log">log</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>win
+<ul>
+
+    
+        <li>mod Win
+<ul>
+
+    
+        
+            
+            <li><a href="win.html#Win">Win</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>Win
+<ul>
+
+    
+        
+            
+            <li><a href="win.html#Win:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+</ul>
+
+        </div>
+    </aside>
+
+    <main class="t-col-9">
+        <div style="margin-bottom: 10px;">
+            <a href="index.html" class="back-link">&larr; Back to Index</a>
+        </div>
+        <h1 class="t-heading">collision_manager</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="doc">Documentation</button>
+            <button class="tab-button" data-tab="code">View Code</button>
+        </div>
+
+        <div class="tab-content" id="doc" style="display:block;">
+            
+            
+            <div class="func t-card" id="CollisionManager">
+                <h2 class="t-heading">CollisionManager</h2>
+                <p>Handles collision detection/resolution between moving entities and the level grid/entities. Provides utility routines for broad/narrow phase checks used by ArrowManager and Game.</p>
+                <p><em>Type: field</em></p>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+                <p><strong>Class:</strong> mod CollisionManager</p>
+                
+            </div>
+            
+            <div class="func t-card" id="CollisionManager.new">
+                <h2 class="t-heading">CollisionManager.new</h2>
+                <p>CollisionManager.new(level, gameWidth, gameHeight) Creates a new CollisionManager object.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>Level</b> (level): The current active level</li>
+                    
+                    <li><b>number</b> (gameWidth): The width of the game world in grid units.</li>
+                    
+                    <li><b>number</b> (gameHeight): The height of the game world in grid units.</li>
+                    
+                </ul>
+                
+
+                
+                <h3>Returns</h3>
+                <ul>
+                    
+                    <li>(CollisionManager): A new CollisionManager instance.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="CollisionManager:getCollisionPixels">
+                <h2 class="t-heading">CollisionManager:getCollisionPixels</h2>
+                <p>CollisionManager:getCollisionPixels(entity, moveDx, moveDy, collisionMode) Determines the specific pixels to check for collision based on the specified collision mode.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>Entity</b> (entity): The moving entity (arrow).</li>
+                    
+                    <li><b>number</b> (moveDx): The intended movement in X direction.</li>
+                    
+                    <li><b>number</b> (moveDy): The intended movement in Y direction.</li>
+                    
+                    <li><b>string</b> (collisionMode): The collision mode to use ("pixel_perfect" or "aabb").</li>
+                    
+                </ul>
+                
+
+                
+                <h3>Returns</h3>
+                <ul>
+                    
+                    <li>(table): A list of pixel data for collision checking.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="CollisionManager:checkPlayerMovement">
+                <h2 class="t-heading">CollisionManager:checkPlayerMovement</h2>
+                <p>CollisionManager:checkPlayerMovement(playerEntity, dx, dy) Checks if a player entity can move and handles collisions.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>Entity</b> (playerEntity): The player-controlled entity.</li>
+                    
+                    <li><b>number</b> (dx): The intended movement in the x-direction.</li>
+                    
+                    <li><b>number</b> (dy): The intended movement in the y-direction.</li>
+                    
+                </ul>
+                
+
+                
+                <h3>Returns</h3>
+                <ul>
+                    
+                    <li>(boolean): True if the player can move, false otherwise.</li>
+                    
+                    <li>(boolean): True if the player has won, false otherwise.</li>
+                    
+                    <li>(boolean): True if the player has lost, false otherwise.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="CollisionManager:resolveEntityCollision">
+                <h2 class="t-heading">CollisionManager:resolveEntityCollision</h2>
+                <p>CollisionManager:resolveEntityCollision(collidedEntity, level) Resolves the collision by removing the collided entity from the level.</p>
+                <p><em>Type: function</em></p>
+
+                
+                <h3>Parameters</h3>
+                <ul>
+                    
+                    <li><b>Entity</b> (collidedEntity): The entity that was collided with.</li>
+                    
+                    <li><b>Level</b> (level): The current active level.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+        </div>
+
+        <div class="tab-content" id="code">
+            <div class="lua-highlight"><div class="lua-highlight"><pre><span></span><span class="c1">--- @classmod CollisionManager</span>
+<span class="c1">-- Handles collision detection/resolution between moving entities and the level grid/entities.</span>
+<span class="c1">-- Provides utility routines for broad/narrow phase checks used by ArrowManager and Game.</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">CollisionManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="nv">CollisionManager</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">CollisionManager</span>
+
+<span class="c1">--- CollisionManager.new(level, gameWidth, gameHeight)</span>
+<span class="c1">-- Creates a new CollisionManager object.</span>
+<span class="c1">-- @param level Level The current active level</span>
+<span class="c1">-- @param gameWidth number The width of the game world in grid units.</span>
+<span class="c1">-- @param gameHeight number The height of the game world in grid units.</span>
+<span class="c1">-- @return CollisionManager A new CollisionManager instance.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">CollisionManager</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">level</span><span class="p">,</span><span class="w"> </span><span class="nv">gameWidth</span><span class="p">,</span><span class="w"> </span><span class="nv">gameHeight</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">setmetatable</span><span class="p">({},</span><span class="w"> </span><span class="nv">CollisionManager</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">gameWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">gameWidth</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">gameHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">gameHeight</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span>
+<span class="kr">end</span>
+
+<span class="c1">--- CollisionManager:getCollisionPixels(entity, moveDx, moveDy, collisionMode)</span>
+<span class="c1">-- Determines the specific pixels to check for collision based on the specified collision mode.</span>
+<span class="c1">-- @param entity Entity The moving entity (arrow).</span>
+<span class="c1">-- @param moveDx number The intended movement in X direction.</span>
+<span class="c1">-- @param moveDy number The intended movement in Y direction.</span>
+<span class="c1">-- @param collisionMode string The collision mode to use (&quot;pixel_perfect&quot; or &quot;aabb&quot;).</span>
+<span class="c1">-- @return table A list of pixel data for collision checking.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">CollisionManager</span><span class="p">:</span><span class="nf">getCollisionPixels</span><span class="p">(</span><span class="nv">entity</span><span class="p">,</span><span class="w"> </span><span class="nv">moveDx</span><span class="p">,</span><span class="w"> </span><span class="nv">moveDy</span><span class="p">,</span><span class="w"> </span><span class="nv">collisionMode</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">collisionPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">collisionMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pixel_perfect&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="c1">-- For pixel-perfect collision, check all pixels of the entity</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">entity</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">collisionPoints</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">moveDx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">),</span>
+<span class="w">                </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">moveDy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">collisionMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;aabb&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="c1">-- For AABB collision, use the bounding box corners</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">minX</span><span class="p">,</span><span class="w"> </span><span class="nv">minY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.huge</span><span class="p">,</span><span class="w"> </span><span class="nb">math.huge</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">maxX</span><span class="p">,</span><span class="w"> </span><span class="nv">maxY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nb">math.huge</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nb">math.huge</span>
+
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">entity</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="nv">minX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.min</span><span class="p">(</span><span class="nv">minX</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatX</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">minY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.min</span><span class="p">(</span><span class="nv">minY</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatY</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">maxX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.max</span><span class="p">(</span><span class="nv">maxX</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatX</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">maxY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.max</span><span class="p">(</span><span class="nv">maxY</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatY</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">end</span>
+
+<span class="w">        </span><span class="c1">-- Calculate the corners of the bounding box in the next position</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nextMinX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">minX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">moveDx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nextMinY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">minY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">moveDy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nextMaxX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">maxX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">moveDx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nextMaxY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">maxY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">moveDy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Add the four corners of the bounding box</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">collisionPoints</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMinX</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMinY</span><span class="p">})</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">collisionPoints</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMaxX</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMinY</span><span class="p">})</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">collisionPoints</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMinX</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMaxY</span><span class="p">})</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">collisionPoints</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMaxX</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextMaxY</span><span class="p">})</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s2">&quot;Invalid collisionMode: &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nb">tostring</span><span class="p">(</span><span class="nv">collisionMode</span><span class="p">)</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;. Expected &#39;pixel_perfect&#39; or &#39;aabb&#39;.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">collisionPoints</span>
+<span class="kr">end</span>
+
+<span class="c1">--- CollisionManager:checkPlayerMovement(playerEntity, dx, dy)</span>
+<span class="c1">-- Checks if a player entity can move and handles collisions.</span>
+<span class="c1">-- @param playerEntity Entity The player-controlled entity.</span>
+<span class="c1">-- @param dx number The intended movement in the x-direction.</span>
+<span class="c1">-- @param dy number The intended movement in the y-direction.</span>
+<span class="c1">-- @return boolean True if the player can move, false otherwise.</span>
+<span class="c1">-- @return boolean True if the player has won, false otherwise.</span>
+<span class="c1">-- @return boolean True if the player has lost, false otherwise.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">CollisionManager</span><span class="p">:</span><span class="nf">checkPlayerMovement</span><span class="p">(</span><span class="nv">playerEntity</span><span class="p">,</span><span class="w"> </span><span class="nv">dx</span><span class="p">,</span><span class="w"> </span><span class="nv">dy</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">playerCanMove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">playerHasWon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">playerHasLost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">playerPixelsToMove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">pixel</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">playerEntity</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">newFloatX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">dx</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">newFloatY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">.</span><span class="py">floatY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">dy</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nextGridX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">newFloatX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">nextGridY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">newFloatY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">playerPixelsToMove</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">newFloatX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newFloatX</span><span class="p">,</span><span class="w"> </span><span class="nv">newFloatY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newFloatY</span><span class="p">,</span><span class="w"> </span><span class="nv">nextGridX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextGridX</span><span class="p">,</span><span class="w"> </span><span class="nv">nextGridY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nextGridY</span><span class="p">,</span><span class="w"> </span><span class="nv">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pixel</span><span class="p">})</span>
+
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">nextGridX</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">nextGridX</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">gameWidth</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">nextGridY</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">nextGridY</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">gameHeight</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nv">playerCanMove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="kr">break</span>
+<span class="w">        </span><span class="kr">end</span>
+
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">.</span><span class="py">collisionMap</span><span class="p">[</span><span class="nv">nextGridX</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">nextGridY</span><span class="p">]</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nv">playerEntity</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;player&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nv">playerCanMove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                </span><span class="kr">break</span>
+<span class="w">            </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;enemy&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nv">playerHasLost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="kr">break</span>
+<span class="w">            </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;trigger&quot;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">isMoving</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nv">self</span><span class="p">:</span><span class="nf">resolveEntityCollision</span><span class="p">(</span><span class="nv">collidedEntity</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">)</span>
+<span class="w">                </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">.</span><span class="py">remainingTriggers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">.</span><span class="py">remainingTriggers</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;collectible&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nv">self</span><span class="p">:</span><span class="nf">resolveEntityCollision</span><span class="p">(</span><span class="nv">collidedEntity</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">)</span>
+<span class="w">                </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">.</span><span class="py">remainingCollectibles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">.</span><span class="py">remainingCollectibles</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">                </span><span class="kr">if</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">.</span><span class="py">remainingCollectibles</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                    </span><span class="nv">playerHasWon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="kr">end</span>
+<span class="w">            </span><span class="kr">end</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">playerCanMove</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">playerEntity</span><span class="p">:</span><span class="nf">updateCollisionMapPosition</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">level</span><span class="p">,</span><span class="w"> </span><span class="nv">playerPixelsToMove</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">playerCanMove</span><span class="p">,</span><span class="w"> </span><span class="nv">playerHasWon</span><span class="p">,</span><span class="w"> </span><span class="nv">playerHasLost</span>
+<span class="kr">end</span>
+
+<span class="c1">--- CollisionManager:resolveEntityCollision(collidedEntity, level)</span>
+<span class="c1">-- Resolves the collision by removing the collided entity from the level.</span>
+<span class="c1">-- @param collidedEntity Entity The entity that was collided with.</span>
+<span class="c1">-- @param level Level The current active level.</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">CollisionManager</span><span class="p">:</span><span class="nf">resolveEntityCollision</span><span class="p">(</span><span class="nv">collidedEntity</span><span class="p">,</span><span class="w"> </span><span class="nv">level</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">pixels</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">level</span><span class="p">.</span><span class="py">collisionMap</span><span class="p">[</span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Remove from allEntities</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">allEntities</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nb">table.remove</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">allEntities</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="w">            </span><span class="kr">break</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Remove from specific entity lists</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;player&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">playerControlledEntities</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nb">table.remove</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">playerControlledEntities</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="w">                </span><span class="kr">break</span>
+<span class="w">            </span><span class="kr">end</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;player_arrow&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">playerArrows</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nb">table.remove</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">playerArrows</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="w">                </span><span class="kr">break</span>
+<span class="w">            </span><span class="kr">end</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">entities</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">collidedEntity</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nb">table.remove</span><span class="p">(</span><span class="nv">level</span><span class="p">.</span><span class="py">entities</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="w">                </span><span class="kr">break</span>
+<span class="w">            </span><span class="kr">end</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">return</span><span class="w"> </span><span class="nv">CollisionManager</span>
+</pre></div>
+</div>
+        </div>
+    </main>
+</div>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(tc => tc.style.display='none');
+        const targetTab = document.getElementById(btn.dataset.tab);
+        targetTab.style.display='block';
+    });
+});
+
+// Search with robust index loading (fallback to DOM if fetch fails)
+let searchIndex = [];
+const searchBox = document.getElementById("searchBox");
+const resultsDiv = document.getElementById("results");
+
+async function loadSearchIndex(){
+    try {
+        const res = await fetch("search.json", { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        searchIndex = await res.json();
+    } catch (e) {
+        // Fallback: build index from sidebar anchors (works also with file://)
+        const anchors = Array.from(document.querySelectorAll('#definitions-list a[href]'));
+        searchIndex = anchors.map(a => {
+            const href = a.getAttribute('href') || '';
+            const m = href.match(/([^\/\\]+)\.html#(.+)$/);
+            return {
+                file: m ? m[1] : '',
+                full_name: m ? m[2] : a.textContent.trim(),
+                class: null,
+                summary: a.textContent.trim(),
+                params: [],
+                returns: []
+            };
+        });
+    }
+}
+
+loadSearchIndex();
+
+function scrollHighlight(id){
+    const el=document.getElementById(id);
+    if(el){ el.scrollIntoView({behavior:"smooth", block:"center"}); el.classList.add("highlight");
+        setTimeout(()=>el.classList.remove("highlight"),2000); }
+}
+
+searchBox.addEventListener("input",async ()=>{
+    const q = searchBox.value.toLowerCase().trim();
+    resultsDiv.innerHTML="";
+    
+    const definitionsList = document.getElementById("definitions-list");
+    
+    if(q.length<2) {
+        resultsDiv.style.display = "none";
+        definitionsList.style.display = "block";
+        return;
+    }
+
+    // Ensure index is loaded
+    if (!Array.isArray(searchIndex) || searchIndex.length === 0) {
+        await loadSearchIndex();
+        if (!Array.isArray(searchIndex) || searchIndex.length === 0) {
+            resultsDiv.style.display = "block";
+            definitionsList.style.display = "none";
+            resultsDiv.innerHTML = `<div class="result t-card"><p>Loading index...</p></div>`;
+            return;
+        }
+    }
+    
+    const words = q.split(/\s+/).filter(word => word.length > 0);
+    const scoredMatches = searchIndex.map(raw => {
+        const item = {
+            file: raw.file || '',
+            full_name: (raw.full_name || '').toString(),
+            class: raw.class || null,
+            summary: raw.summary || ''
+        };
+        const itemStr = JSON.stringify(item).toLowerCase();
+        let score = 0;
+        if (item.full_name.toLowerCase().includes(q)) score += 10;
+        words.forEach(word => { if (itemStr.includes(word)) score += 1; });
+        return { item, score };
+    }).filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score);
+    
+    if (scoredMatches.length > 0) {
+        resultsDiv.style.display = "block";
+        definitionsList.style.display = "none";
+        scoredMatches.slice(0,20).forEach(({ item })=>{
+            let summary = item.summary || '';
+            if (summary && q.length > 0) {
+                const regex = new RegExp(`(${words.join('|')})`, 'gi');
+                summary = summary.replace(regex, '<mark>$1</mark>');
+            }
+            const href = `${item.file}.html#${encodeURIComponent(item.full_name)}`;
+            resultsDiv.innerHTML += `<div class="result t-card">
+                <a href="${href}">${item.full_name}</a>
+                ${item.class?`<p><b>Class:</b> ${item.class}</p>`:""}
+                <p>${summary}</p>
+            </div>`;
+        });
+    } else {
+        resultsDiv.style.display = "block";
+        definitionsList.style.display = "none";
+        resultsDiv.innerHTML = `<div class="result t-card"><p>No results found</p></div>`;
+    }
+});
+
+// Tree view enhancer for sidebar definitions
+function enhanceTree(root) {
+    if (!root) return;
+    root.classList.add('tree');
+
+    // Mark all nested ULs and insert twisty buttons
+    root.querySelectorAll(':scope > ul, :scope ul').forEach(ul => {
+        const parentLi = ul.parentElement;
+        if (!parentLi || parentLi.tagName.toLowerCase() !== 'li') return;
+
+        // Create twisty
+        const twisty = document.createElement('button');
+        twisty.className = 'twisty';
+        twisty.setAttribute('aria-label', 'toggle');
+        twisty.textContent = '▸';
+
+        // Wrap label text/link
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'label';
+
+        // Move existing contents (text and anchors) before UL into labelSpan
+        const childrenBeforeUL = [];
+        for (let n = parentLi.firstChild; n && n !== ul; n = n.nextSibling) {
+            childrenBeforeUL.push(n);
+        }
+        childrenBeforeUL.forEach(n => labelSpan.appendChild(n));
+
+        // Determine if leaf (no child UL)
+        const isLeaf = !ul || ul.children.length === 0;
+
+        // Insert twisty and label at start
+        parentLi.insertBefore(twisty, ul);
+        parentLi.insertBefore(labelSpan, ul);
+
+        if (isLeaf) {
+            parentLi.classList.add('leaf');
+        } else {
+            // Default collapsed for deeper levels; keep top level expanded
+            const depth = getDepth(parentLi, root);
+            if (depth > 1) ul.classList.add('collapsed');
+
+            const setExpanded = (expanded) => {
+                ul.classList.toggle('collapsed', !expanded);
+                twisty.textContent = expanded ? '▾' : '▸';
+            };
+
+            twisty.addEventListener('click', (e) => { e.stopPropagation(); setExpanded(ul.classList.contains('collapsed')); });
+            labelSpan.addEventListener('click', () => setExpanded(ul.classList.contains('collapsed')));
+        }
+    });
+
+    function getDepth(li, container){
+        let d = 0; let n = li;
+        while (n && n !== container) { if (n.tagName && n.tagName.toLowerCase() === 'ul') d++; n = n.parentElement; }
+        return d;
+    }
+
+    // Controls
+    const expandBtn = document.getElementById('expandAll');
+    const collapseBtn = document.getElementById('collapseAll');
+    if (expandBtn) expandBtn.addEventListener('click', () => {
+        root.querySelectorAll('#definitions-list ul').forEach(ul => ul.classList.remove('collapsed'));
+        root.querySelectorAll('#definitions-list .twisty').forEach(t => t.textContent = '▾');
+    });
+    if (collapseBtn) collapseBtn.addEventListener('click', () => {
+        // Keep the top-level list expanded
+        root.querySelectorAll('#definitions-list ul').forEach((ul, idx) => {
+            const depth = (function getUlDepth(u){ let d=0, p=u; while(p && p.id !== 'definitions-list'){ if(p.tagName && p.tagName.toLowerCase()==='ul') d++; p=p.parentElement; } return d; })(ul);
+            if (depth > 1) ul.classList.add('collapsed'); else ul.classList.remove('collapsed');
+        });
+        root.querySelectorAll('#definitions-list .twisty').forEach(t => t.textContent = '▸');
+        // Fix top-level twisties to expanded symbol
+        root.querySelectorAll('#definitions-list > ul').forEach(ul => {
+            const li = ul.parentElement;
+            const tw = li && li.querySelector(':scope > .twisty');
+            if (tw) tw.textContent = '▾';
+        });
+    });
+}
+
+// Auto-expand tree to the current page/hash
+function expandToCurrent() {
+    const defList = document.getElementById('definitions-list');
+    if (!defList) return;
+    const current = (location.pathname.split('/').pop() || '').toLowerCase();
+    const currentBase = current.replace(/\.html$/, '');
+    const hash = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+
+    const anchors = Array.from(defList.querySelectorAll('a[href]'));
+    let targetA = null;
+    if (hash) {
+        targetA = anchors.find(a => a.getAttribute('href') === `${currentBase}.html#${hash}`);
+    }
+    if (!targetA) {
+        targetA = anchors.find(a => (a.getAttribute('href') || '').startsWith(`${currentBase}.html#`)) || null;
+    }
+
+    if (targetA) {
+        // Expand all ancestor ULs and set twisties to expanded
+        let n = targetA.parentElement;
+        while (n && n.id !== 'definitions-list') {
+            if (n.tagName && n.tagName.toLowerCase() === 'ul') {
+                n.classList.remove('collapsed');
+            }
+            if (n.tagName && n.tagName.toLowerCase() === 'li') {
+                const tw = n.querySelector(':scope > .twisty');
+                if (tw) tw.textContent = '▾';
+            }
+            n = n.parentElement;
+        }
+        // Highlight and scroll into view
+        const li = targetA.closest('li');
+        if (li) {
+            li.classList.add('highlight');
+            targetA.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => li.classList.remove('highlight'), 2000);
+        }
+    }
+}
+
+ // Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    const defList = document.getElementById('definitions-list');
+    enhanceTree(defList);
+    expandToCurrent();
+});
+
+// Prism initialization handled automatically
+</script>
+</body>
+</html>

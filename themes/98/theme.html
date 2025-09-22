@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page_title }} - {{ site_name }}</title>
+  <link rel="stylesheet" href="{{ theme_css_url }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <div class="taskbar-start">Start</div>
+    <div class="taskbar-items">| {% for crumb in breadcrumbs %}{{ crumb.label }}{% if not loop.last %} > {% endif %}{% endfor %}</div>
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+    </div>
+    <div class="taskbar-clock">12:00 PM</div>
+  </div>
+
+  <!-- Start Menu Popup (open by default) -->
+  <div class="start-menu-popup visible">
+    <div class="start-menu-content">
+      <div class="start-menu-header">
+        <span class="start-user"><i class="fas fa-user"></i> Windows 2000</span>
+      </div>
+      <div class="start-menu-body">
+        <!-- Programs Section Only -->
+        <div class="start-menu-programs">
+          {{ sidebar_html | safe }}
+        </div>
+
+        <div class="start-menu-separator"></div>
+
+        <!-- Footer with site info -->
+        <div class="footer-section">
+          {{ footer }}
+          <p class="site-author">{{ author }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="desktop-wallpaper"> <!-- Simulate desktop -->
+    <!-- Homepage window is always present and static -->
+    <main class="content window homepage-window">
+      <div class="window-title">
+        <span class="title-text">{% for crumb in breadcrumbs %}{{ crumb.label }}{% if not loop.last %} > {% endif %}{% endfor %}</span>
+        <div class="title-buttons">
+          <span class="minimize">_</span>
+          <span class="maximize">□</span>
+          <span class="close">×</span>
+        </div>
+      </div>
+      <div class="window-content">
+
+
+        <article>
+          <h1 class="page-title">{{ page_title }}</h1>
+          {% if page_date %}
+          <p class="meta">{{ page_date }}</p>
+          {% endif %}
+          <div class="markdown-body">
+            {{ content_html | safe }}
+          </div>
+        </article>
+      </div>
+  </main>
+
+  <!-- Search Results Popup Window -->
+  <div id="searchPopup" class="window search-popup-window" hidden>
+    <div class="window-title">
+      <span class="title-text">Risultati Ricerca</span>
+      <div class="title-buttons">
+        <span class="minimize">_</span>
+        <span class="maximize">□</span>
+        <span class="close-search">×</span>
+      </div>
+    </div>
+    <div class="window-content">
+      <div id="searchResults"></div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <script src="{{ common_js_url }}"></script>
+</body>
+</html>

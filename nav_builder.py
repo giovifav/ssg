@@ -182,7 +182,10 @@ def build_nav_tree(content_root: Path, output_root: Path) -> NavNode:
                 elif special_dir.name == "_blog":
                     has_content = any(f.is_file() and f.suffix.lower() == ".md" and f.name != "index.md" for f in special_dir.iterdir())
                 if has_content:
-                    special_md_paths.append(index_md)
+                    # Don't add to sidebar if parent has index.md (will be appended to parent instead)
+                    parent_index_md = special_dir.parent / "index.md"
+                    if special_dir.parent == content_root or not parent_index_md.exists():
+                        special_md_paths.append(index_md)
 
     for fake_path in special_md_paths:
         rel_md = fake_path.relative_to(content_root)

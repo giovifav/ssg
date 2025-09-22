@@ -414,6 +414,65 @@ def _render_blog_html(
     return "\n\n".join(articles)
 
 
+def generate_sitemap_xml(base_url: Optional[str], output_root: Path, search_items: list[dict[str, Any]], log: Optional[UILog] = None) -> None:
+    """Generate XML sitemap at output_root/sitemap.xml.
+
+    Args:
+        base_url: Base URL of the site (e.g., "https://example.com"). If None, sitemap is not generated.
+        output_root: Output directory root.
+        search_items: List of search index items with 'url' and optional 'date'.
+        log: Optional log function.
+    """
+    def info(msg: str) -> None:
+        if log is not None:
+            log.write(msg)
+        else:
+            print(msg)
+
+    if base_url is None:
+        info("[Sitemap] Not generating sitemap.xml because base_url is not configured in config.toml")
+        return
+
+    from datetime import datetime
+
+    xml_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
+
+    for item in search_items:
+        url = item["url"]
+        loc = f"{base_url.rstrip('/')}/{url.lstrip('/')}"
+        lastmod = item.get("date")
+        if lastmod:
+            # Try to format date, fallback to today if invalid
+            try:
+                if isinstance(lastmod, str):
+                    # Assume ISO format like "2023-09-19" or "2023-09-19T12:00:00"
+                    if 'T' in lastmod:
+                        lastmod = lastmod.split('T')[0]
+                    elif lastmod.count('-') == 2 and len(lastmod) == 10:
+                        pass  # already YYYY-MM-DD
+                    else:
+                        raise ValueError
+                else:
+                    lastmod = datetime.now().date().isoformat()
+            except ValueError:
+                lastmod = datetime.now().date().isoformat()
+        else:
+            lastmod = datetime.now().date().isoformat()
+
+        url_element = f" <url>\n  <loc>{loc}</loc>\n  <lastmod>{lastmod}</lastmod>\n </url>"
+        xml_lines.append(url_element)
+
+    xml_lines.append('</urlset>')
+
+    sitemap_path = output_root / "sitemap.xml"
+    sitemap_content = "\n".join(xml_lines)
+    sitemap_path.write_text(sitemap_content, encoding="utf-8")
+    info(f"[Sitemap] Generated: {sitemap_path.relative_to(output_root)}")
+
+
 def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
     """Generate the static HTML site from a project directory.
 
@@ -547,6 +606,11 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
         index_md = special_dir / "index.md"
         if index_md.exists():
             continue  # Skip if index.md exists
+
+        # Check if special directory should be appended to parent instead of having its own page
+        parent_index_md = special_dir.parent / "index.md"
+        if special_dir.parent != content_root and parent_index_md.exists():
+            continue  # Skip generating, will append to parent
 
         rel_special_dir = special_dir.relative_to(content_root)
         output_dir = output_root / rel_special_dir
@@ -877,6 +941,25 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
                 except Exception as e:
                     info(f"[Files] Error generating files for {rel_md}: {e}")
 
+        # Blog rendering logic - append if sibling _blog exists without index.md
+        elif md_file.name.lower() == "index.md":
+            blog_dir = md_file.parent / "_blog"
+            if blog_dir.exists() and blog_dir.is_dir() and not (blog_dir / "index.md").exists():
+                try:
+                    has_posts = any(
+                        f.is_file() and f.suffix.lower() == ".md" and f.name != "index.md"
+                        for f in blog_dir.iterdir()
+                    )
+                    if has_posts:
+                        posts = _gather_blog_posts(blog_dir, log=log)
+                        blog_html = _render_blog_html(posts)
+                        if blog_html:
+                            body_html = f"{body_html}\n\n{blog_html}"
+                            info(f"[Blog] Blog appended to parent: {rel_md.parent or Path('.')}")
+
+                except Exception as e:
+                    info(f"[Blog] Error generating blog for {rel_md}: {e}")
+
         # Use default template
         current_template = template
 
@@ -965,5 +1048,8 @@ def generate_site(site_root: Path, log: Optional[UILog] = None) -> None:
     # Copy assets
     copy_assets(site_root, output_root)
     info("Assets copied (if any)")
+
+    # Generate XML sitemap
+    generate_sitemap_xml(cfg.base_url, output_root, search_items, log)
 
     info(f"Done. Output: {output_root}")

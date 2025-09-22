@@ -19,6 +19,12 @@ if __name__ == "__main__":
         metavar="FOLDER",
         help="Initialize a new site in the specified folder"
     )
+    parser.add_argument(
+        "--theme",
+        choices=["moderno", "semplice", "98"],
+        default="moderno",
+        help="Theme to use for the new site (default: moderno)"
+    )
 
     args = parser.parse_args()
 
@@ -34,7 +40,7 @@ if __name__ == "__main__":
         folder_name = args.initialize
         site_name = folder_name.replace("_", " ").replace("-", " ").title()
         print(f"Initializing site '{site_name}' in folder {folder_name}...")
-        site_root = initialize_site(Path("."), folder_name, site_name, "Site Author")
+        site_root = initialize_site(Path("."), folder_name, site_name, "Site Author", args.theme)
         print(f"Site initialized at {site_root}")
     else:
         # No arguments provided, run TUI

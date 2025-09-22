@@ -6,7 +6,7 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 import sys
-from typing import Optional
+from typing import Optional, Any
 
 # Configure logging for config module
 logger = logging.getLogger(__name__)
@@ -45,6 +45,7 @@ class SiteConfig:
         output: Output directory name (relative to site root).
         base_theme: Theme HTML filename (located in the site root).
         theme_css: Theme CSS filename (located in the site root).
+        base_url: Base URL of the site (used for sitemap generation).
     """
 
     site_name: str
@@ -53,6 +54,7 @@ class SiteConfig:
     output: str
     base_theme: str
     theme_css: str
+    base_url: Optional[str] = None
 
 
 def read_config(site_root: Path) -> SiteConfig:
@@ -141,6 +143,7 @@ def _validate_config_data(data: dict) -> tuple[dict, list[str]]:
         "output": {"type": str, "default": "output", "required": False},
         "base_theme": {"type": str, "default": "assets/theme.html", "required": False},
         "theme_css": {"type": str, "default": "assets/theme.css", "required": False},
+        "base_url": {"type": str, "default": None, "required": False},
     }
 
     for field_name, field_config in schema.items():
@@ -179,6 +182,9 @@ def _validate_config_data(data: dict) -> tuple[dict, list[str]]:
         elif field_name == "output":
             if not validated[field_name] or not isinstance(validated[field_name], str):
                 errors.append(f"Field '{field_name}' must be a non-empty string")
+        elif field_name == "base_url":
+            if validated[field_name] and not isinstance(validated[field_name], str):
+                errors.append(f"Field '{field_name}' must be a string")
 
     return validated, errors
 
@@ -233,6 +239,7 @@ def write_config_toml(
     footer: str = "Copyright 2025",
     base_theme: str = "assets/theme.html",
     theme_css: str = "assets/theme.css",
+    base_url: Optional[str] = None,
 ) -> None:
     """Create a config.toml file with provided values.
 
@@ -257,6 +264,7 @@ def write_config_toml(
         "output": output,
         "base_theme": base_theme,
         "theme_css": theme_css,
+        "base_url": base_url,
     }
 
     _, validation_errors = _validate_config_data(config_dict)
@@ -274,6 +282,8 @@ def write_config_toml(
             f"base_theme = \"{base_theme}\"\n"
             f"theme_css = \"{theme_css}\"\n"
         )
+        if base_url is not None:
+            content += f"base_url = \"{base_url}\"\n"
         cfg_path = site_root / "config.toml"
         cfg_path.write_text(content, encoding="utf-8")
         logger.info(f"Successfully wrote config.toml to {cfg_path}")
