@@ -11,33 +11,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-text">
-          <h1 class="site-title">Gio's unstable code</h1>
-        </div>
-      </div>
-      <div class="header-actions">
-        <div class="search">
-          <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
-          <div id="searchResults" class="search-results" hidden></div>
-        </div>
-        <a class="btn-primary" href="../index.html">Home</a>
-        <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
-          <i class="fas fa-sun"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
   <div class="layout">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="brand-text">
+            <h1 class="site-title">Gio's unstable code</h1>
+          </div>
+        </div>
+        <div class="header-actions">
+          <div class="search">
+            <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+            <div id="searchResults" class="search-results" hidden></div>
+          </div>
+          <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+          </button>
+        </div>
+      </div>
+    </header>
     <aside class="sidebar">
       <div class="sidebar-inner">
-        <h2>Navigazione</h2>
-        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../_gallery/index.html" data-target="_gallery/index.html">Gallery</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="voxel64/index.html" class="active">Voxel64</a></summary></details></li></ul>
+        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../_gallery/index.html" data-target="_gallery/index.html">Gallery</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="voxel64/index.html" class="active">Voxel64</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
       </div>
     </aside>
+
+    <div class="sidebar-backdrop"></div>
 
     <main class="content">
       <nav class="breadcrumbs">
@@ -62,12 +64,12 @@
           
         
       </nav>
-
-      <article>
-        <h1 class="page-title">Voxel64</h1>
-        
+      
         <p class="meta">2025-01-01</p>
         
+
+      <article>
+
         <div class="markdown-body">
           <p>A simple voxel space renderer for Love2D, simulating 3D terrain flight using heightmaps.</p>
 <p><a href="https://github.com/giovifav/voxel64">repository</a></p>

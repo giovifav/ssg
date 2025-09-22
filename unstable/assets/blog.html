@@ -34,10 +34,15 @@
   <div class="layout">
     <aside class="sidebar">
       <div class="sidebar-inner">
-        <h2>Navigazione</h2>
+        <div class="sidebar-header">
+          <h2>Navigazione</h2>
+          <button class="sidebar-close" aria-label="Chiudi sidebar">&times;</button>
+        </div>
         {{ sidebar_html | safe }}
       </div>
     </aside>
+
+    <div class="sidebar-backdrop"></div>
 
     <main class="content">
       <nav class="breadcrumbs">

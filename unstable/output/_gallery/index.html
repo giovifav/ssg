@@ -11,33 +11,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-text">
-          <h1 class="site-title">Gio's unstable code</h1>
-        </div>
-      </div>
-      <div class="header-actions">
-        <div class="search">
-          <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
-          <div id="searchResults" class="search-results" hidden></div>
-        </div>
-        <a class="btn-primary" href="../index.html">Home</a>
-        <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
-          <i class="fas fa-sun"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
   <div class="layout">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="brand-text">
+            <h1 class="site-title">Gio's unstable code</h1>
+          </div>
+        </div>
+        <div class="header-actions">
+          <div class="search">
+            <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+            <div id="searchResults" class="search-results" hidden></div>
+          </div>
+          <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+          </button>
+        </div>
+      </div>
+    </header>
     <aside class="sidebar">
       <div class="sidebar-inner">
-        <h2>Navigazione</h2>
-        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="_gallery/index.html" class="active">Gallery</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li></ul>
+        <ul><li><a href="../index.html">Home</a></li><li class="dir has-children has-folder expanded"><details open><summary><a href="index.html" data-target="_gallery/index.html" class="active">Gallery</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
       </div>
     </aside>
+
+    <div class="sidebar-backdrop"></div>
 
     <main class="content">
       <nav class="breadcrumbs">
@@ -62,10 +64,10 @@
           
         
       </nav>
+      
 
       <article>
-        <h1 class="page-title">Gallery</h1>
-        
+
         <div class="markdown-body">
           <!-- Gallery component template (no title, no description) -->
 <section class="gallery" id="gallery-_gallery">
@@ -73,10 +75,8 @@
   <div class="gallery-grid">
     <a class="gallery-item" href="#" data-full="gssg.png" data-alt="gssg"><img src="_thumbs/gssg.png" alt="gssg" loading="lazy" /></a>
 <a class="gallery-item" href="#" data-full="nal.png" data-alt="nal"><img src="_thumbs/nal.png" alt="nal" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="OOisJB.png" data-alt="OOisJB"><img src="_thumbs/OOisJB.png" alt="OOisJB" loading="lazy" /></a>
 <a class="gallery-item" href="#" data-full="play64.png" data-alt="play64"><img src="_thumbs/play64.png" alt="play64" loading="lazy" /></a>
-<a class="gallery-item" href="#" data-full="play641.png" data-alt="play641"><img src="_thumbs/play641.png" alt="play641" loading="lazy" /></a>
-<a class="gallery-item" href="#" data-full="voxel64 (1).png" data-alt="voxel64 (1)"><img src="_thumbs/voxel64 (1).png" alt="voxel64 (1)" loading="lazy" /></a>
-<a class="gallery-item" href="#" data-full="voxel64 (2).png" data-alt="voxel64 (2)"><img src="_thumbs/voxel64 (2).png" alt="voxel64 (2)" loading="lazy" /></a>
 <a class="gallery-item" href="#" data-full="whisperli1.png" data-alt="whisperli1"><img src="_thumbs/whisperli1.png" alt="whisperli1" loading="lazy" /></a>
 <a class="gallery-item" href="#" data-full="whisperli2.png" data-alt="whisperli2"><img src="_thumbs/whisperli2.png" alt="whisperli2" loading="lazy" /></a>
   </div>

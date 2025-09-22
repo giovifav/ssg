@@ -58,5 +58,11 @@
     "url": "voxel64/index.html",
     "date": "2025-01-01",
     "content": "A simple voxel space renderer for Love2D, simulating 3D terrain flight using heightmaps. repository Based on s-macke/VoxelSpace Features Procedural terrain rendering based on height and color maps Flight controls for navigation Multiple terrain maps included Basic HUD display Requirements Love2D game engine Running Run the game with: love /path/to/voxel64-master Controls W/A/S/D: Move forward/left/back/right Arrow up/down: Increase/decrease height Numbers 1-5: Switch maps H: Toggle HUD Esc: Quit voxel64 Un semplice render voxel space per Love2D, che simula il volo 3D su terreni utilizzando heightmaps. Caratteristiche Rendering procedurale di terreni basato su mappe di altezza e colore Controlli di volo per la navigazione Più mappe di terreno incluse Display HUD di base Requisiti Game engine Love2D Esecuzione Esegui il gioco con: love /path/to/voxel64-master Controlli W/A/S/D: Muovi avanti/sinistra/indietro/destra Frecce su/giù: Aumenta/diminuisci altezza Numeri 1-5: Cambia mappa H: Mostra/nascondi HUD Esc: Esci × ‹ ›"
+  },
+  {
+    "title": "Whisperli",
+    "url": "whisperli_info/index.html",
+    "date": "2025-01-01",
+    "content": "Whisperli is a simple web-based ambient sound mixer application that allows you to create custom audio mixes by combining different sounds. Features Browse sounds organized by categories Add sounds to the mixer interface Play and stop audio mixes Save and load audio mixes Select from a variety of background images Toggle between light and dark themes Search functionality for sounds Technologies HTML CSS JavaScript (ES6 Modules) Repository The source code is available at https://github.com/giovifav/whisperli"
   }
 ]

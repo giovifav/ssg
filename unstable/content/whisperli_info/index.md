@@ -1,5 +1,3 @@
-# Whisperli
-
 ---
 title: Whisperli
 date: 2025-01-01

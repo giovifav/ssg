@@ -52,6 +52,39 @@
     });
   });
 
+  // Sidebar toggle
+  const sidebarToggle = document.querySelector('.sidebar-toggle');
+  const sidebarClose = document.querySelector('.sidebar-close');
+  const layout = document.querySelector('.layout');
+  const sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.innerWidth > 900) {
+        layout.classList.toggle('sidebar-closed');
+      } else {
+        layout.classList.toggle('sidebar-open');
+      }
+    });
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener('click', () => {
+      if (window.innerWidth > 900) {
+        layout.classList.toggle('sidebar-closed');
+      } else {
+        layout.classList.remove('sidebar-open');
+      }
+    });
+  }
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', () => {
+      layout.classList.remove('sidebar-open');
+    });
+  }
+
   // Simple client-side search
   const input = document.getElementById('searchInput');
   const panel = document.getElementById('searchResults');
