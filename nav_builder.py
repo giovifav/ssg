@@ -416,11 +416,13 @@ def build_breadcrumbs(
         crumbs.append({"label": label, "url": url})
 
     # Current page (no link) — use frontmatter title if available
-    current_md = content_root / rel_md_path
-    try:
-        current_title, _ = load_title_from_markdown(current_md)
-        label = current_title
-    except Exception:
-        label = rel_md_path.stem.replace("_", " ").replace("-", " ")
-    crumbs.append({"label": label, "url": None})
+    # Skip adding current page crumb if it's an index.md (already represented by its directory crumb)
+    if rel_md_path.name != "index.md":
+        current_md = content_root / rel_md_path
+        try:
+            current_title, _ = load_title_from_markdown(current_md)
+            label = current_title
+        except Exception:
+            label = rel_md_path.stem.replace("_", " ").replace("-", " ")
+        crumbs.append({"label": label, "url": None})
     return crumbs

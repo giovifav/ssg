@@ -49,7 +49,9 @@
 .gallery-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 .gallery-figure {
   position: relative;
@@ -147,10 +149,8 @@
   }
   .gallery-prev { left: -22px; }
   .gallery-next { right: -22px; }
-  .gallery-modal {
-    padding: 1rem;
-  }
   .gallery-figure {
+    margin: 1rem;
     max-width: 100%;
     max-height: 80vh;
   }

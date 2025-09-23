@@ -24,6 +24,7 @@
         <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
         <div id="searchResults" class="search-results" hidden></div>
       </div>
+      <a class="btn-primary" href="{% if is_multilingual %}/{% else %}{{ breadcrumbs and breadcrumbs[0] and breadcrumbs[0].url or '/' }}{% endif %}">Home</a>
       <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
         <i class="fas fa-sun"></i>
       </button>

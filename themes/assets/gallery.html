@@ -1,0 +1,18 @@
+<!-- Gallery component template (no title, no description) -->
+<section class="gallery" id="{{ id }}">
+  <link rel="stylesheet" href="{{ css_href }}" />
+  <div class="gallery-grid">
+    {{ cards|safe }}
+  </div>
+  <div class="gallery-modal" hidden>
+    <div class="gallery-backdrop"></div>
+    <figure class="gallery-figure">
+      <img class="gallery-full" alt="" />
+      <figcaption class="gallery-caption"></figcaption>
+      <button type="button" class="gallery-close" aria-label="Chiudi">×</button>
+      <button type="button" class="gallery-prev" aria-label="Foto precedente">‹</button>
+      <button type="button" class="gallery-next" aria-label="Foto successiva">›</button>
+    </figure>
+  </div>
+  <script src="{{ js_href }}"></script>
+</section>

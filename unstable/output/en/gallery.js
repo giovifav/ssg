@@ -25,11 +25,15 @@
       if (cap) cap.textContent = alt || '';
       updateButtons();
       modal.hidden = false;
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
       document.addEventListener('keydown', onKey);
     }
     function close(){
       if (!modal) return;
       modal.hidden = true;
+      root.appendChild(modal);
+      document.body.style.overflow = '';
       document.removeEventListener('keydown', onKey);
     }
     function onKey(e){
