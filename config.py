@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 import sys
 from typing import Optional, Any
@@ -46,6 +46,10 @@ class SiteConfig:
         base_theme: Theme HTML filename (located in the site root).
         theme_css: Theme CSS filename (located in the site root).
         base_url: Base URL of the site (used for sitemap generation).
+        404_title: Title for the 404 error page.
+        404_content: HTML content for the 404 error page.
+        default_language: Default language code (e.g., "en") used for fallback and interface translations.
+        languages: List of supported language codes for content (e.g., ["en", "it"]).
     """
 
     site_name: str
@@ -55,6 +59,10 @@ class SiteConfig:
     base_theme: str
     theme_css: str
     base_url: Optional[str] = None
+    not_found_title: str = "404 - Page Not Found"
+    not_found_content: str = '<p>The page you\'re looking for doesn\'t exist.</p><p><a href="/">Return to the homepage</a></p>'
+    default_language: str = "en"
+    languages: list[str] = field(default_factory=lambda: ["en"])
 
 
 def read_config(site_root: Path) -> SiteConfig:
@@ -144,6 +152,10 @@ def _validate_config_data(data: dict) -> tuple[dict, list[str]]:
         "base_theme": {"type": str, "default": "assets/theme.html", "required": False},
         "theme_css": {"type": str, "default": "assets/theme.css", "required": False},
         "base_url": {"type": str, "default": None, "required": False},
+        "not_found_title": {"type": str, "default": "404 - Page Not Found", "required": False},
+        "not_found_content": {"type": str, "default": '<p>The page you\'re looking for doesn\'t exist.</p><p><a href="/">Return to the homepage</a></p>', "required": False},
+        "default_language": {"type": str, "default": "en", "required": False},
+        "languages": {"type": list, "default": ["en"], "required": False},
     }
 
     for field_name, field_config in schema.items():
@@ -185,6 +197,9 @@ def _validate_config_data(data: dict) -> tuple[dict, list[str]]:
         elif field_name == "base_url":
             if validated[field_name] and not isinstance(validated[field_name], str):
                 errors.append(f"Field '{field_name}' must be a string")
+        elif field_name == "languages":
+            if isinstance(validated[field_name], list) and not all(isinstance(i, str) for i in validated[field_name]):
+                errors.append(f"Field 'languages' must contain only string values")
 
     return validated, errors
 
@@ -240,6 +255,8 @@ def write_config_toml(
     base_theme: str = "assets/theme.html",
     theme_css: str = "assets/theme.css",
     base_url: Optional[str] = None,
+    default_language: str = "en",
+    languages: Optional[list[str]] = None,
 ) -> None:
     """Create a config.toml file with provided values.
 
@@ -251,6 +268,9 @@ def write_config_toml(
         footer: Footer text.
         base_theme: Theme HTML filename.
         theme_css: Theme CSS filename.
+        base_url: Base URL of the site.
+        default_language: Default language code for the site.
+        languages: List of supported languages for the site.
 
     Raises:
         ValueError: If provided values are invalid.
@@ -265,6 +285,8 @@ def write_config_toml(
         "base_theme": base_theme,
         "theme_css": theme_css,
         "base_url": base_url,
+        "default_language": default_language,
+        "languages": languages if languages is not None else ["en"],
     }
 
     _, validation_errors = _validate_config_data(config_dict)
@@ -284,6 +306,9 @@ def write_config_toml(
         )
         if base_url is not None:
             content += f"base_url = \"{base_url}\"\n"
+        content += f"default_language = \"{default_language}\"\n"
+        languages_list = config_dict["languages"]
+        content += f"languages = {languages_list!r}\n"
         cfg_path = site_root / "config.toml"
         cfg_path.write_text(content, encoding="utf-8")
         logger.info(f"Successfully wrote config.toml to {cfg_path}")

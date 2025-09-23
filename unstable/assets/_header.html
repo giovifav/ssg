@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand-text">
+        <h1 class="site-title">{{ site_name }}</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      {% if is_multilingual %}
+      <div class="lang-selector">
+        {% for lang_code in languages %}
+        {% if lang_code != current_lang %}
+        <button class="lang-btn btn-secondary" data-lang="{{ lang_code }}" type="button">
+          {{ lang_code.upper() }}
+        </button>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <a class="btn-primary" href="{% if is_multilingual %}/{% else %}{{ breadcrumbs and breadcrumbs[0] and breadcrumbs[0].url or '/' }}{% endif %}">Home</a>
+      <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</header>

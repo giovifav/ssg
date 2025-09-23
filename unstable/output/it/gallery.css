@@ -1,0 +1,196 @@
+/* Basic gallery styles, scoped via gallery root element */
+.gallery {
+  margin: 1rem 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+.gallery-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  background: var(--surface);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.gallery-item:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease;
+}
+.gallery-item:hover img {
+  opacity: 0.9;
+}
+.gallery-modal[hidden] { display: none !important; }
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+}
+.gallery-figure {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  margin: 0;
+}
+.gallery-full {
+  max-width: 95vw;
+  max-height: 85vh;
+  display: block;
+  border-radius: 12px;
+}
+.gallery-caption {
+  color: var(--muted);
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+.gallery-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  /* Glassmorphism extra for buttons */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.2s ease;
+}
+.gallery-close:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+.gallery-prev, .gallery-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: bold;
+  /* Adjusted opacity and shadow */
+  opacity: 0.85;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.2s ease;
+}
+.gallery-prev:hover, .gallery-next:hover {
+  opacity: 1;
+  box-shadow: 0 0 16px rgba(0,0,0,0.25);
+  transform: translateY(-2px);
+}
+.gallery-prev { left: -24px; }
+.gallery-next { right: -24px; }
+
+/* Responsive adjustments for gallery */
+/* Tablet intermediate breakpoint */
+@media (max-width: 900px) and (min-width: 769px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+  }
+  .gallery-prev, .gallery-next {
+    left: -28px;
+    right: -28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    padding: 1rem;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  .gallery-prev, .gallery-next {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+  .gallery-prev { left: -22px; }
+  .gallery-next { right: -22px; }
+  .gallery-modal {
+    padding: 1rem;
+  }
+  .gallery-figure {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+  .gallery-full {
+    max-width: 100%;
+    max-height: 75vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    border-radius: 8px;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
+  .gallery-close {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  .gallery-prev, .gallery-next {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    right: auto;
+  }
+  .gallery-prev {
+    left: 20px;
+  }
+  .gallery-next {
+    left: auto;
+    right: 20px;
+  }
+  .gallery-caption {
+    font-size: 0.8rem;
+    margin-top: 80px; /* Extra margin to account for new button position */
+  }
+}

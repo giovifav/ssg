@@ -1,0 +1,32 @@
+<main class="content">
+  <nav class="breadcrumbs">
+    {% if breadcrumbs %}
+      {% if breadcrumbs | string == breadcrumbs %}
+        {# breadcrumbs is a string, use as-is #}
+        {{ breadcrumbs | safe }}
+      {% else %}
+        {# breadcrumbs is a list, loop over it #}
+        {% for crumb in breadcrumbs %}
+          {% if crumb.url %}
+            <a href="{{ crumb.url }}">{{ crumb.label }}</a>
+          {% else %}
+            <span{% if loop.last %} class="current"{% endif %}>{{ crumb.label }}</span>
+          {% endif %}
+          {% if not loop.last %}
+            <span class="sep">&raquo;</span>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  </nav>
+  {% if page_date %}
+    <p class="meta">{{ page_date }}</p>
+    {% endif %}
+
+  <article>
+
+    <div class="markdown-body">
+      {{ content_html | safe }}
+    </div>
+  </article>
+</main>

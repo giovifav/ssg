@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voxel64 - Gio's unstable code</title>
+  <link rel="stylesheet" href="../../theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand-text">
+        <h1 class="site-title">Gio's unstable code</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      
+      <div class="lang-selector">
+        
+        
+        
+        
+        <button class="lang-btn btn-secondary" data-lang="it" type="button">
+          IT
+        </button>
+        
+        
+      </div>
+      
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <a class="btn-primary" href="/">Home</a>
+      <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</header>
+    <aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <div></div>
+      <button class="sidebar-close"><i class="fas fa-times"></i></button>
+    </div>
+    <ul><li><a href="../../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><span>Voxel64</span></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
+  </div>
+</aside>
+
+<div class="sidebar-backdrop"></div>
+    <main class="content">
+  <nav class="breadcrumbs">
+    
+      
+        
+        
+          
+            <a href="../../index.html">My Experimental Projects</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <a href="index.html">Voxel64</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <span class="current">Voxel64</span>
+          
+          
+        
+      
+    
+  </nav>
+  
+    <p class="meta">2025-01-01</p>
+    
+
+  <article>
+
+    <div class="markdown-body">
+      <p>A simple voxel space renderer for Love2D, simulating 3D terrain flight using heightmaps.</p>
+<p><a href="https://github.com/giovifav/voxel64">repository</a></p>
+<p><a href="https://github.com/s-macke/VoxelSpace">Based on s-macke/VoxelSpace</a></p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Procedural terrain rendering based on height and color maps</li>
+<li>Flight controls for navigation</li>
+<li>Multiple terrain maps included</li>
+<li>Basic HUD display</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Love2D game engine</li>
+</ul>
+<h2 id="running">Running</h2>
+<p>Run the game with: <code>love /path/to/voxel64-master</code></p>
+<h2 id="controls">Controls</h2>
+<ul>
+<li>W/A/S/D: Move forward/left/back/right</li>
+<li>Arrow up/down: Increase/decrease height</li>
+<li>Numbers 1-5: Switch maps</li>
+<li>H: Toggle HUD</li>
+<li>Esc: Quit</li>
+</ul>
+
+<!-- Gallery component template (no title, no description) -->
+<section class="gallery" id="gallery-subtree-0">
+  <link rel="stylesheet" href="../../gallery.css" />
+  <div class="gallery-grid">
+    <a class="gallery-item" href="#" data-full="_gallery/love_8RNMY4xsRS.png" data-alt="love 8RNMY4xsRS"><img src="_gallery/_thumbs/love_8RNMY4xsRS.png" alt="love 8RNMY4xsRS" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_AHFsEQE8PC.png" data-alt="love AHFsEQE8PC"><img src="_gallery/_thumbs/love_AHFsEQE8PC.png" alt="love AHFsEQE8PC" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_gyfoNL2PHE.png" data-alt="love gyfoNL2PHE"><img src="_gallery/_thumbs/love_gyfoNL2PHE.png" alt="love gyfoNL2PHE" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_oYFNaehgJ5.png" data-alt="love oYFNaehgJ5"><img src="_gallery/_thumbs/love_oYFNaehgJ5.png" alt="love oYFNaehgJ5" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_VoxUrpummv.png" data-alt="love VoxUrpummv"><img src="_gallery/_thumbs/love_VoxUrpummv.png" alt="love VoxUrpummv" loading="lazy" /></a>
+  </div>
+  <div class="gallery-modal" hidden>
+    <div class="gallery-backdrop"></div>
+    <figure class="gallery-figure">
+      <img class="gallery-full" alt="" />
+      <figcaption class="gallery-caption"></figcaption>
+      <button type="button" class="gallery-close" aria-label="Chiudi">×</button>
+      <button type="button" class="gallery-prev" aria-label="Foto precedente">‹</button>
+      <button type="button" class="gallery-next" aria-label="Foto successiva">›</button>
+    </figure>
+  </div>
+  <script src="../../gallery.js"></script>
+</section>
+    </div>
+  </article>
+</main>
+  </div>
+  <footer class="site-footer">
+  <div class="container">
+    Copyright 2025
+    <p class="site-author">Giovanni Favaro</p>
+  </div>
+</footer>
+
+<script src="../common.js"></script>
+</body>
+</html>

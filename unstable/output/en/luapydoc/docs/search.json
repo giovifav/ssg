@@ -1,0 +1,1182 @@
+[
+  {
+    "file": "arrow_manager",
+    "full_name": "Utils",
+    "class": "ArrowManager",
+    "summary": "Manages movement, shape transforms, direction detection, and collisions for arrow-like entities. This module exposes both pure utility functions and an OO manager for runtime updates.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.getNormalizedGroupAndBounds",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.getNormalizedGroupAndBounds(group) Helper function to calculate the bounding box of a group of pixels and normalize their coordinates relative to the top-left of the bounding box.",
+    "params": [
+      {
+        "type": "group",
+        "name": "table",
+        "desc": "A table of pixel coordinates ({x=x, y=y})."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "normalizedGroup A table of pixel coordinates normalized to (0,0) origin."
+      },
+      {
+        "type": "table",
+        "desc": "pixelSet A 2D table for quick lookup of pixel existence in the normalized group."
+      },
+      {
+        "type": "table",
+        "desc": "bounds A table containing minX, minY, maxX, maxY, width, and height of the bounding box."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "checkTaperingShape",
+    "class": null,
+    "summary": "ArrowManager.checkTaperingShape(normalizedGroup, pixelSet, bounds, isVertical, centerCoord, tipCoord, startCoord, endCoord, stepCoord, getPixelsFunc, getMinMaxFunc, getExpectedSizeFunc) Helper function to check for consistent tapering in arrow shapes (vertical or horizontal).",
+    "params": [
+      {
+        "type": "normalizedGroup",
+        "name": "table",
+        "desc": "The pixel group with coordinates normalized to (0,0) origin."
+      },
+      {
+        "type": "pixelSet",
+        "name": "table",
+        "desc": "A 2D table for quick lookup of pixel existence."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      },
+      {
+        "type": "isVertical",
+        "name": "boolean",
+        "desc": "True if checking a vertical arrow, false for horizontal."
+      },
+      {
+        "type": "centerCoord",
+        "name": "number",
+        "desc": "The center coordinate (centerX for vertical, centerY for horizontal)."
+      },
+      {
+        "type": "tipCoord",
+        "name": "number",
+        "desc": "The coordinate of the tip (0 or bounds.height-1 for vertical, 0 or bounds.width-1 for horizontal)."
+      },
+      {
+        "type": "startCoord",
+        "name": "number",
+        "desc": "The starting coordinate for iteration."
+      },
+      {
+        "type": "endCoord",
+        "name": "number",
+        "desc": "The ending coordinate for iteration."
+      },
+      {
+        "type": "stepCoord",
+        "name": "number",
+        "desc": "The step direction for iteration (1 or -1)."
+      },
+      {
+        "type": "getPixelsFunc",
+        "name": "function",
+        "desc": "A function to get pixels along the current row/column."
+      },
+      {
+        "type": "getMinMaxFunc",
+        "name": "function",
+        "desc": "A function to get min/max coordinates from a list of pixels."
+      },
+      {
+        "type": "getExpectedSizeFunc",
+        "name": "function",
+        "desc": "A function to get the expected size (width/height) for the current row/column."
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean",
+        "desc": "True if the tapering is consistent, otherwise false."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "isVerticalArrow",
+    "class": null,
+    "summary": "ArrowManager.isVerticalArrow(normalizedGroup, pixelSet, bounds) Checks if a normalized group of pixels forms a vertical arrow shape. Assumes the arrow has odd width and checks for vertical symmetry and tapering.",
+    "params": [
+      {
+        "type": "normalizedGroup",
+        "name": "table",
+        "desc": "The pixel group with coordinates normalized to (0,0) origin."
+      },
+      {
+        "type": "pixelSet",
+        "name": "table",
+        "desc": "A 2D table for quick lookup of pixel existence."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "string|nil",
+        "desc": "\"up\" or \"down\" if it's a vertical arrow, otherwise nil."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "isHorizontalArrow",
+    "class": null,
+    "summary": "ArrowManager.isHorizontalArrow(normalizedGroup, pixelSet, bounds) Checks if a normalized group of pixels forms a horizontal arrow shape. Assumes the arrow has odd height and checks for horizontal symmetry and tapering.",
+    "params": [
+      {
+        "type": "normalizedGroup",
+        "name": "table",
+        "desc": "The pixel group with coordinates normalized to (0,0) origin."
+      },
+      {
+        "type": "pixelSet",
+        "name": "table",
+        "desc": "A 2D table for quick lookup of pixel existence."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "string|nil",
+        "desc": "\"left\" or \"right\" if it's a horizontal arrow, otherwise nil."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "isDiagonalArrow",
+    "class": null,
+    "summary": "ArrowManager.isDiagonalArrow(normalizedGroup, pixelSet, bounds) Checks if a normalized group of pixels forms a diagonal arrow shape. It checks for specific tip and arm configurations for 4 diagonal directions.",
+    "params": [
+      {
+        "type": "normalizedGroup",
+        "name": "table",
+        "desc": "The pixel group with coordinates normalized to (0,0) origin."
+      },
+      {
+        "type": "pixelSet",
+        "name": "table",
+        "desc": "A 2D table for quick lookup of pixel existence."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "string|nil",
+        "desc": "\"up-right\", \"up-left\", \"down-left\", or \"down-right\" if it's a diagonal arrow, otherwise nil."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "isSimpleDiagonalArrow",
+    "class": null,
+    "summary": "ArrowManager.isSimpleDiagonalArrow(normalizedGroup, pixelSet, bounds) Checks if a normalized group of pixels forms a simple diagonal line.",
+    "params": [
+      {
+        "type": "normalizedGroup",
+        "name": "table",
+        "desc": "The pixel group with coordinates normalized to (0,0) origin."
+      },
+      {
+        "type": "pixelSet",
+        "name": "table",
+        "desc": "A 2D table for quick lookup of pixel existence."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "string|nil",
+        "desc": "\"up-right\", \"up-left\", \"down-left\", or \"down-right\" if it's a diagonal line, otherwise nil."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.getArrowDirection",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.getArrowDirection(group) Determines the direction of an arrow shape from a given group of pixels. It first normalizes the group and then checks for vertical, horizontal, and diagonal arrow patterns.",
+    "params": [
+      {
+        "type": "group",
+        "name": "table",
+        "desc": "A table of pixel coordinates ({x=x, y=y}) representing a potential arrow."
+      }
+    ],
+    "returns": [
+      {
+        "type": "string|nil",
+        "desc": "The direction of the arrow (e.g., \"up\", \"down\", \"left\", \"right\", \"up-right\", etc.), or nil if not an arrow."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.rotatePixels",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.rotatePixels(pixels, angle, bounds) Rotates a group of pixels around the center of its bounding box.",
+    "params": [
+      {
+        "type": "pixels",
+        "name": "table",
+        "desc": "A table of pixel coordinates ({x=x, y=y})."
+      },
+      {
+        "type": "angle",
+        "name": "number",
+        "desc": "The rotation angle in degrees (e.g., 90, 180, 270)."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "A new table of rotated pixel coordinates."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.mirrorPixels",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.mirrorPixels(pixels, axis, bounds) Mirrors a group of pixels horizontally or vertically.",
+    "params": [
+      {
+        "type": "pixels",
+        "name": "table",
+        "desc": "A table of pixel coordinates ({x=x, y=y})."
+      },
+      {
+        "type": "axis",
+        "name": "string",
+        "desc": "\"horizontal\" or \"vertical\"."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "A new table of mirrored pixel coordinates."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.rotatePixelsArbitrary",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.rotatePixelsArbitrary(pixels, angle, bounds) Rotates a group of pixels around the center of its bounding box by an arbitrary angle.",
+    "params": [
+      {
+        "type": "pixels",
+        "name": "table",
+        "desc": "A table of pixel coordinates ({x=x, y=y})."
+      },
+      {
+        "type": "angle",
+        "name": "number",
+        "desc": "The rotation angle in degrees."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box information of the pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "A new table of rotated pixel coordinates."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.getTransformedShape",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.getTransformedShape(baseShape, baseBounds, fromDirection, toDirection) Transforms a pixel shape from one direction to another.",
+    "params": [
+      {
+        "type": "baseShape",
+        "name": "table",
+        "desc": "The initial pixel shape (normalized)."
+      },
+      {
+        "type": "baseBounds",
+        "name": "table",
+        "desc": "The bounding box of the base shape."
+      },
+      {
+        "type": "fromDirection",
+        "name": "string",
+        "desc": "The direction the base shape is currently oriented in."
+      },
+      {
+        "type": "toDirection",
+        "name": "string",
+        "desc": "The desired final direction."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "The transformed pixel shape."
+      },
+      {
+        "type": "table",
+        "desc": "The bounds of the transformed shape."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager.new",
+    "class": "ArrowManager",
+    "summary": "ArrowManager.new(level, arrowSpeed) Creates a new ArrowManager object.",
+    "params": [
+      {
+        "type": "level",
+        "name": "Level",
+        "desc": "The current active level object."
+      },
+      {
+        "type": "arrowSpeed",
+        "name": "number",
+        "desc": "The base speed of the arrows in pixels per second."
+      }
+    ],
+    "returns": [
+      {
+        "type": "ArrowManager",
+        "desc": "A new ArrowManager instance."
+      }
+    ]
+  },
+  {
+    "file": "arrow_manager",
+    "full_name": "ArrowManager:update",
+    "class": "ArrowManager",
+    "summary": "ArrowManager:update(dt) Updates the movement of all entities marked as 'isMoving' (arrows). Handles collision detection for moving entities and reverses their direction upon hitting static objects.",
+    "params": [
+      {
+        "type": "dt",
+        "name": "number",
+        "desc": "The time elapsed since the last frame in seconds."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "collision_manager",
+    "full_name": "CollisionManager",
+    "class": "CollisionManager",
+    "summary": "Handles collision detection/resolution between moving entities and the level grid/entities. Provides utility routines for broad/narrow phase checks used by ArrowManager and Game.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "collision_manager",
+    "full_name": "CollisionManager.new",
+    "class": "CollisionManager",
+    "summary": "CollisionManager.new(level, gameWidth, gameHeight) Creates a new CollisionManager object.",
+    "params": [
+      {
+        "type": "level",
+        "name": "Level",
+        "desc": "The current active level"
+      },
+      {
+        "type": "gameWidth",
+        "name": "number",
+        "desc": "The width of the game world in grid units."
+      },
+      {
+        "type": "gameHeight",
+        "name": "number",
+        "desc": "The height of the game world in grid units."
+      }
+    ],
+    "returns": [
+      {
+        "type": "CollisionManager",
+        "desc": "A new CollisionManager instance."
+      }
+    ]
+  },
+  {
+    "file": "collision_manager",
+    "full_name": "CollisionManager:getCollisionPixels",
+    "class": "CollisionManager",
+    "summary": "CollisionManager:getCollisionPixels(entity, moveDx, moveDy, collisionMode) Determines the specific pixels to check for collision based on the specified collision mode.",
+    "params": [
+      {
+        "type": "entity",
+        "name": "Entity",
+        "desc": "The moving entity (arrow)."
+      },
+      {
+        "type": "moveDx",
+        "name": "number",
+        "desc": "The intended movement in X direction."
+      },
+      {
+        "type": "moveDy",
+        "name": "number",
+        "desc": "The intended movement in Y direction."
+      },
+      {
+        "type": "collisionMode",
+        "name": "string",
+        "desc": "The collision mode to use (\"pixel_perfect\" or \"aabb\")."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "A list of pixel data for collision checking."
+      }
+    ]
+  },
+  {
+    "file": "collision_manager",
+    "full_name": "CollisionManager:checkPlayerMovement",
+    "class": "CollisionManager",
+    "summary": "CollisionManager:checkPlayerMovement(playerEntity, dx, dy) Checks if a player entity can move and handles collisions.",
+    "params": [
+      {
+        "type": "playerEntity",
+        "name": "Entity",
+        "desc": "The player-controlled entity."
+      },
+      {
+        "type": "dx",
+        "name": "number",
+        "desc": "The intended movement in the x-direction."
+      },
+      {
+        "type": "dy",
+        "name": "number",
+        "desc": "The intended movement in the y-direction."
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean",
+        "desc": "True if the player can move, false otherwise."
+      },
+      {
+        "type": "boolean",
+        "desc": "True if the player has won, false otherwise."
+      },
+      {
+        "type": "boolean",
+        "desc": "True if the player has lost, false otherwise."
+      }
+    ]
+  },
+  {
+    "file": "collision_manager",
+    "full_name": "CollisionManager:resolveEntityCollision",
+    "class": "CollisionManager",
+    "summary": "CollisionManager:resolveEntityCollision(collidedEntity, level) Resolves the collision by removing the collided entity from the level.",
+    "params": [
+      {
+        "type": "collidedEntity",
+        "name": "Entity",
+        "desc": "The entity that was collided with."
+      },
+      {
+        "type": "level",
+        "name": "Level",
+        "desc": "The current active level."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "constants",
+    "full_name": "constants.Constants",
+    "class": null,
+    "summary": "Defines global constants for the game, including consolidated color definitions.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "constants",
+    "full_name": "Constants.COLORS",
+    "class": "Constants",
+    "summary": "COLORS Defines the RGBA color values used to identify different entity types in level images. All colors include an alpha component (a=1) for consistency.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "entity",
+    "full_name": "ArrowManager",
+    "class": "Entity",
+    "summary": "Defines the structure and behavior of game entities, such as players, enemies, walls, and collectibles. `floatX`, and `floatY` (precise floating-point coordinates).",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "entity",
+    "full_name": "Entity.new",
+    "class": "Entity",
+    "summary": "Entity.new(type, pixels, color) Creates a new Entity object. Initializes the entity's type, color, and sets up its pixels with both integer and floating-point positions.",
+    "params": [
+      {
+        "type": "type",
+        "name": "string",
+        "desc": "The type of the entity."
+      },
+      {
+        "type": "pixels",
+        "name": "table",
+        "desc": "A table of initial pixel coordinates ({x=x, y=y})."
+      },
+      {
+        "type": "color",
+        "name": "table",
+        "desc": "The RGB color of the entity."
+      },
+      {
+        "type": "normalizedShape",
+        "name": "table",
+        "desc": "The normalized pixel group representing the entity's shape (relative to 0,0)."
+      },
+      {
+        "type": "bounds",
+        "name": "table",
+        "desc": "The bounding box of the original pixel group."
+      }
+    ],
+    "returns": [
+      {
+        "type": "Entity",
+        "desc": "A new Entity instance."
+      }
+    ]
+  },
+  {
+    "file": "entity",
+    "full_name": "Entity:setMoving",
+    "class": "Entity",
+    "summary": "Entity:setMoving(direction) Sets the entity's movement state and direction.",
+    "params": [
+      {
+        "type": "direction",
+        "name": "string",
+        "desc": "The movement direction (e.g., \"up\", \"down\", \"left\", \"right\")."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "entity",
+    "full_name": "Entity:updateCollisionMapPosition",
+    "class": "Entity",
+    "summary": "Entity:updateCollisionMapPosition(level, newPixelsData) Updates the entity's position in the collision map and its internal pixel coordinates.",
+    "params": [
+      {
+        "type": "level",
+        "name": "Level",
+        "desc": "The current active level."
+      },
+      {
+        "type": "newPixelsData",
+        "name": "table",
+        "desc": "A table of new pixel data, each with newFloatX, newFloatY, nextGridX, nextGridY, and original pixel reference."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "entity",
+    "full_name": "Entity:removeFromCollisionMap",
+    "class": "Entity",
+    "summary": "Entity:removeFromCollisionMap(level) Removes the entity's current pixel positions from the collision map.",
+    "params": [
+      {
+        "type": "level",
+        "name": "Level",
+        "desc": "The current active level."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "entity",
+    "full_name": "Entity:updateVisualShape",
+    "class": "Entity",
+    "summary": "Entity:updateVisualShape() Updates the entity's `pixels` table based on its `normalizedShape` and `direction`. This method applies transformations (mirroring/rotation) to the base shape and keeps the shape centered.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "entity",
+    "full_name": "Entity:draw",
+    "class": "Entity",
+    "summary": "Entity:draw() Draws the entity on the screen using its current floating-point pixel positions, rounded to the nearest integer for rendering on the grid.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "Level",
+    "class": "Game",
+    "summary": "Central game object: initialization, update loop, drawing, and input handling.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "Game.new",
+    "class": "Game",
+    "summary": "Game.new() Creates a new Game object and initializes game settings.",
+    "params": [],
+    "returns": [
+      {
+        "type": "Game",
+        "desc": "A new Game instance."
+      }
+    ]
+  },
+  {
+    "file": "game",
+    "full_name": "self.currentLevel",
+    "class": null,
+    "summary": "The current active level of the game.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "self.collisionManager",
+    "class": null,
+    "summary": "Manages collision detection and resolution.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "Game:reset",
+    "class": "Game",
+    "summary": "Game:reset() Resets the game to its initial playing state, reloading the level.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "Game:update",
+    "class": "Game",
+    "summary": "Game:update(dt) Called every frame to update game logic. Handles player movement, collision detection, entity updates, and win/loss conditions.",
+    "params": [
+      {
+        "type": "dt",
+        "name": "number",
+        "desc": "The time elapsed since the last frame in seconds."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "Game:draw",
+    "class": "Game",
+    "summary": "Game:draw() Called every frame to draw game elements. Scales the graphics and draws the current level.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "game",
+    "full_name": "Game:keypressed",
+    "class": "Game",
+    "summary": "Game:keypressed(key) Handles keyboard key press events.",
+    "params": [
+      {
+        "type": "key",
+        "name": "string",
+        "desc": "The name of the key pressed."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "gameover",
+    "full_name": "GameOver",
+    "class": "GameOver",
+    "summary": "Defines the game over screen scene.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "gameover",
+    "full_name": "GameOver.new",
+    "class": "GameOver",
+    "summary": "GameOver.new(sceneManager, gameInstance) Creates a new GameOver scene instance.",
+    "params": [
+      {
+        "type": "sceneManager",
+        "name": "table",
+        "desc": "The SceneManager instance."
+      },
+      {
+        "type": "gameInstance",
+        "name": "table",
+        "desc": "The Game instance."
+      }
+    ],
+    "returns": [
+      {
+        "type": "GameOver",
+        "desc": "A new GameOver scene instance."
+      }
+    ]
+  },
+  {
+    "file": "gameover",
+    "full_name": "GameOver:load",
+    "class": "GameOver",
+    "summary": "GameOver:load() Called when the game over scene is set as active.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "gameover",
+    "full_name": "GameOver:update",
+    "class": "GameOver",
+    "summary": "GameOver:update(dt) Updates the game over scene logic. (No specific logic for game over screen)",
+    "params": [
+      {
+        "type": "dt",
+        "name": "number",
+        "desc": "The time elapsed since the last frame."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "gameover",
+    "full_name": "GameOver:draw",
+    "class": "GameOver",
+    "summary": "GameOver:draw() Draws the game over screen elements.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "gameover",
+    "full_name": "GameOver:keypressed",
+    "class": "GameOver",
+    "summary": "GameOver:keypressed(key) Handles key press events for the game over scene.",
+    "params": [
+      {
+        "type": "key",
+        "name": "string",
+        "desc": "The name of the key pressed."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "level",
+    "full_name": "Utils",
+    "class": "Level",
+    "summary": "Manages the game levels: load from image, create entities, collisions, and updates.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "level",
+    "full_name": "Level.new",
+    "class": "Level",
+    "summary": "Level.new(imagePath) Creates a new Level object and loads its data from the specified image.",
+    "params": [
+      {
+        "type": "imagePath",
+        "name": "string",
+        "desc": "The path to the image file representing the level layout."
+      }
+    ],
+    "returns": [
+      {
+        "type": "Level",
+        "desc": "A new Level instance."
+      }
+    ]
+  },
+  {
+    "file": "level",
+    "full_name": "Level:load",
+    "class": "Level",
+    "summary": "Level:load() It uses a flood-fill algorithm to group adjacent pixels of the same color into entities.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "level",
+    "full_name": "Level:draw",
+    "class": "Level",
+    "summary": "Level:draw() Draws all entities in the current level.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "level",
+    "full_name": "Level:addEntity",
+    "class": "Level",
+    "summary": "Level:addEntity(newEntity) Adds a new entity to the level and distributes it to appropriate lists.",
+    "params": [
+      {
+        "type": "newEntity",
+        "name": "Entity",
+        "desc": "The entity to add."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "main",
+    "full_name": "main.Game",
+    "class": null,
+    "summary": "Entry point for the LÖVE2D game. Initializes and runs the main Game class.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager",
+    "class": "SceneManager",
+    "summary": "Manages different game scenes (e.g., Game, Win, GameOver).",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager.new",
+    "class": "SceneManager",
+    "summary": "SceneManager.new() Creates a new SceneManager instance.",
+    "params": [],
+    "returns": [
+      {
+        "type": "SceneManager",
+        "desc": "A new SceneManager instance."
+      }
+    ]
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager:set_scene",
+    "class": "SceneManager",
+    "summary": "SceneManager:set_scene(scene) Sets the current active scene and calls its load method.",
+    "params": [
+      {
+        "type": "scene",
+        "name": "table",
+        "desc": "The scene object to set as active."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager:update",
+    "class": "SceneManager",
+    "summary": "SceneManager:update(dt) Updates the current active scene.",
+    "params": [
+      {
+        "type": "dt",
+        "name": "number",
+        "desc": "The time elapsed since the last frame."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager:draw",
+    "class": "SceneManager",
+    "summary": "SceneManager:draw() Draws the current active scene.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager:keypressed",
+    "class": "SceneManager",
+    "summary": "SceneManager:keypressed(key) Handles key press events for the current active scene.",
+    "params": [
+      {
+        "type": "key",
+        "name": "string",
+        "desc": "The name of the key pressed."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "scene_manager",
+    "full_name": "SceneManager:reset_game",
+    "class": "SceneManager",
+    "summary": "SceneManager:reset_game() Resets the game instance and sets the scene back to the game.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "utils",
+    "full_name": "utils.Utils",
+    "class": null,
+    "summary": "Provides utility functions for the game, including flood-fill for grouping pixels and functions for detecting arrow shapes and their directions.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "utils",
+    "full_name": "Utils.floodFill",
+    "class": "Utils",
+    "summary": "Utils.floodFill(levelData, startX, startY, color, visited) Groups adjacent pixels of the same color using a flood-fill algorithm. This is used during level loading to identify and create entities from pixel art.",
+    "params": [
+      {
+        "type": "levelData",
+        "name": "ImageData",
+        "desc": "The image data of the level."
+      },
+      {
+        "type": "startX",
+        "name": "number",
+        "desc": "The starting X coordinate for the flood fill."
+      },
+      {
+        "type": "startY",
+        "name": "number",
+        "desc": "The starting Y coordinate for the flood fill."
+      },
+      {
+        "type": "color",
+        "name": "table",
+        "desc": "The RGB color to match for grouping pixels."
+      },
+      {
+        "type": "visited",
+        "name": "table",
+        "desc": "A table used to keep track of visited pixels to prevent infinite loops."
+      }
+    ],
+    "returns": [
+      {
+        "type": "table",
+        "desc": "A table containing all grouped pixel coordinates ({x=x, y=y})."
+      }
+    ]
+  },
+  {
+    "file": "utils",
+    "full_name": "Utils.getAABB",
+    "class": "Utils",
+    "summary": "Utils.getAABB(entity, offsetX, offsetY) Calculates the Axis-Aligned Bounding Box (AABB) for a given entity.",
+    "params": [
+      {
+        "type": "entity",
+        "name": "Entity",
+        "desc": "The entity to calculate the AABB for."
+      },
+      {
+        "type": "offsetX",
+        "name": "number",
+        "desc": "An offset to apply to the X coordinates."
+      },
+      {
+        "type": "offsetY",
+        "name": "number",
+        "desc": "An offset to apply to the Y coordinates."
+      }
+    ],
+    "returns": [
+      {
+        "type": "number",
+        "desc": "minX The minimum X coordinate of the AABB."
+      },
+      {
+        "type": "number",
+        "desc": "minY The minimum Y coordinate of the AABB."
+      },
+      {
+        "type": "number",
+        "desc": "maxX The maximum X coordinate of the AABB."
+      },
+      {
+        "type": "number",
+        "desc": "maxY The maximum Y coordinate of the AABB."
+      }
+    ]
+  },
+  {
+    "file": "utils",
+    "full_name": "Utils.getAABBRounded",
+    "class": "Utils",
+    "summary": "Utils.getAABBRounded(entity, offsetX, offsetY) Calculates the Axis-Aligned Bounding Box (AABB) for a given entity, with coordinates rounded to the nearest integer for grid-based collision.",
+    "params": [
+      {
+        "type": "entity",
+        "name": "Entity",
+        "desc": "The entity to calculate the AABB for."
+      },
+      {
+        "type": "offsetX",
+        "name": "number",
+        "desc": "An offset to apply to the X coordinates."
+      },
+      {
+        "type": "offsetY",
+        "name": "number",
+        "desc": "An offset to apply to the Y coordinates."
+      }
+    ],
+    "returns": [
+      {
+        "type": "number",
+        "desc": "minX The minimum X coordinate of the rounded AABB."
+      },
+      {
+        "type": "number",
+        "desc": "minY The minimum Y coordinate of the rounded AABB."
+      },
+      {
+        "type": "number",
+        "desc": "maxX The maximum X coordinate of the rounded AABB."
+      },
+      {
+        "type": "number",
+        "desc": "maxY The maximum Y coordinate of the rounded AABB."
+      }
+    ]
+  },
+  {
+    "file": "utils",
+    "full_name": "Utils.log",
+    "class": "Utils",
+    "summary": "Utils.log(message) Conditionally prints a message to the console if DEBUG_MODE is enabled.",
+    "params": [
+      {
+        "type": "message",
+        "name": "string",
+        "desc": "The message to print."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "win",
+    "full_name": "Win",
+    "class": "Win",
+    "summary": "Defines the win screen scene.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "win",
+    "full_name": "Win.new",
+    "class": "Win",
+    "summary": "Win.new(sceneManager, gameInstance) Creates a new Win scene instance.",
+    "params": [
+      {
+        "type": "sceneManager",
+        "name": "table",
+        "desc": "The SceneManager instance."
+      },
+      {
+        "type": "gameInstance",
+        "name": "table",
+        "desc": "The Game instance."
+      }
+    ],
+    "returns": [
+      {
+        "type": "Win",
+        "desc": "A new Win scene instance."
+      }
+    ]
+  },
+  {
+    "file": "win",
+    "full_name": "Win:load",
+    "class": "Win",
+    "summary": "Win:load() Called when the win scene is set as active.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "win",
+    "full_name": "Win:update",
+    "class": "Win",
+    "summary": "Win:update(dt) Updates the win scene logic. (No specific logic for win screen)",
+    "params": [
+      {
+        "type": "dt",
+        "name": "number",
+        "desc": "The time elapsed since the last frame."
+      }
+    ],
+    "returns": []
+  },
+  {
+    "file": "win",
+    "full_name": "Win:draw",
+    "class": "Win",
+    "summary": "Win:draw() Draws the win screen elements.",
+    "params": [],
+    "returns": []
+  },
+  {
+    "file": "win",
+    "full_name": "Win:keypressed",
+    "class": "Win",
+    "summary": "Win:keypressed(key) Handles key press events for the win scene.",
+    "params": [
+      {
+        "type": "key",
+        "name": "string",
+        "desc": "The name of the key pressed."
+      }
+    ],
+    "returns": []
+  }
+]

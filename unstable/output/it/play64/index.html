@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play64 fantasy console - Gio's unstable code</title>
+  <link rel="stylesheet" href="../../theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand-text">
+        <h1 class="site-title">Gio's unstable code</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      
+      <div class="lang-selector">
+        
+        
+        <button class="lang-btn btn-secondary" data-lang="en" type="button">
+          EN
+        </button>
+        
+        
+        
+        
+      </div>
+      
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <a class="btn-primary" href="/">Home</a>
+      <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</header>
+    <aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <div></div>
+      <button class="sidebar-close"><i class="fas fa-times"></i></button>
+    </div>
+    <ul><li><a href="../../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><span>Play64 fantasy console</span></summary><ul><li><a href="documentation.html">Play64 Docs</a></li></ul></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
+  </div>
+</aside>
+
+<div class="sidebar-backdrop"></div>
+    <main class="content">
+  <nav class="breadcrumbs">
+    
+      
+        
+        
+          
+            <a href="../../index.html">My Experimental Projects</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <a href="index.html">Play64 fantasy console</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <span class="current">Play64 fantasy console</span>
+          
+          
+        
+      
+    
+  </nav>
+  
+    <p class="meta">2025-09-17</p>
+    
+
+  <article>
+
+    <div class="markdown-body">
+      <p>Play64 è una console fantasy sviluppata per The Tool Jam 5.</p>
+<p>È un motore di giochi per giochi Gameboy/Atari 2600.</p>
+<p>Dispone di un D-pad e due pulsanti azione, con un display 64 x 64 in grado di renderizzare quattro tonalità di viola.</p>
+<p>I giochi sono scritti in Lua 5.1.</p>
+<p>La console stessa è implementata utilizzando BlitzMax NG e la libreria grafica Raylib.</p>
+<p>Controlli</p>
+<pre><code>Il pulsante su è mappato sui tasti FRECCIA SU e W
+Il pulsante giù è mappato sui tasti FRECCIA GIÙ e S
+Il pulsante sinistro è mappato sui tasti FRECCIA SINISTRA e A
+Il pulsante destro è mappato sui tasti FRECCIA DESTRA e D
+Il pulsante A è mappato sui tasti Z e N
+Il pulsante B è mappato sui tasti X e M
+Premi ESC per chiudere la finestra dell'applicazione
+Premi R per resettare la console
+Premi F per attivare/disattivare la modalità schermo intero
+Premi P per mettere in pausa il gioco
+</code></pre>
+
+<!-- Gallery component template (no title, no description) -->
+<section class="gallery" id="gallery-subtree-0">
+  <link rel="stylesheet" href="../../gallery.css" />
+  <div class="gallery-grid">
+    <a class="gallery-item" href="#" data-full="_gallery/0CkBpn.png" data-alt="0CkBpn"><img src="_gallery/_thumbs/0CkBpn.png" alt="0CkBpn" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/2XogA4.png" data-alt="2XogA4"><img src="_gallery/_thumbs/2XogA4.png" alt="2XogA4" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/87tqDh.png" data-alt="87tqDh"><img src="_gallery/_thumbs/87tqDh.png" alt="87tqDh" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/_1a434.png" data-alt=" 1a434"><img src="_gallery/_thumbs/_1a434.png" alt=" 1a434" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/JzsWe1.png" data-alt="JzsWe1"><img src="_gallery/_thumbs/JzsWe1.png" alt="JzsWe1" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/OOisJB.png" data-alt="OOisJB"><img src="_gallery/_thumbs/OOisJB.png" alt="OOisJB" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/play64.debug_KS1eDKbUza.png" data-alt="play64.debug KS1eDKbUza"><img src="_gallery/_thumbs/play64.debug_KS1eDKbUza.png" alt="play64.debug KS1eDKbUza" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/play64.debug_UuNMieR49W.png" data-alt="play64.debug UuNMieR49W"><img src="_gallery/_thumbs/play64.debug_UuNMieR49W.png" alt="play64.debug UuNMieR49W" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/rQz6Coi.jpeg" data-alt="rQz6Coi"><img src="_gallery/_thumbs/rQz6Coi.jpg" alt="rQz6Coi" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/Y096OT.png" data-alt="Y096OT"><img src="_gallery/_thumbs/Y096OT.png" alt="Y096OT" loading="lazy" /></a>
+  </div>
+  <div class="gallery-modal" hidden>
+    <div class="gallery-backdrop"></div>
+    <figure class="gallery-figure">
+      <img class="gallery-full" alt="" />
+      <figcaption class="gallery-caption"></figcaption>
+      <button type="button" class="gallery-close" aria-label="Chiudi">×</button>
+      <button type="button" class="gallery-prev" aria-label="Foto precedente">‹</button>
+      <button type="button" class="gallery-next" aria-label="Foto successiva">›</button>
+    </figure>
+  </div>
+  <script src="../../gallery.js"></script>
+</section>
+
+<!-- Files List component template (no title) -->
+<section class="files-list">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Dimensione</th>
+        <th>Data</th>
+        <th>Scarica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>docs.pdf</td><td>137.8 KB</td><td>2025-05-14 13:19</td><td><a href="_files/docs.pdf" download>Scarica</a></td></tr>
+<tr><td>play64.zip</td><td>1.7 MB</td><td>2025-05-14 13:22</td><td><a href="_files/play64.zip" download>Scarica</a></td></tr>
+    </tbody>
+  </table>
+</section>
+    </div>
+  </article>
+</main>
+  </div>
+  <footer class="site-footer">
+  <div class="container">
+    Copyright 2025
+    <p class="site-author">Giovanni Favaro</p>
+  </div>
+</footer>
+
+<script src="../common.js"></script>
+</body>
+</html>

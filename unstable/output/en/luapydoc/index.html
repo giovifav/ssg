@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LuaPyDoc - Gio's unstable code</title>
+  <link rel="stylesheet" href="../../theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand-text">
+        <h1 class="site-title">Gio's unstable code</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      
+      <div class="lang-selector">
+        
+        
+        
+        
+        <button class="lang-btn btn-secondary" data-lang="it" type="button">
+          IT
+        </button>
+        
+        
+      </div>
+      
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <a class="btn-primary" href="/">Home</a>
+      <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</header>
+    <aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <div></div>
+      <button class="sidebar-close"><i class="fas fa-times"></i></button>
+    </div>
+    <ul><li><a href="../../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><span>LuaPyDoc</span></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
+  </div>
+</aside>
+
+<div class="sidebar-backdrop"></div>
+    <main class="content">
+  <nav class="breadcrumbs">
+    
+      
+        
+        
+          
+            <a href="../../index.html">My Experimental Projects</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <a href="index.html">LuaPyDoc</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <span class="current">LuaPyDoc</span>
+          
+          
+        
+      
+    
+  </nav>
+  
+    <p class="meta">2025-01-01</p>
+    
+
+  <article>
+
+    <div class="markdown-body">
+      <p>Luapydoc is a Python-based documentation generator for Lua codebases. It analyzes LDoc-style documentation comments in Lua source files and generates a complete, navigable HTML documentation website with syntax highlighting, search functionality, and more.</p>
+<p><a href="https://github.com/giovifav/luapydoc">Repository</a>
+<a href="docs">Sample output</a></p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Analyzes LDoc documentation comments (@param, @return, @usage, etc.)</li>
+<li>Supports functions, variables, tables, and types</li>
+<li>Generates responsive HTML pages with dark theme</li>
+<li>Syntax highlighting for Lua code using Pygments</li>
+<li>Tree-based sidebar navigation for modules, classes, and functions</li>
+<li>Full-text search with indexing</li>
+<li>Responsive design for mobile and desktop</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 3.x</li>
+<li>jinja2</li>
+<li>pygments</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Clone this repository.</li>
+<li>Install dependencies: <code>pip install -r requirements.txt</code></li>
+</ol>
+<h2 id="usage">Usage</h2>
+<ol>
+<li>Place your Lua source files in a directory (e.g. <code>lua_src</code>), organized in subdirectories if necessary.</li>
+<li>Run the generator with desired options (see examples below).</li>
+<li>Open the <code>index.html</code> file in the output directory in your browser to view the documentation.</li>
+</ol>
+<h3 id="command-line-options">Command Line Options</h3>
+<pre><code class="language-bash"># Basic usage with default directories
+python docs_generator.py
+
+# Specify custom source and output directories
+python docs_generator.py --src-dir ./my_lua_code --output-dir ./my_docs
+
+# Using short forms
+python docs_generator.py -s ./src -o ./docs
+
+# Specify only source directory (default output 'docs')
+python docs_generator.py --src-dir ./lua_src
+</code></pre>
+<p><strong>Available parameters:</strong>
+- <code>-s, --src-dir</code>: Directory containing Lua source files (default: <code>lua_src</code>)
+- <code>-o, --output-dir</code>: Directory to generate documentation (default: <code>docs</code>)</p>
+<p><strong>Full help:</strong></p>
+<pre><code class="language-bash">python docs_generator.py --help
+</code></pre>
+<h2 id="project-structure">Project Structure</h2>
+<ul>
+<li><code>docs_generator.py</code>: Main script that analyzes Lua files and generates documentation</li>
+<li><code>docs_template.html</code>: Jinja2 template for HTML pages</li>
+<li><code>docs_style.css</code>: CSS styles for the documentation website</li>
+<li><code>requirements.txt</code>: Python dependencies</li>
+<li><code>lua_src/</code>: Directory for Lua source files (create it)</li>
+<li><code>docs/</code>: Output directory for generated HTML files</li>
+</ul>
+<h2 id="how-it-works">How It Works</h2>
+<p>The generator works in two phases:
+1. Parses documentation comments (e.g. --- @param name desc)
+2. Associates them with function definitions or variable assignments
+3. Builds a hierarchical tree for navigation
+4. Generates HTML pages using Jinja2 templates
+5. Includes Lua code with syntax highlighting</p>
+<h2 id="customization">Customization</h2>
+<p>You can customize the appearance by modifying <code>docs_style.css</code> and the layout by modifying <code>docs_template.html</code>.</p>
+    </div>
+  </article>
+</main>
+  </div>
+  <footer class="site-footer">
+  <div class="container">
+    Copyright 2025
+    <p class="site-author">Giovanni Favaro</p>
+  </div>
+</footer>
+
+<script src="../common.js"></script>
+</body>
+</html>

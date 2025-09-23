@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs_style.css">
+</head>
+
+<body>
+<div class="t-container">
+    <aside class="t-col-3">
+        <input type="text" id="searchBox" class="t-input" placeholder="Search...">
+        <div id="results"></div>
+
+        <div id="definitions-list">
+            <ul>
+                <li><a href="#">Test Link 1</a></li>
+                <li><a href="#">Test Link 2</a></li>
+                <li><a href="#">Test Link 3</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="t-col-9">
+        <div style="margin-bottom: 10px;">
+            <a href="index.html" class="back-link">&larr; Back to Index</a>
+        </div>
+        <h1 class="t-heading">Theme Test Page</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="doc">Documentation</button>
+            <button class="tab-button" data-tab="code">View Code</button>
+        </div>
+
+        <div class="tab-content" id="doc" style="display:block;">
+            <div class="func t-card">
+                <h2 class="t-heading">Test Function</h2>
+                <p>This is a test of the documentation theme.</p>
+                <p><em>Type: function</em></p>
+
+                <h3>Parameters</h3>
+                <ul>
+                    <li><b>string</b> (name): The name parameter</li>
+                    <li><b>number</b> (age): The age parameter</li>
+                </ul>
+
+                <h3>Returns</h3>
+                <ul>
+                    <li>(boolean): True if successful</li>
+                </ul>
+                
+                <h3>Usage</h3>
+                <pre><code class="language-lua">local result = testFunction("John", 30)</code></pre>
+            </div>
+        </div>
+
+        <div class="tab-content" id="code">
+            <pre><code class="language-lua">function testFunction(name, age)
+    print("Hello " .. name .. ", you are " .. age .. " years old")
+    return true
+end</code></pre>
+        </div>
+    </main>
+</div>
+
+<script>
+document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(tc => tc.style.display='none');
+        document.getElementById(btn.dataset.tab).style.display='block';
+    });
+});
+</script>
+</body>
+</html>

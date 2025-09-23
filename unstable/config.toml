@@ -4,3 +4,7 @@ footer = "Copyright 2025"
 output = "output"
 base_theme = "assets/theme.html"
 theme_css = "assets/theme.css"
+default_language = "it"
+languages = ["en", "it"]
+not_found_title = "Errore 404 - Pagina Non Trovata"
+not_found_content = '<p>La pagina che stai cercando non esiste.</p><p><a href="/">Ritorna alla homepage</a></p>'

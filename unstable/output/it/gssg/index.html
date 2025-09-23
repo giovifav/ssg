@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gio's static site generator - Gio's unstable code</title>
+  <link rel="stylesheet" href="../../theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand-text">
+        <h1 class="site-title">Gio's unstable code</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      
+      <div class="lang-selector">
+        
+        
+        <button class="lang-btn btn-secondary" data-lang="en" type="button">
+          EN
+        </button>
+        
+        
+        
+        
+      </div>
+      
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <a class="btn-primary" href="/">Home</a>
+      <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</header>
+    <aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <div></div>
+      <button class="sidebar-close"><i class="fas fa-times"></i></button>
+    </div>
+    <ul><li><a href="../../index.html">Home</a></li><li class="dir has-children has-folder expanded"><details open><summary><span>Gio's static site generator</span></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../jigsaw/index.html" data-target="jigsaw/index.html">Piece by piece puzzle</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
+  </div>
+</aside>
+
+<div class="sidebar-backdrop"></div>
+    <main class="content">
+  <nav class="breadcrumbs">
+    
+      
+        
+        
+          
+            <a href="../../index.html">My Experimental Projects</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <a href="index.html">Gio's static site generator</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <span class="current">Gio's static site generator</span>
+          
+          
+        
+      
+    
+  </nav>
+  
+    <p class="meta">2025-09-17</p>
+    
+
+  <article>
+
+    <div class="markdown-body">
+      <h1 id="gios-static-site-generator">Gio's Static Site Generator</h1>
+<p>Un generatore di siti statici moderno e intuitivo scritto in Python con interfaccia terminale basata su Textual.</p>
+<h2 id="descrizione">Descrizione</h2>
+<p>Questo strumento permette di creare siti web statici partendo da file Markdown. Offre un'interfaccia grafica semplice per gestire contenuti, applicare temi e generare siti pronti alla pubblicazione. Supporta gallerie di immagini, sistemi blog, navigazione automatica e molto altro.</p>
+<p><a href="https://github.com/giovifav/ssg">Download</a></p>
+<h2 id="caratteristiche-principali">Caratteristiche Principali</h2>
+<ul>
+<li><strong>Processamento Markdown</strong>: Converte file Markdown in pagine HTML utilizzando frontmatter per metadati.</li>
+<li><strong>Temi Personalizzabili</strong>: Template flessibili con Jinja2 per personalizzare l'aspetto del sito.</li>
+<li><strong>Gallerie Automatiche</strong>: Crea gallerie di immagini con thumbnails e visualizzatore integrato.</li>
+<li><strong>Sistemi Blog</strong>: Organizza contenuti in articoli con ordinamento cronologico.</li>
+<li><strong>Interfaccia Utente</strong>: TUI moderna per gestire siti senza comandi complessi.</li>
+<li><strong>Navigazione Automatica</strong>: Sidebar e breadcrumbs generati automaticamente.</li>
+<li><strong>Multilingua</strong>: Supporto italiano e inglese.</li>
+</ul>
+<h2 id="requisiti-di-sistema">Requisiti di Sistema</h2>
+<ul>
+<li>Python 3.8 o superiore</li>
+<li>Dipendenze elencate in <code>requirements.txt</code></li>
+</ul>
+<h2 id="installazione">Installazione</h2>
+<pre><code class="language-bash">git clone https://github.com/giovifav/ssg.git
+cd ssg
+
+# Crea ambiente virtuale
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # macOS/Linux
+
+# Installa dipendenze
+pip install -r requirements.txt
+
+# Avvia l'applicazione
+python main.py
+</code></pre>
+<h2 id="utilizzo">Utilizzo</h2>
+<p>Avvia l'applicazione con <code>python main.py</code>.</p>
+<h3 id="passi-base">Passi Base</h3>
+<ol>
+<li><strong>Inizializza un nuovo sito</strong>: Scegli una cartella e configura nome e autore.</li>
+<li><strong>Aggiungi contenuto</strong>: Crea file <code>.md</code> nella cartella <code>content/</code> con frontmatter per titolo, data, autore.</li>
+<li><strong>Aggiungi immagini e assets</strong>: Metti file statici nella cartella <code>assets/</code>.</li>
+<li><strong>Genera il sito</strong>: L'applicazione crea automaticamente l'output HTML nella directory configurata.</li>
+</ol>
+<h3 id="struttura-di-base-di-un-sito">Struttura di Base di un Sito</h3>
+<pre><code>mio-sito/
+├── content/
+│   └── index.md
+├── assets/
+│   ├── theme.html
+│   └── theme.css
+└── config.toml
+</code></pre>
+<h2 id="licenza">Licenza</h2>
+<p>Questo progetto è open source sotto licenza MIT.</p>
+<p>Per supporto o segnalazioni, visita il <a href="https://github.com/giovifav/ssg">repository GitHub</a>.</p>
+
+<!-- Gallery component template (no title, no description) -->
+<section class="gallery" id="gallery-subtree-0">
+  <link rel="stylesheet" href="../../gallery.css" />
+  <div class="gallery-grid">
+    <a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_FWIUWwCgvV.png" data-alt="WindowsTerminal FWIUWwCgvV"><img src="_gallery/_thumbs/WindowsTerminal_FWIUWwCgvV.png" alt="WindowsTerminal FWIUWwCgvV" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_lpdG9AiwOW.png" data-alt="WindowsTerminal lpdG9AiwOW"><img src="_gallery/_thumbs/WindowsTerminal_lpdG9AiwOW.png" alt="WindowsTerminal lpdG9AiwOW" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_LWjroSo39H.png" data-alt="WindowsTerminal LWjroSo39H"><img src="_gallery/_thumbs/WindowsTerminal_LWjroSo39H.png" alt="WindowsTerminal LWjroSo39H" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/WindowsTerminal_SvYEz0SzKH.png" data-alt="WindowsTerminal SvYEz0SzKH"><img src="_gallery/_thumbs/WindowsTerminal_SvYEz0SzKH.png" alt="WindowsTerminal SvYEz0SzKH" loading="lazy" /></a>
+  </div>
+  <div class="gallery-modal" hidden>
+    <div class="gallery-backdrop"></div>
+    <figure class="gallery-figure">
+      <img class="gallery-full" alt="" />
+      <figcaption class="gallery-caption"></figcaption>
+      <button type="button" class="gallery-close" aria-label="Chiudi">×</button>
+      <button type="button" class="gallery-prev" aria-label="Foto precedente">‹</button>
+      <button type="button" class="gallery-next" aria-label="Foto successiva">›</button>
+    </figure>
+  </div>
+  <script src="../../gallery.js"></script>
+</section>
+    </div>
+  </article>
+</main>
+  </div>
+  <footer class="site-footer">
+  <div class="container">
+    Copyright 2025
+    <p class="site-author">Giovanni Favaro</p>
+  </div>
+</footer>
+
+<script src="../common.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Piece by piece puzzle - Gio's unstable code</title>
+  <link rel="stylesheet" href="../../theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand-text">
+        <h1 class="site-title">Gio's unstable code</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      
+      <div class="lang-selector">
+        
+        
+        
+        
+        <button class="lang-btn btn-secondary" data-lang="it" type="button">
+          IT
+        </button>
+        
+        
+      </div>
+      
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Cerca…" aria-label="Cerca" />
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <a class="btn-primary" href="/">Home</a>
+      <button id="themeToggle" class="btn-secondary" type="button" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</header>
+    <aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <div></div>
+      <button class="sidebar-close"><i class="fas fa-times"></i></button>
+    </div>
+    <ul><li><a href="../../index.html">Home</a></li><li class="dir has-children has-folder"><details><summary><a href="../gssg/index.html" data-target="gssg/index.html">Gio's static site generator</a></summary></details></li><li class="dir has-children has-folder expanded"><details open><summary><span>Piece by piece puzzle</span></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../luapydoc/index.html" data-target="luapydoc/index.html">LuaPyDoc</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../Nal/index.html" data-target="Nal/index.html">Navigate and loot</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../play64/index.html" data-target="play64/index.html">Play64 fantasy console</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../VectorDefense/index.html" data-target="VectorDefense/index.html">VectorDefense</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../voxel64/index.html" data-target="voxel64/index.html">Voxel64</a></summary></details></li><li class="dir has-children has-folder"><details><summary><a href="../whisperli_info/index.html" data-target="whisperli_info/index.html">Whisperli</a></summary></details></li></ul>
+  </div>
+</aside>
+
+<div class="sidebar-backdrop"></div>
+    <main class="content">
+  <nav class="breadcrumbs">
+    
+      
+        
+        
+          
+            <a href="../../index.html">My Experimental Projects</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <a href="index.html">Piece by piece puzzle</a>
+          
+          
+            <span class="sep">&raquo;</span>
+          
+        
+          
+            <span class="current">Piece by piece puzzle</span>
+          
+          
+        
+      
+    
+  </nav>
+  
+    <p class="meta">2025-09-17</p>
+    
+
+  <article>
+
+    <div class="markdown-body">
+      <p>A relaxing puzzle game where you reassemble images into complete pictures.</p>
+<h2 id="game-overview">Game Overview</h2>
+<p>Play with real-world images in categories: animals, landscapes, architecture, and people. Select difficulty levels from easy (3x3 pieces) to hard (8x8 pieces) and assemble the puzzle.</p>
+<p><a href="https://minifun.itch.io/piece-by-piece">Download</a></p>
+<h2 id="how-to-play">How to Play</h2>
+<ol>
+<li>Choose an image from the menu.</li>
+<li>Select difficulty.</li>
+<li>Move pieces with mouse/touch, use zoom.</li>
+<li>Complete the puzzle and view your time/moves.</li>
+<li>Resume saved games or try hardcore mode.</li>
+</ol>
+<h2 id="features">Features</h2>
+<ul>
+<li>Categorized images</li>
+<li>Difficulty levels: 3x3 to 8x8</li>
+<li>Hardcore mode (no hints)</li>
+<li>Save/Resume games</li>
+<li>Leaderboard</li>
+<li>Sound &amp; Music controls</li>
+<li>Italian/English language</li>
+<li>Custom image support</li>
+<li>Touch/Mouse friendly</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>1024x768 resolution or higher</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Download game files.</li>
+<li>Install Love2D from official site.</li>
+<li>Run game via Love2D.</li>
+</ol>
+<h2 id="credits">Credits</h2>
+<ul>
+<li>Images: Pexels</li>
+<li>Music: CC licensed tracks by various artists</li>
+<li>Framework: Love2D</li>
+<li>Font: Caviar Dreams</li>
+<li>Full credits in credits.txt</li>
+</ul>
+<h2 id="license">License</h2>
+<p>Images and music: Creative Commons</p>
+
+<!-- Gallery component template (no title, no description) -->
+<section class="gallery" id="gallery-subtree-0">
+  <link rel="stylesheet" href="../../gallery.css" />
+  <div class="gallery-grid">
+    <a class="gallery-item" href="#" data-full="_gallery/love_FLhXiqsq9z.png" data-alt="love FLhXiqsq9z"><img src="_gallery/_thumbs/love_FLhXiqsq9z.png" alt="love FLhXiqsq9z" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_kKZOl1e6A5.png" data-alt="love kKZOl1e6A5"><img src="_gallery/_thumbs/love_kKZOl1e6A5.png" alt="love kKZOl1e6A5" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_nMHJDpb4Um.png" data-alt="love nMHJDpb4Um"><img src="_gallery/_thumbs/love_nMHJDpb4Um.png" alt="love nMHJDpb4Um" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_t4PgVCJISR.png" data-alt="love t4PgVCJISR"><img src="_gallery/_thumbs/love_t4PgVCJISR.png" alt="love t4PgVCJISR" loading="lazy" /></a>
+<a class="gallery-item" href="#" data-full="_gallery/love_XBawxaHBYU.png" data-alt="love XBawxaHBYU"><img src="_gallery/_thumbs/love_XBawxaHBYU.png" alt="love XBawxaHBYU" loading="lazy" /></a>
+  </div>
+  <div class="gallery-modal" hidden>
+    <div class="gallery-backdrop"></div>
+    <figure class="gallery-figure">
+      <img class="gallery-full" alt="" />
+      <figcaption class="gallery-caption"></figcaption>
+      <button type="button" class="gallery-close" aria-label="Chiudi">×</button>
+      <button type="button" class="gallery-prev" aria-label="Foto precedente">‹</button>
+      <button type="button" class="gallery-next" aria-label="Foto successiva">›</button>
+    </figure>
+  </div>
+  <script src="../../gallery.js"></script>
+</section>
+    </div>
+  </article>
+</main>
+  </div>
+  <footer class="site-footer">
+  <div class="container">
+    Copyright 2025
+    <p class="site-author">Giovanni Favaro</p>
+  </div>
+</footer>
+
+<script src="../common.js"></script>
+</body>
+</html>

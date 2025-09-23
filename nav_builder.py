@@ -1,4 +1,4 @@
-"""Navigation tree building and rendering for Gio's static site generator."""
+# Navigation tree building and rendering for Gio's static site generator.
 
 from __future__ import annotations
 
@@ -182,10 +182,12 @@ def build_nav_tree(content_root: Path, output_root: Path) -> NavNode:
                 elif special_dir.name == "_blog":
                     has_content = any(f.is_file() and f.suffix.lower() == ".md" and f.name != "index.md" for f in special_dir.iterdir())
                 if has_content:
-                    # Don't add to sidebar if parent has index.md (will be appended to parent instead)
+                    # Don't add to sidebar if parent has index.md (will be appended to parent instead) or if it's a _gallery (to implement change: never add galleries without index to sidebar)
                     parent_index_md = special_dir.parent / "index.md"
-                    if special_dir.parent == content_root or not parent_index_md.exists():
-                        special_md_paths.append(index_md)
+                    if special_dir.name != "_gallery" and (special_dir.parent == content_root or not parent_index_md.exists()):
+                        # Skip adding _gallery to navigation to implement the requested change
+                        if special_dir.name != "_gallery":
+                            special_md_paths.append(index_md)
 
     for fake_path in special_md_paths:
         rel_md = fake_path.relative_to(content_root)
@@ -219,6 +221,8 @@ def render_sidebar_html(
     current_out_dir: Path,
     output_root: Path,
     current_out_rel: Optional[Path] = None,
+    is_multilingual: bool = False,
+    root_output: Path = None,
 ) -> str:
     """Render a nested sidebar HTML from the navigation tree.
 
@@ -233,6 +237,8 @@ def render_sidebar_html(
     - current_out_dir: Directory of the current output HTML file.
     - output_root: Root of the output directory.
     - current_out_rel: Output path of current page relative to output_root, for active state.
+    - is_multilingual: Whether the site is multilingual.
+    - root_output: Root output directory for multilingual sites.
     """
 
     def rel_href(target: Path) -> str:
@@ -272,7 +278,15 @@ def render_sidebar_html(
         )
         # Use index child title if available, otherwise directory name
         label = index_child.name if index_child else d.name
-        href = rel_href(output_root / index_child.rel_output_path) if index_child else None
+        # For directories, href should be relative to the index child, but if no index_child, no href
+        if index_child:
+            # Check if this directory's index is the same as the current page - if so, no need for link (for details show/hide)
+            if index_child.rel_output_path == current_out_rel:
+                href = None  # No self-link for current page
+            else:
+                href = rel_href(output_root / index_child.rel_output_path)
+        else:
+            href = None
 
         active_dir = is_active_node(d)
 
@@ -311,7 +325,10 @@ def render_sidebar_html(
     # Build top-level navigation list
     items: List[str] = []
     # Add Home link first
-    home_target = output_root / "index.html"
+    if is_multilingual and root_output != output_root:
+        home_target = root_output / "index.html"
+    else:
+        home_target = output_root / "index.html"
     home_active = bool(current_out_rel and current_out_rel.as_posix() == "index.html")
     home_cls = ' class="active"' if home_active else ''
     items.append(f'<li><a href="{rel_href(home_target)}"{home_cls}>Home</a></li>')
@@ -333,6 +350,8 @@ def build_breadcrumbs(
     output_root: Path,
     rel_md_path: Path,
     current_out_dir: Path,
+    is_multilingual: bool = False,
+    root_output: Path = None,
 ) -> List[dict[str, Optional[str]]]:
     """Build breadcrumbs for the current page.
 
@@ -344,16 +363,29 @@ def build_breadcrumbs(
         output_root: Path to output/ directory.
         rel_md_path: Markdown path relative to content_root for the current page.
         current_out_dir: Output directory of the current HTML page.
+        is_multilingual: Whether the site is multilingual.
+        root_output: Root output directory for multilingual sites.
 
     Returns:
         List of dicts with keys: label, url (None for current segment or missing index).
     """
     crumbs: List[dict[str, Optional[str]]] = []
 
+    # Determine the home target
+    if root_output is None:
+        effective_root = output_root
+    else:
+        effective_root = root_output
+
     # Home (use title from content/index.md if available)
     home_index = content_root / "index.md"
     if home_index.exists():
-        target = output_root / "index.html"
+        if is_multilingual:
+            # For multilingual, home is the root language selector
+            target = effective_root / "index.html"
+        else:
+            # For monolingual, home is the site root
+            target = output_root / "index.html"
         try:
             url = os.path.relpath(target, start=current_out_dir).replace(os.sep, "/")
         except Exception:

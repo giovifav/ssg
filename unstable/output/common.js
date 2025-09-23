@@ -139,4 +139,60 @@
       if (!panel.contains(e.target) && e.target !== input) panel.hidden = true;
     });
   }
+
+  // Language switching persistence
+  const langButtons = document.querySelectorAll('.lang-btn[data-lang]');
+  const preferredLangKey = 'ssg-preferred-lang';
+
+  function getLanguageRedirectPath(lang, currentPathname) {
+    // Normalize pathname by treating /index.html as directory
+    const normalizedPathname = currentPathname.replace(/\/index\.html$/, '/');
+    const parts = normalizedPathname.replace(/\/$/, '').split('/').filter(p => p);
+    const langIndex = parts.findIndex(p => p === 'en' || p === 'it');
+    if (langIndex === -1) {
+      // No language prefix, insert after 'output' if found, else add at beginning
+      const outputIndex = parts.findIndex(p => p === 'output');
+      if (outputIndex >= 0) {
+        parts.splice(outputIndex + 1, 0, lang);
+      } else {
+        parts.unshift(lang);
+      }
+      return '/' + parts.join('/') + '/';
+    } else {
+      // Replace existing language prefix
+      parts[langIndex] = lang;
+      return '/' + parts.join('/') + '/';
+    }
+  }
+
+  langButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const lang = e.target.getAttribute('data-lang');
+      localStorage.setItem(preferredLangKey, lang);
+      // Redirect to the language version, stripping any current language prefix
+      const newPath = getLanguageRedirectPath(lang, window.location.pathname);
+      window.location.href = newPath;
+    });
+  });
+
+  // On load, redirect if preferred language is different
+  const storedLang = localStorage.getItem(preferredLangKey);
+  // Normalize pathname by treating /index.html as directory
+  const normalizedPathname = window.location.pathname.replace(/\/index\.html$/, '/');
+  if (storedLang) {
+    const currentPathParts = normalizedPathname.split('/').filter(p => p);
+    const currentLang = currentPathParts.find(p => ['en', 'it'].includes(p));
+    if (currentLang && storedLang !== currentLang) {
+      // Redirect to preferred language
+      const newPath = getLanguageRedirectPath(storedLang, normalizedPathname);
+      window.location.href = `${newPath}${window.location.search}${window.location.hash}`;
+    }
+  } else {
+    const currentPathParts = normalizedPathname.split('/').filter(p => p);
+    const hasLang = currentPathParts.some(p => ['en', 'it'].includes(p));
+    if (!hasLang) {
+      // No stored preference, redirect to default language (it)
+      window.location.href = getLanguageRedirectPath('it', normalizedPathname);
+    }
+  }
 })();

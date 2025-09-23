@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>constants</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs_style.css">
+
+<style>
+/* Sidebar tree view styles */
+#definitions-list.tree { font-size: 0.95em; }
+#definitions-list.tree ul { list-style: none; margin-left: 0; padding-left: 0.8rem; border-left: 1px solid rgba(255,255,255,0.08); }
+#definitions-list.tree li { margin: 2px 0; position: relative; }
+#definitions-list.tree .twisty { border: none; background: none; cursor: pointer; font-size: 12px; width: 1rem; margin-right: 4px; color: #aaa; padding: 0; }
+#definitions-list.tree .label { cursor: pointer; }
+#definitions-list.tree li.leaf > .twisty { visibility: hidden; }
+#definitions-list.tree ul.collapsed { display: none; }
+#definitions-list .tree-controls { display: flex; gap: 6px; margin-bottom: 8px; }
+#definitions-list .tree-controls button { font-size: 12px; padding: 2px 6px; }
+</style>
+</head>
+
+<body>
+<div class="t-container">
+    <aside class="t-col-3">
+        <input type="text" id="searchBox" class="t-input" placeholder="Search...">
+        <div id="results"></div>
+
+        <div id="definitions-list" class="tree">
+            <div class="tree-controls">
+                <button id="expandAll" class="t-button">Expand all</button>
+                <button id="collapseAll" class="t-button">Collapse all</button>
+            </div>
+            
+<ul>
+
+    
+        <li>arrow_manager
+<ul>
+
+    
+        <li>ArrowManager
+<ul>
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getArrowDirection">getArrowDirection</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getNormalizedGroupAndBounds">getNormalizedGroupAndBounds</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.getTransformedShape">getTransformedShape</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.mirrorPixels">mirrorPixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.rotatePixels">rotatePixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager.rotatePixelsArbitrary">rotatePixelsArbitrary</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#ArrowManager:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#checkTaperingShape">checkTaperingShape</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isDiagonalArrow">isDiagonalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isHorizontalArrow">isHorizontalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isSimpleDiagonalArrow">isSimpleDiagonalArrow</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="arrow_manager.html#isVerticalArrow">isVerticalArrow</a></li>
+        
+    
+
+    
+        <li>mod ArrowManager
+<ul>
+
+    
+        
+            
+            <li><a href="arrow_manager.html#Utils">Utils</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>collision_manager
+<ul>
+
+    
+        <li>CollisionManager
+<ul>
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:checkPlayerMovement">checkPlayerMovement</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:getCollisionPixels">getCollisionPixels</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager:resolveEntityCollision">resolveEntityCollision</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod CollisionManager
+<ul>
+
+    
+        
+            
+            <li><a href="collision_manager.html#CollisionManager">CollisionManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>constants
+<ul>
+
+    
+        
+            
+            <li><a href="constants.html#constants.Constants">Constants</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="constants.html#Constants.COLORS">Constants.COLORS</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>entity
+<ul>
+
+    
+        <li>Entity
+<ul>
+
+    
+        
+            
+            <li><a href="entity.html#Entity:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:removeFromCollisionMap">removeFromCollisionMap</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:setMoving">setMoving</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:updateCollisionMapPosition">updateCollisionMapPosition</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="entity.html#Entity:updateVisualShape">updateVisualShape</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Entity
+<ul>
+
+    
+        
+            
+            <li><a href="entity.html#ArrowManager">ArrowManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>game
+<ul>
+
+    
+        <li>Game
+<ul>
+
+    
+        
+            
+            <li><a href="game.html#Game:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:reset">reset</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#Game:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Game
+<ul>
+
+    
+        
+            
+            <li><a href="game.html#Level">Level</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        
+            
+            <li><a href="game.html#self.collisionManager">self.collisionManager</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="game.html#self.currentLevel">self.currentLevel</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>gameover
+<ul>
+
+    
+        <li>GameOver
+<ul>
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod GameOver
+<ul>
+
+    
+        
+            
+            <li><a href="gameover.html#GameOver">GameOver</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>level
+<ul>
+
+    
+        <li>Level
+<ul>
+
+    
+        
+            
+            <li><a href="level.html#Level:addEntity">addEntity</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="level.html#Level.new">new</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>mod Level
+<ul>
+
+    
+        
+            
+            <li><a href="level.html#Utils">Utils</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>main
+<ul>
+
+    
+        
+            
+            <li><a href="main.html#main.Game">Game</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>scene_manager
+<ul>
+
+    
+        <li>mod SceneManager
+<ul>
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager">SceneManager</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>SceneManager
+<ul>
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:reset_game">reset_game</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:set_scene">set_scene</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="scene_manager.html#SceneManager:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>utils
+<ul>
+
+    
+        <li>Utils
+<ul>
+
+    
+        
+            
+            <li><a href="utils.html#Utils.floodFill">floodFill</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.getAABB">getAABB</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.getAABBRounded">getAABBRounded</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="utils.html#Utils.log">log</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>win
+<ul>
+
+    
+        <li>mod Win
+<ul>
+
+    
+        
+            
+            <li><a href="win.html#Win">Win</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+    
+        <li>Win
+<ul>
+
+    
+        
+            
+            <li><a href="win.html#Win:draw">draw</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:keypressed">keypressed</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:load">load</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win.new">new</a></li>
+        
+    
+
+    
+        
+            
+            <li><a href="win.html#Win:update">update</a></li>
+        
+    
+
+</ul>
+</li>
+    
+
+</ul>
+</li>
+    
+
+</ul>
+
+        </div>
+    </aside>
+
+    <main class="t-col-9">
+        <div style="margin-bottom: 10px;">
+            <a href="index.html" class="back-link">&larr; Back to Index</a>
+        </div>
+        <h1 class="t-heading">constants</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="doc">Documentation</button>
+            <button class="tab-button" data-tab="code">View Code</button>
+        </div>
+
+        <div class="tab-content" id="doc" style="display:block;">
+            
+            
+            <div class="func t-card" id="constants.Constants">
+                <h2 class="t-heading">Constants</h2>
+                <p>Defines global constants for the game, including consolidated color definitions.</p>
+                <p><em>Type: field</em></p>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+                <p><strong>Module:</strong> constants</p>
+                
+
+                
+            </div>
+            
+            <div class="func t-card" id="Constants.COLORS">
+                <h2 class="t-heading">Constants.COLORS</h2>
+                <p>COLORS Defines the RGBA color values used to identify different entity types in level images. All colors include an alpha component (a=1) for consistency.</p>
+                <p><em>Type: field</em></p>
+
+                
+
+                
+
+                
+                <h3>Fields</h3>
+                <ul>
+                    
+                    <li><b>table</b> (PLAYER): RGBA color for the player.</li>
+                    
+                    <li><b>table</b> (ENEMY): RGBA color for enemies.</li>
+                    
+                    <li><b>table</b> (COLLECTIBLE): RGBA color for collectibles.</li>
+                    
+                    <li><b>table</b> (WALL): RGBA color for walls.</li>
+                    
+                    <li><b>table</b> (TRIGGER): RGBA color for triggers.</li>
+                    
+                    <li><b>table</b> (EMPTY): RGBA color for empty spaces.</li>
+                    
+                </ul>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+            
+        </div>
+
+        <div class="tab-content" id="code">
+            <div class="lua-highlight"><div class="lua-highlight"><pre><span></span><span class="c1">--- @module constants</span>
+<span class="c1">-- Defines global constants for the game, including consolidated color definitions.</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">Constants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="c1">--- COLORS</span>
+<span class="c1">-- Defines the RGBA color values used to identify different entity types in level images.</span>
+<span class="c1">-- All colors include an alpha component (a=1) for consistency.</span>
+<span class="c1">-- @table</span>
+<span class="c1">-- @field PLAYER table RGBA color for the player.</span>
+<span class="c1">-- @field ENEMY table RGBA color for enemies.</span>
+<span class="c1">-- @field COLLECTIBLE table RGBA color for collectibles.</span>
+<span class="c1">-- @field WALL table RGBA color for walls.</span>
+<span class="c1">-- @field TRIGGER table RGBA color for triggers.</span>
+<span class="c1">-- @field EMPTY table RGBA color for empty spaces.</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">COLORS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">PLAYER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">ENEMY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">COLLECTIBLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">WALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">TRIGGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">EMPTY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">Constants</span><span class="p">.</span><span class="py">DEFAULT_ARROW_SPEED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="c1">-- Default speed for arrows</span>
+
+<span class="c1">-- Game window dimensions and scaling</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">GAME_WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">GAME_HEIGHT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">GAME_SCALE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+
+<span class="c1">-- Debug mode flag</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">DEBUG_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="c1">-- Default level path</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">DEFAULT_LEVEL_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;carts/doom (by puarsliburf) .png&quot;</span>
+
+<span class="nv">Constants</span><span class="p">.</span><span class="py">MAX_ARROW_PIXELS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+<span class="nv">Constants</span><span class="p">.</span><span class="py">MIN_ARROW_PIXELS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+
+<span class="kr">return</span><span class="w"> </span><span class="nv">Constants</span>
+</pre></div>
+</div>
+        </div>
+    </main>
+</div>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(tc => tc.style.display='none');
+        const targetTab = document.getElementById(btn.dataset.tab);
+        targetTab.style.display='block';
+    });
+});
+
+// Search with robust index loading (fallback to DOM if fetch fails)
+let searchIndex = [];
+const searchBox = document.getElementById("searchBox");
+const resultsDiv = document.getElementById("results");
+
+async function loadSearchIndex(){
+    try {
+        const res = await fetch("search.json", { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        searchIndex = await res.json();
+    } catch (e) {
+        // Fallback: build index from sidebar anchors (works also with file://)
+        const anchors = Array.from(document.querySelectorAll('#definitions-list a[href]'));
+        searchIndex = anchors.map(a => {
+            const href = a.getAttribute('href') || '';
+            const m = href.match(/([^\/\\]+)\.html#(.+)$/);
+            return {
+                file: m ? m[1] : '',
+                full_name: m ? m[2] : a.textContent.trim(),
+                class: null,
+                summary: a.textContent.trim(),
+                params: [],
+                returns: []
+            };
+        });
+    }
+}
+
+loadSearchIndex();
+
+function scrollHighlight(id){
+    const el=document.getElementById(id);
+    if(el){ el.scrollIntoView({behavior:"smooth", block:"center"}); el.classList.add("highlight");
+        setTimeout(()=>el.classList.remove("highlight"),2000); }
+}
+
+searchBox.addEventListener("input",async ()=>{
+    const q = searchBox.value.toLowerCase().trim();
+    resultsDiv.innerHTML="";
+    
+    const definitionsList = document.getElementById("definitions-list");
+    
+    if(q.length<2) {
+        resultsDiv.style.display = "none";
+        definitionsList.style.display = "block";
+        return;
+    }
+
+    // Ensure index is loaded
+    if (!Array.isArray(searchIndex) || searchIndex.length === 0) {
+        await loadSearchIndex();
+        if (!Array.isArray(searchIndex) || searchIndex.length === 0) {
+            resultsDiv.style.display = "block";
+            definitionsList.style.display = "none";
+            resultsDiv.innerHTML = `<div class="result t-card"><p>Loading index...</p></div>`;
+            return;
+        }
+    }
+    
+    const words = q.split(/\s+/).filter(word => word.length > 0);
+    const scoredMatches = searchIndex.map(raw => {
+        const item = {
+            file: raw.file || '',
+            full_name: (raw.full_name || '').toString(),
+            class: raw.class || null,
+            summary: raw.summary || ''
+        };
+        const itemStr = JSON.stringify(item).toLowerCase();
+        let score = 0;
+        if (item.full_name.toLowerCase().includes(q)) score += 10;
+        words.forEach(word => { if (itemStr.includes(word)) score += 1; });
+        return { item, score };
+    }).filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score);
+    
+    if (scoredMatches.length > 0) {
+        resultsDiv.style.display = "block";
+        definitionsList.style.display = "none";
+        scoredMatches.slice(0,20).forEach(({ item })=>{
+            let summary = item.summary || '';
+            if (summary && q.length > 0) {
+                const regex = new RegExp(`(${words.join('|')})`, 'gi');
+                summary = summary.replace(regex, '<mark>$1</mark>');
+            }
+            const href = `${item.file}.html#${encodeURIComponent(item.full_name)}`;
+            resultsDiv.innerHTML += `<div class="result t-card">
+                <a href="${href}">${item.full_name}</a>
+                ${item.class?`<p><b>Class:</b> ${item.class}</p>`:""}
+                <p>${summary}</p>
+            </div>`;
+        });
+    } else {
+        resultsDiv.style.display = "block";
+        definitionsList.style.display = "none";
+        resultsDiv.innerHTML = `<div class="result t-card"><p>No results found</p></div>`;
+    }
+});
+
+// Tree view enhancer for sidebar definitions
+function enhanceTree(root) {
+    if (!root) return;
+    root.classList.add('tree');
+
+    // Mark all nested ULs and insert twisty buttons
+    root.querySelectorAll(':scope > ul, :scope ul').forEach(ul => {
+        const parentLi = ul.parentElement;
+        if (!parentLi || parentLi.tagName.toLowerCase() !== 'li') return;
+
+        // Create twisty
+        const twisty = document.createElement('button');
+        twisty.className = 'twisty';
+        twisty.setAttribute('aria-label', 'toggle');
+        twisty.textContent = '▸';
+
+        // Wrap label text/link
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'label';
+
+        // Move existing contents (text and anchors) before UL into labelSpan
+        const childrenBeforeUL = [];
+        for (let n = parentLi.firstChild; n && n !== ul; n = n.nextSibling) {
+            childrenBeforeUL.push(n);
+        }
+        childrenBeforeUL.forEach(n => labelSpan.appendChild(n));
+
+        // Determine if leaf (no child UL)
+        const isLeaf = !ul || ul.children.length === 0;
+
+        // Insert twisty and label at start
+        parentLi.insertBefore(twisty, ul);
+        parentLi.insertBefore(labelSpan, ul);
+
+        if (isLeaf) {
+            parentLi.classList.add('leaf');
+        } else {
+            // Default collapsed for deeper levels; keep top level expanded
+            const depth = getDepth(parentLi, root);
+            if (depth > 1) ul.classList.add('collapsed');
+
+            const setExpanded = (expanded) => {
+                ul.classList.toggle('collapsed', !expanded);
+                twisty.textContent = expanded ? '▾' : '▸';
+            };
+
+            twisty.addEventListener('click', (e) => { e.stopPropagation(); setExpanded(ul.classList.contains('collapsed')); });
+            labelSpan.addEventListener('click', () => setExpanded(ul.classList.contains('collapsed')));
+        }
+    });
+
+    function getDepth(li, container){
+        let d = 0; let n = li;
+        while (n && n !== container) { if (n.tagName && n.tagName.toLowerCase() === 'ul') d++; n = n.parentElement; }
+        return d;
+    }
+
+    // Controls
+    const expandBtn = document.getElementById('expandAll');
+    const collapseBtn = document.getElementById('collapseAll');
+    if (expandBtn) expandBtn.addEventListener('click', () => {
+        root.querySelectorAll('#definitions-list ul').forEach(ul => ul.classList.remove('collapsed'));
+        root.querySelectorAll('#definitions-list .twisty').forEach(t => t.textContent = '▾');
+    });
+    if (collapseBtn) collapseBtn.addEventListener('click', () => {
+        // Keep the top-level list expanded
+        root.querySelectorAll('#definitions-list ul').forEach((ul, idx) => {
+            const depth = (function getUlDepth(u){ let d=0, p=u; while(p && p.id !== 'definitions-list'){ if(p.tagName && p.tagName.toLowerCase()==='ul') d++; p=p.parentElement; } return d; })(ul);
+            if (depth > 1) ul.classList.add('collapsed'); else ul.classList.remove('collapsed');
+        });
+        root.querySelectorAll('#definitions-list .twisty').forEach(t => t.textContent = '▸');
+        // Fix top-level twisties to expanded symbol
+        root.querySelectorAll('#definitions-list > ul').forEach(ul => {
+            const li = ul.parentElement;
+            const tw = li && li.querySelector(':scope > .twisty');
+            if (tw) tw.textContent = '▾';
+        });
+    });
+}
+
+// Auto-expand tree to the current page/hash
+function expandToCurrent() {
+    const defList = document.getElementById('definitions-list');
+    if (!defList) return;
+    const current = (location.pathname.split('/').pop() || '').toLowerCase();
+    const currentBase = current.replace(/\.html$/, '');
+    const hash = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+
+    const anchors = Array.from(defList.querySelectorAll('a[href]'));
+    let targetA = null;
+    if (hash) {
+        targetA = anchors.find(a => a.getAttribute('href') === `${currentBase}.html#${hash}`);
+    }
+    if (!targetA) {
+        targetA = anchors.find(a => (a.getAttribute('href') || '').startsWith(`${currentBase}.html#`)) || null;
+    }
+
+    if (targetA) {
+        // Expand all ancestor ULs and set twisties to expanded
+        let n = targetA.parentElement;
+        while (n && n.id !== 'definitions-list') {
+            if (n.tagName && n.tagName.toLowerCase() === 'ul') {
+                n.classList.remove('collapsed');
+            }
+            if (n.tagName && n.tagName.toLowerCase() === 'li') {
+                const tw = n.querySelector(':scope > .twisty');
+                if (tw) tw.textContent = '▾';
+            }
+            n = n.parentElement;
+        }
+        // Highlight and scroll into view
+        const li = targetA.closest('li');
+        if (li) {
+            li.classList.add('highlight');
+            targetA.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => li.classList.remove('highlight'), 2000);
+        }
+    }
+}
+
+ // Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    const defList = document.getElementById('definitions-list');
+    enhanceTree(defList);
+    expandToCurrent();
+});
+
+// Prism initialization handled automatically
+</script>
+</body>
+</html>
